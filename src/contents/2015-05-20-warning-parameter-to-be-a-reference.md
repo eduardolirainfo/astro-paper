@@ -1,6 +1,6 @@
 ---
 title: PARAMETER TO EXPECTED TO BE A REFERENCE
-date: 2015-05-20 20:41:23 Z
+datetime: 2015-05-20 20:41:23 Z
 tags:
   - Joomla
 image: "/static/images/"

@@ -1,6 +1,6 @@
 ---
 title: "Mage registry key already exists"
-date: 2015-10-22 14:26:34 Z
+datetime: 2015-10-22 14:26:34 Z
 tags:
   - Magento
 categories: Mag

@@ -1,8 +1,8 @@
 ---
 title: "#1 - O que é Linux?"
-date: 2017-01-09 00:00:00 Z
+datetime: 2017-01-09 00:00:00 Z
 tags:
-  - Linux
+  - linux
 categories: DevOps
 background: "#f26c6e"
 description: "O que é Linux?"

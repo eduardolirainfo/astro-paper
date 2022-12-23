@@ -1,8 +1,8 @@
 ---
 title: "Autenticação FTP direta no WordPress"
-date: "2012-09-06"
+datetime: "2012-09-06"
 tags:
-  - Wordpress
+  - wordpress
 categories: "Wp"
 background: "#117ac9"
 description: "Métodos de autenticação FTP direto no Wordpress"

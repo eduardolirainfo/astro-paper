@@ -1,6 +1,6 @@
 ---
 title: "O que é um programa?"
-date: "2017-05-05 00:00:00 Z"
+datetime: "2017-05-05 00:00:00 Z"
 tags:
   - Desenvolvimento
 description: "Um programa é uma sequência de instruções que especifica como executar uma operação de computação. Além disso, você sabe para que ele serve?"

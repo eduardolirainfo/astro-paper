@@ -3,7 +3,7 @@ author: Sat Naing
 datetime: 2022-09-25T15:20:35Z
 title: Customizing AstroPaper theme color schemes
 slug: ""
-featured: false
+featured: true
 draft: false
 tags:
   - color-schemes

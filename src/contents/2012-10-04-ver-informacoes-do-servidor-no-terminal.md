@@ -1,6 +1,6 @@
 ---
 title: Ver informações do servidor no terminal
-date: "2012-10-04"
+datetime: "2012-10-04"
 tags:
   - PHP
 description: "Veja informações do servidor por meio do terminal"

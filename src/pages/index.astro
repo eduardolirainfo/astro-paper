@@ -20,54 +20,154 @@ const featuredPosts = sortedPosts.filter(
 
 <Layout>
   <Header />
-  <main id="main-content">
+  <main id="main">
     <section id="hero">
-      <h1>Olá!</h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-      </a>
+      <div class="md:flex">
+        <div>
+          <h2
+            class="my-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl md:text-[text-4rem] lg:text-[5.5rem] lg:leading-none"
+          >
+            Olá!
+            <a
+              target="_blank"
+              href="/rss.xml"
+              class="rss-link"
+              aria-label="rss feed"
+              title="RSS Feed"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+                ><path
+                  d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+                ></path><path
+                  d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+                ></path><circle cx="6" cy="18" r="2"></circle>
+              </svg>
+            </a>
+          </h2>
+          <p class="my-4 md:text-lg lg:text-xl">
+            💻 Programador 🌴 do Rio de Janeiro.
+          </p>
+          <p class="my-4 md:text-lg lg:text-xl">
+            💕 Dedicação para resolver problemas, criar coisas legais e beber ☕
+            !
+          </p>
 
-      <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p>
-      <p>
-        Read the blog posts or check
-        <LinkButton
-          className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
-      </p>
-      <div class="social-wrapper">
-        <div class="social-links">Social Links:</div>
-        <Socials />
+          <p>
+            Read the blog posts or check
+            <LinkButton
+              className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
+              href="https://github.com/satnaing/astro-paper#readme"
+            >
+              README
+            </LinkButton> for more info.
+          </p>
+          <div class="my-8 flex">
+            <a
+              href="/"
+              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <span class="text-lg">Contato</span>
+            </a>
+            <a
+              href="/"
+              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <span class="text-lg">Projetos</span>
+            </a>
+            <a
+              href="/"
+              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <span class="text-lg">Sobre</span>
+            </a>
+            <a
+              href="/"
+              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <span class="text-lg">Blog</span>
+            </a>
+          </div>
+          <div class="social-wrapper">
+            <div class="social-links">Social Links:</div>
+            <Socials />
+          </div>
+        </div>
+        <div class="ml-auto perfil animated">
+          <img
+            alt="Eduardo Lira"
+            srcset="https://avatars.githubusercontent.com/u/4684754?v=4"
+            src="https://avatars.githubusercontent.com/u/4684754?v=4"
+            width="288"
+            height="288"
+            decoding="async"
+            data-nimg="1"
+            style="color:transparent;border-radius:10% 30% 50% 70%"
+          />
+        </div>
       </div>
     </section>
-
     <Hr />
 
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured">
-            <h2>Featured</h2>
-            <ul>
+          <section id="featured" class="my-16 mx-auto max-w-4xl px-4 lg:my-32">
+            <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl lg:text-4xl">
+              Featured
+            </h2>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
               {featuredPosts.map(({ frontmatter }) => (
                 <Card
                   href={`/posts/${slugify(frontmatter)}`}
@@ -75,16 +175,19 @@ const featuredPosts = sortedPosts.filter(
                   secHeading={false}
                 />
               ))}
-            </ul>
+            </div>
           </section>
-          <Hr />
         </>
       )
     }
 
-    <section id="recent-posts">
-      <h2>Recent Posts</h2>
-      <ul>
+    <section id="recent-posts" class="my-16 mx-auto max-w-4xl px-4 lg:my-32">
+      <h2
+        class="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl lg:text-4xl"
+      >
+        Recent Posts
+      </h2>
+      <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">
         {
           sortedPosts.map(
             ({ frontmatter }, index) =>
@@ -98,15 +201,31 @@ const featuredPosts = sortedPosts.filter(
           )
         }
       </ul>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
+      <div
+        class="all-posts-btn-wrapper"
+        class="my-16 mx-auto max-w-4xl px-4 lg:my-32"
+      >
+        ✨ Ver{" "}
+        <LinkButton
+          className="text-sky-600 underline dark:text-sky-300"
+          href="/posts"
+        >
+          Todos os envios
           <svg xmlns="http://www.w3.org/2000/svg"
             ><path
               d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
             ></path>
           </svg>
         </LinkButton>
+
+        <!-- <LinkButton href="/posts">
+          All Posts
+          <svg xmlns="http://www.w3.org/2000/svg"
+            ><path
+              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            ></path>
+          </svg>
+        </LinkButton> -->
       </div>
     </section>
   </main>

@@ -1,6 +1,6 @@
 ---
 title: PayPal - Callback URL is wrong type
-date: 2015-08-07 00:00:00 Z
+datetime: 2015-08-07 00:00:00 Z
 tags:
   - Magento
 categories: Mag

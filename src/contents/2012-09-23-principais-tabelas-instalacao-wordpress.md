@@ -1,6 +1,6 @@
 ---
 title: Principais tabelas da instalação Wordpress
-date: 2012-09-23
+datetime: 2012-09-23
 tags:
   - Wordpress
 description: "A principais tabelas de instalação no Wordpress"
@@ -22,8 +22,9 @@ Veremos para que cada uma delas serve.
 - **wp_postmeta** : metadados das postagens
 - **wp_posts**: conteúdos das postagens
 - **wp_terms**: categorias e tags
+- **wp_termmeta**: Metadados
 - **wp_term_relationships** : associa categorias e tags às postagens
-- **wptermtaxonomy**: descrições das categorias e tags
+- **wp_term_taxonomy**: descrições das categorias e tags
 - **wp_usermeta** : metadados de usuário
 - **wp_users** : todos os dados do usuário
 

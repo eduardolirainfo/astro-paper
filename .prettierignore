@@ -1,6 +1,7 @@
 # Ignore everything
 /*
 
+
 # Except these files & folders
 !/src
 !/public
@@ -10,3 +11,5 @@
 !package.json
 !.prettierrc
 !.eslintrc.json
+
+public/assets

@@ -95,7 +95,7 @@ export default function SearchBar({ searchList }: Props) {
       </label>
 
       {inputVal.length > 1 && (
-        <div className="mt-8">
+        <div className="mt-8 mb-8">
           Found {searchResults?.length}
           {searchResults?.length && searchResults?.length === 1
             ? " result"
@@ -104,7 +104,7 @@ export default function SearchBar({ searchList }: Props) {
         </div>
       )}
 
-      <ul>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-1">
         {searchResults &&
           searchResults.map(({ item, refIndex }) => (
             <Card
@@ -113,7 +113,7 @@ export default function SearchBar({ searchList }: Props) {
               key={`${refIndex}-${slugify(item.frontmatter)}`}
             />
           ))}
-      </ul>
+      </div>
     </>
   );
 }

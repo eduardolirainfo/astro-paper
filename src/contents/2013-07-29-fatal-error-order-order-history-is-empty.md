@@ -1,6 +1,6 @@
 ---
 title: "Fatal error order history state is empty"
-date: 2013-07-29 00:00:00 Z
+datetime: 2013-07-29 00:00:00 Z
 tags:
   - Prestashop
 categories: presta

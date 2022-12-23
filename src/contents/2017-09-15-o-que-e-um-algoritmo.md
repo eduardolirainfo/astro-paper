@@ -1,8 +1,8 @@
 ---
 title: "#2 - O que é um algoritmo?"
-date: "2017-09-15"
+datetime: "2017-09-15"
 tags:
-  - Desenvolvimento
+  - desenvolvimento
 description: "O que é um algoritmo?"
 categories: dev
 background: "#637a91"

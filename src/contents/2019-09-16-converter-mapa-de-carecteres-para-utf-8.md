@@ -1,11 +1,11 @@
 ---
 title: Converter mapa de carecteres para utf-8
 description: "Vamos executar uma query que converte o mapa de caracteres da base de dados MySQL para UTF-8"
-date: "2015-10-23 11:14:39"
+datetime: "2015-10-23 11:14:39"
 categories: MISC
 background: "#2bfea0"
 tags:
-  - SQL
+  - sql
 ---
 
 Para converter o mapa de caracteres de um banco de dados MySQL para UTF-8 siga os passos abaixo.

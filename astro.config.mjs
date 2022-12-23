@@ -1,13 +1,14 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
+import image from "@astrojs/image";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-paper.pages.dev/",
+  site: "https://eduardolira.dev.br",
   integrations: [
     tailwind({
       config: {
@@ -28,7 +29,7 @@ export default defineConfig({
       ],
     ],
     shikiConfig: {
-      theme: "one-dark-pro",
+      theme: "rose-pine",
       wrap: true,
     },
     extendDefaultPlugins: true,

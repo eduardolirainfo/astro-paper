@@ -1,6 +1,6 @@
 ---
 title: "Login Wordpress com E-mail de usuário"
-date: "2012-09-23"
+datetime: "2012-09-23"
 tags:
   - Wordpress
 description: "Efetuando login no wordpress como E-mail no campo de usuário"

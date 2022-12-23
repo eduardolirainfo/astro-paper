@@ -1,8 +1,8 @@
 ---
 title: "Comandos Básicos Linux - LS"
-date: "2017-01-10 11:01:38 Z"
+datetime: "2017-01-10 11:01:38 Z"
 tags:
-  - Linux
+  - linux
 background: "#f26c6e"
 categories: DevOps
 description: "Comandos básicos no Linux - ls"

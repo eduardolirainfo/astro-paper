@@ -1,6 +1,6 @@
 ---
 title: PHPMailer Recipients Failed
-date: 2015-10-21 16:12:26 Z
+datetime: 2015-10-21 16:12:26 Z
 tags:
   - Joomla
 image: "/static/images/"

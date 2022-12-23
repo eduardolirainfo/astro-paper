@@ -8,10 +8,10 @@ AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designe
 This theme is aimed to be accessible out of the box. Light and dark mode are supported by
 default and additional color schemes can also be configured.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+This theme is self-documented \_ which means articles/blog in this theme can also be considered as documentations. So, see the documentation for more info.
 
 <div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <img src="https://avatars.githubusercontent.com/u/4684754?v=4" class="sm:w-1/2 mx-auto" alt="coding dev illustration" style="border-radius: 25px">
 </div>
 
 ## Tech Stack

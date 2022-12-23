@@ -1,6 +1,6 @@
 ---
 title: "Error: 500 PHP Regular Expression Limit Reached"
-date: 2015-05-20 20:11:23 Z
+datetime: 2015-05-20 20:11:23 Z
 tags:
   - Joomla
 description: "Corrigir Error: 500 PHP Regular Expression Limit Reached"

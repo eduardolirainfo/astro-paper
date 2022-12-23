@@ -1,6 +1,6 @@
 ---
 title: Exclusão de pedidos Prestashop
-date: 2015-05-29 00:00:00 Z
+datetime: 2015-05-29 00:00:00 Z
 tags:
   - Prestashop
 categories: presta

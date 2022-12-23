@@ -1,6 +1,6 @@
 ---
 title: "Descobrir espaço em um banco MySQL"
-date: 2015-05-10 00:00:00 Z
+datetime: 2015-05-10 00:00:00 Z
 tags:
   - SQL
 image: "/static/images/mysqlDatabase.jpg"
