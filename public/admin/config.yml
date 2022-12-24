@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: eduardolirainfo/astro-paper
   branch: main # Branch to update
   base_url: https://eduardolira.dev.br/
