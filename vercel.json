@@ -1,8 +1,6 @@
   {
     "trailingSlash": true,
     "rewrites": [
-      { "source": "/auth", "destination": "/api/auth.ts" },
-      { "source": "/callback", "destination": "/api/callback.ts" },
       { "source": "/(.*)", "destination": "/index.html" }
     ]
   }
