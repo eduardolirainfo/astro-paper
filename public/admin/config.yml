@@ -18,7 +18,8 @@ collections:
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/Posts.astro"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string", default: Eduardo Lira}
+      - {label: "Slug", name: "slug", widget: "string"}      
+      - {label: "Author", name: "author", widget: "string", default: "Eduardo Lira"}
       - {label: "Publish Date", name: "datetime", widget: "datetime"}
       - {label: "Thumbnail", name: "ogImage", widget: "image"}
       - {label: "Tags", name: "tags", widget: "list" }
