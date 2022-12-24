@@ -2,12 +2,13 @@
 title: Autenticação FTP direta no WordPress
 author: Eduardo Lira
 datetime: 2012-09-06
-thumbnail: /assets/wordpress-ftp.png
+ogImage: /assets/wordpress-ftp.png
 tags:
   - wordpress
 rating: 5
 background: "#117ac9"
 draft: false
+thumbnail: /assets/wordpress-ftp.png
 featured: false
 categories: Wp
 description: Métodos de autenticação FTP direto no Wordpress
