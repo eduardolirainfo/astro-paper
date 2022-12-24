@@ -1,12 +1,16 @@
 ---
-title: "Autenticação FTP direta no WordPress"
-datetime: "2012-09-06"
+title: Autenticação FTP direta no WordPress
+author: Eduardo Lira
+datetime: 2012-09-06
+thumbnail: /assets/wordpress-ftp.png
 tags:
   - wordpress
-categories: "Wp"
+rating: 5
 background: "#117ac9"
-description: "Métodos de autenticação FTP direto no Wordpress"
-author: "Eduardo Lira"
+draft: false
+featured: false
+categories: Wp
+description: Métodos de autenticação FTP direto no Wordpress
 ---
 
 Para instalar temas ou um simples plugin, vem aquela bendita tela onde são solicitados host, usuário e senha FTP. Muitos usuários leigos entram em contato com a empresa de hospedagem para pedir o endereço de Host FTP, que geralmente é ftp.seudominio.com.br . Todos sabemos que essa é uma medida de segurança válida, por questões de permissão e usuário dos diretórios.
