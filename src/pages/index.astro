@@ -27,7 +27,12 @@ const featuredPosts = sortedPosts.filter(
           <h2
             class="my-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl md:text-[text-4rem] lg:text-[5.5rem] lg:leading-none"
           >
-            Olá!
+            Olá! Seja
+            <br />
+            <span
+              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent"
+              >bem vindo</span
+            >!
             <a
               target="_blank"
               href="/rss.xml"
@@ -51,110 +56,25 @@ const featuredPosts = sortedPosts.filter(
             💕 Dedicação para resolver problemas, criar coisas legais e beber ☕
             !
           </p>
-
-          <p>
-            Read the blog posts or check
-            <LinkButton
-              className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-              href="https://github.com/satnaing/astro-paper#readme"
-            >
-              README
-            </LinkButton> for more info.
-          </p>
-          <div class="my-8 flex">
-            <a
-              href="/"
-              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              <span class="text-lg">Contato</span>
-            </a>
-            <a
-              href="/"
-              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              <span class="text-lg">Projetos</span>
-            </a>
-            <a
-              href="/"
-              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              <span class="text-lg">Sobre</span>
-            </a>
-            <a
-              href="/"
-              class="bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text text-transparent hover:text-skin-accent"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              <span class="text-lg">Blog</span>
-            </a>
-          </div>
           <div class="social-wrapper">
             <div class="social-links">Social Links:</div>
             <Socials />
           </div>
         </div>
         <div class="ml-auto perfil animated">
-          <img
-            alt="Eduardo Lira"
-            srcset="https://avatars.githubusercontent.com/u/4684754?v=4"
-            src="https://avatars.githubusercontent.com/u/4684754?v=4"
-            width="288"
-            height="288"
-            decoding="async"
-            data-nimg="1"
-            style="color:transparent;border-radius:10% 30% 50% 70%"
-          />
+          <picture class="card-image-perfil">
+            <img
+              data-img="https://avatars.githubusercontent.com/u/4684754?v=4"
+              src="https://avatars.githubusercontent.com/u/4684754?v=4"
+              alt="Eduardo Lira"
+              decoding="async"
+              data-nimg="1"
+              srcset="https://avatars.githubusercontent.com/u/4684754?v=4"
+            />
+            <!-- style="color:transparent;border-radius:10% 30% 50% 70%" -->
+          </picture>
+          <div></div>
+          <div></div>
         </div>
       </div>
     </section>
@@ -163,7 +83,7 @@ const featuredPosts = sortedPosts.filter(
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured" class="my-16 mx-auto max-w-4xl px-4 lg:my-32">
+          <section id="featured">
             <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl lg:text-4xl">
               Featured
             </h2>
@@ -180,8 +100,8 @@ const featuredPosts = sortedPosts.filter(
         </>
       )
     }
-
-    <section id="recent-posts" class="my-16 mx-auto max-w-4xl px-4 lg:my-32">
+    <Hr />
+    <section id="recent-posts">
       <h2
         class="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl lg:text-4xl"
       >
@@ -239,7 +159,7 @@ const featuredPosts = sortedPosts.filter(
     @apply pt-8;
   }
   #hero h1 {
-    @apply inline-block font-bold my-4 sm:my-8 text-3xl sm:text-5xl;
+    @apply inline-block font-bold my-4 sm:my-8 text-3xl sm:text-5xl bg-clip-text text-lg bg-gradient-to-r from-green-400 to-blue-500;
   }
   #hero .rss-link {
     @apply mb-6;

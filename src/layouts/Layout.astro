@@ -1,6 +1,6 @@
 ---
 import { SITE } from "src/config";
-import "../styles/base.css";
+// import "../styles/base.css";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -74,7 +74,9 @@ const socialImageURL = new URL(
         />
       )
     }
-
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
     <script is:inline src="/toggle-theme.js"></script>
   </head>
   <body>

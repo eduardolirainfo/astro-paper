@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  @apply font-display;
+  @apply tracking-tight;
+} */
+
 @layer base {
   :root,
   html[data-theme="light"] {
     --color-fill: 251, 254, 251;
     --color-text-base: 40, 39, 40;
-    --color-accent: 0, 108, 172;
+    --color-accent: 230, 0, 103;
     --color-card: 230, 230, 230;
     --color-card-muted: 205, 205, 205;
     --color-border: 236, 233, 233;
@@ -17,7 +28,7 @@
   html[data-theme="dark"] {
     --color-fill: 30, 25, 53;
     --color-text-base: 230, 230, 230;
-    --color-accent: 26, 217, 217;
+    --color-accent: 2, 215, 242;
     --color-card: 4, 7, 18;
     --color-card-muted: 89, 107, 129;
     --color-border: 59, 70, 85;
@@ -205,6 +216,10 @@ a.card:hover {
   border-radius: 1rem;
 }
 
+.text-transparent {
+  color: transparent;
+}
+
 @-webkit-keyframes holoSparkle {
   0%,
   100% {
@@ -274,5 +289,104 @@ a.card:hover {
     opacity: 0.33;
     background-position: 45% 45%;
     filter: brightness(1.2) contrast(1.25);
+  }
+}
+
+.card-image-perfil {
+  border-radius: 10% 30% 50% 70%;
+  height: 280px;
+  width: 280px;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.card-image-perfil img {
+  border-radius: 100%;
+  height: 230px;
+  width: 230px;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.card-image-perfil:before {
+  content: "";
+  display: block;
+  height: 280px;
+  width: 280px;
+  background-image: url("https://avatars.githubusercontent.com/u/4684754?v=4");
+  filter: hue-rotate(180deg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 100%;
+}
+.card-image-perfil:after {
+  content: "";
+  background-size: 4px 4px;
+  background-position: center center;
+  background-repeat: repeat;
+  background-image: radial-gradient(
+    rgba(72, 61, 139, 0),
+    darkslateblue 80%,
+    transparent 100%
+  );
+  border-radius: 100%;
+}
+
+.card-image-perfil:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+  border-radius: 100%;
+}
+.card-image-perfil:hover {
+  filter: sepia(0.5);
+  cursor: auto;
+}
+
+.card-image-perfil:before {
+  scale: 0.9;
+  animation: psychedelic 5s infinite;
+}
+
+@keyframes psychedelic {
+  0% {
+    filter: hue-rotate(0deg) saturate(2) invert(0);
+  }
+
+  50% {
+    filter: hue-rotate(360deg) saturate(8) invert(0.25);
+  }
+
+  100% {
+    filter: hue-rotate(0deg) saturate(2) invert(0);
+  }
+}
+
+@-webkit-keyframes psychedelic {
+  0% {
+    -webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
+  }
+
+  50% {
+    -webkit-filter: hue-rotate(360deg) saturate(8) invert(0.25);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(0deg) saturate(2) invert(0);
   }
 }
