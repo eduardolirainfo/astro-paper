@@ -1,5 +1,6 @@
 ---
 title: "#2 - O que é um algoritmo?"
+slug: o-que-e-um-algoritmo
 datetime: "2017-09-15"
 tags:
   - desenvolvimento
