@@ -2,9 +2,8 @@
 title: "Login Wordpress com E-mail de usuário"
 datetime: "2012-09-23"
 tags:
-  - Wordpress
+  - wordpress
 description: "Efetuando login no wordpress como E-mail no campo de usuário"
-categories: Wp
 background: "#117ac9"
 author: "Eduardo Lira"
 ---

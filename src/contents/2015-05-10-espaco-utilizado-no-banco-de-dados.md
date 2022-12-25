@@ -2,10 +2,10 @@
 title: "Descobrir espaço em um banco MySQL"
 datetime: 2015-05-10 00:00:00 Z
 tags:
-  - SQL
+  - sql
 image: "/static/images/mysqlDatabase.jpg"
 description: "Banco de dados Mysql"
-categories: db
+
 author: "Eduardo Lira"
 ---
 

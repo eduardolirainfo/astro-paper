@@ -2,7 +2,7 @@
 title: "#1 - O que é Linux?"
 datetime: 2017-01-09T00:00:00.000+00:00
 tags:
-- linux
+  - linux
 categories: []
 background: "#f26c6e"
 description: O que é Linux?
@@ -12,8 +12,8 @@ draft: false
 ogImage: https://res.cloudinary.com/dcu0dsel9/image/upload/v1671949177/o-que-e-linux_pqwt4k.jpg
 rating: 5
 featured: false
-
 ---
+
 Caros amigos, a ideia aqui é criar uma série de artigos bem resumidos, para uma boa compreensão do que é **Linux**. Conhecer a história pode fazer você se apaixonar. Utilizá-lo pode te dar liberdade, e o melhor, aumentar sua **produtividade**. Então venha comigo!
 
 ## Linux está em toda parte

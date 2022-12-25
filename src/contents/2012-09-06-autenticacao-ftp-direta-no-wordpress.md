@@ -9,7 +9,7 @@ tags:
 rating: 5
 background: "#117ac9"
 draft: false
-featured: false
+featured: true
 categories: Wp
 description: Métodos de autenticação FTP direto no Wordpress
 ---

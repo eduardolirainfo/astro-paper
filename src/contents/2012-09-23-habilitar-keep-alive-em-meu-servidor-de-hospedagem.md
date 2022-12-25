@@ -4,8 +4,6 @@ datetime: "2012-09-23 11:17:09"
 tags:
   - devops
 description: "De uma forma assustadora ao habilitar o Keep-alive através do arquivo .htaccess no servidor Apache Linux, meu site foi otimizado de forma instantânea."
-
-categories: DevOps
 background: "#f26c6e"
 ---
 

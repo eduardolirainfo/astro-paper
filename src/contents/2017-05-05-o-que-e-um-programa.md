@@ -4,7 +4,6 @@ datetime: "2017-05-05 00:00:00 Z"
 tags:
   - Desenvolvimento
 description: "Um programa é uma sequência de instruções que especifica como executar uma operação de computação. Além disso, você sabe para que ele serve?"
-categories: dev
 background: "#637a91"
 author: "Eduardo Lira"
 ---

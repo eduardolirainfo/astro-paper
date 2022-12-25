@@ -53,7 +53,7 @@ const tagPosts = getPostsByTag(posts, tag);
     <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">
       {
         tagPosts.map(({ frontmatter }) => (
-          <Card href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />
+          <Card href={`/blog/${slugify(frontmatter)}`} post={frontmatter} />
         ))
       }
     </ul>

@@ -2,8 +2,8 @@
 title: "MaterializeCSS  X  Bootstrap?"
 datetime: "2016-10-25 03:10:51 Z"
 tags:
-  - CSS
-image: "/assets/img/cover.jpg"
+  - css
+ogImage: "/assets/img/cover.jpg"
 description: "Materialize versus bootstrap, ainda existe alguma rivalidade?"
 author: "Eduardo Lira"
 ---

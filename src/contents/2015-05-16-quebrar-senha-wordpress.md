@@ -2,10 +2,9 @@
 title: "Quebrar senha wordpress"
 datetime: 2015-05-16 09:45:23 Z
 tags:
-  - Wordpress
-image: "/static/images/"
+  - wordpress
+ogImage: "/static/images/"
 description: "Neste post vamos aprender alguns métodos sobre como quebrar a senha de usuários Wordpress"
-categories: Wp
 background: #117ac9
 author: "Eduardo Lira"
 ---

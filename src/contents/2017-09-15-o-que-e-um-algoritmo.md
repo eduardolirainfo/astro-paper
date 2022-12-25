@@ -5,7 +5,6 @@ datetime: "2017-09-15"
 tags:
   - desenvolvimento
 description: "O que é um algoritmo?"
-categories: dev
 background: "#637a91"
 author: "Eduardo Lira"
 ---
