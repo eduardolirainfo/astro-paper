@@ -1,15 +1,15 @@
 ---
-title: '#1 - O que é Linux?'
-datetime: '2017-01-09T00:00:00.000Z'
+title: "#1 - O que é Linux?"
+datetime: 2017-01-09T00:00:00.000Z
 tags:
-  - linux
-categories: DevOps
-background: '#f26c6e'
+- linux
+categories: []
+background: "#f26c6e"
 description: O que é Linux?
 author: Eduardo Lira
 slug: o-que-e-linux
----
 
+---
 Caros amigos, a ideia aqui é criar uma série de artigos bem resumidos, para uma boa compreensão do que é **Linux**. Conhecer a história pode fazer você se apaixonar. Utilizá-lo pode te dar liberdade, e o melhor, aumentar sua **produtividade**. Então venha comigo!
 
 ## Linux está em toda parte
