@@ -3,8 +3,8 @@
   "version": "1.3.0",
   "private": false,
   "scripts": {
-    "dev": "tinacms dev -c \"astro dev\"",
-    "start": "tinacms dev -c \"astro dev\"",
+    "dev": "yarn tinacms dev -c \"astro dev\"",
+    "start": "yarn tinacms dev -c \"astro dev\"",
     "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro",
