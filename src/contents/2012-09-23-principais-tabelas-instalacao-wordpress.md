@@ -9,7 +9,7 @@ background: "#117ac9"
 author: Eduardo Lira
 draft: false
 rating: 5
-slug: ''
+slug: principais-tabelas-da-instalacao-wordpress
 ogImage: ''
 featured: false
 
