@@ -1,6 +1,6 @@
 ---
 title: "#1 - O que é Linux?"
-datetime: 2017-01-09T00:00:00.000Z
+datetime: 2017-01-09T00:00:00.000+00:00
 tags:
 - linux
 categories: []
@@ -9,7 +9,7 @@ description: O que é Linux?
 author: Eduardo Lira
 slug: o-que-e-linux
 draft: false
-ogImage: ''
+ogImage: https://res.cloudinary.com/dcu0dsel9/image/upload/v1671949177/o-que-e-linux_pqwt4k.jpg
 rating: 5
 featured: false
 
@@ -48,4 +48,4 @@ Já deu para ter uma ideia, mas veremos no próximo artigo por que utilizar Linu
 
 Conhecer mais sobre Linux pode te dar vantagem de conhecimento e ainda explorar novas possibilidades.
 
-Vlw! ☺️
+Vlw! 👍
