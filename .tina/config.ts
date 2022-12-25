@@ -32,40 +32,44 @@ export default defineConfig({
             required: true,
           },
           {
+            name: 'draft',
+            label: 'Draft',
+            type: 'boolean',
+            required: true,
+            description: 'If this is checked the post will not be published',
+          },
+          {
             type: "string",
             name: "description",
             label: "Description",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "slug",
             label: "Slug",
-            required: true,
+            required: true
           },
           {
             type: "datetime",
             name: "datetime",
             label: "Date",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "ogImage",
-            label: "Image",
-            required: false,
+            label: "Image"
            },
            {  
             type: "string",
             name: "tags",
-            label: "Tags",
-            required: true,
+            label: "Tags"
            },
            {
             type: "string",
             name: "background",
-            label: "Color",
-            required: false,
+            label: "Color"
            },
           {
             type: "rich-text",
