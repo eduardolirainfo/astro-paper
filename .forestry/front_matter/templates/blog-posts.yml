@@ -27,6 +27,7 @@ fields:
 - type: number
   name: rating
   label: rating
+  default: 5
 - type: text
   name: background
   label: background
