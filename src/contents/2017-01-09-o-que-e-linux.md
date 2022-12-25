@@ -10,7 +10,7 @@ author: Eduardo Lira
 slug: o-que-e-linux
 draft: false
 ogImage: ''
-rating: 
+rating: 5
 featured: false
 
 ---
