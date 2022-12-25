@@ -1,10 +1,10 @@
 ---
-title: "#1 - O que é Linux?"
-datetime: "2017-01-09T00:00:00.000Z"
+title: '#1 - O que é Linux?'
+datetime: '2017-01-09T00:00:00.000Z'
 tags:
   - linux
 categories: DevOps
-background: "#f26c6e"
+background: '#f26c6e'
 description: O que é Linux?
 author: Eduardo Lira
 slug: o-que-e-linux
@@ -44,4 +44,4 @@ Já deu para ter uma ideia, mas veremos no próximo artigo por que utilizar Linu
 
 Conhecer mais sobre Linux pode te dar vantagem de conhecimento e ainda explorar novas possibilidades.
 
-Vlw! :v:
+Vlw! ☺️
