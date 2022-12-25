@@ -32,6 +32,42 @@ export default defineConfig({
             required: true,
           },
           {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "slug",
+            label: "Slug",
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "datetime",
+            label: "Date",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "ogImage",
+            label: "Image",
+            required: false,
+           },
+           {  
+            type: "string",
+            name: "tags",
+            label: "Tags",
+            required: true,
+           },
+           {
+            type: "string",
+            name: "background",
+            label: "Color",
+            required: false,
+           },
+          {
             type: "rich-text",
             name: "body",
             label: "Body",
