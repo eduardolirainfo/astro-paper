@@ -42,3 +42,5 @@ fields:
   label: description
   config:
     required: true
+pages:
+- src/contents/2017-01-09-o-que-e-linux.md
