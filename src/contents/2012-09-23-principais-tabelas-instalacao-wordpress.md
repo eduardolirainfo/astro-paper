@@ -2,11 +2,16 @@
 title: Principais tabelas da instalação Wordpress
 datetime: 2012-09-23
 tags:
-- Wordpress
+- wordpress
 description: A principais tabelas de instalação no Wordpress
-categories: Wp
+categories: []
 background: "#117ac9"
 author: Eduardo Lira
+draft: false
+rating: 5
+slug: ''
+ogImage: ''
+featured: false
 
 ---
 O wordpress possui 11 tabelas principais, como podemos ver no diagrama abaixo.
