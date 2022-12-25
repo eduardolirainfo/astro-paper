@@ -13,4 +13,4 @@
 !.eslintrc.json
 
 public/assets
-public/admin/config.yml
+public/admin
