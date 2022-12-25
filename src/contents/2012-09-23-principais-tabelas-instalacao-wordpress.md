@@ -11,22 +11,22 @@ author: Eduardo Lira
 ---
 O wordpress possui 11 tabelas principais, como podemos ver no diagrama abaixo.
 
-![](/assets/blog/wp4database.png)
+![principais-tabelas-wordpress](/assets/blog/wp4database.png "principais-tabelas-wordpress")
 
 Veremos para que cada uma delas serve.
 
-- **wp_comments**: contém todos os comentários
-- **wp_commentmeta**: metadados de comentário
-- **wp_links** : contém os links adicionados e dados sobre os links
-- **wp_options** : as opções do blog
-- **wp_postmeta** : metadados das postagens
-- **wp_posts**: conteúdos das postagens
-- **wp_terms**: categorias e tags
-- **wp_termmeta**: Metadados
-- **wp_term_relationships** : associa categorias e tags às postagens
-- **wp_term_taxonomy**: descrições das categorias e tags
-- **wp_usermeta** : metadados de usuário
-- **wp_users** : todos os dados do usuário
+* **wp_comments**: contém todos os comentários
+* **wp_commentmeta**: metadados de comentário
+* **wp_links** : contém os links adicionados e dados sobre os links
+* **wp_options** : as opções do blog
+* **wp_postmeta** : metadados das postagens
+* **wp_posts**: conteúdos das postagens
+* **wp_terms**: categorias e tags
+* **wp_termmeta**: Metadados
+* **wp_term_relationships** : associa categorias e tags às postagens
+* **wp_term_taxonomy**: descrições das categorias e tags
+* **wp_usermeta** : metadados de usuário
+* **wp_users** : todos os dados do usuário
 
 Muitos erros que ocorrem no Wordpress podem ser tratados a partir do conhecimento das funções que cada tabela do banco exerce na aplicação.
 
