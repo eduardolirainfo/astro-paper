@@ -10,7 +10,7 @@ author: Eduardo Lira
 draft: false
 rating: 5
 slug: principais-tabelas-da-instalacao-wordpress
-ogImage: ''
+ogImage: https://res.cloudinary.com/dcu0dsel9/image/upload/v1671950858/wp4database_yntpqm.png
 featured: false
 
 ---
