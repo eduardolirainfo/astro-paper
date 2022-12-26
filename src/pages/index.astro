@@ -70,6 +70,7 @@ const featuredPosts = sortedPosts.filter(
               decoding="async"
               data-nimg="1"
               srcset="https://avatars.githubusercontent.com/u/4684754?v=4"
+              class="hover:shadow-lg transition duration-300 ease-in-out"
             />
             <!-- style="color:transparent;border-radius:10% 30% 50% 70%" -->
           </picture>
@@ -138,14 +139,14 @@ const featuredPosts = sortedPosts.filter(
           </svg>
         </LinkButton>
 
-        <!-- <LinkButton href="/posts">
+        <LinkButton href="/posts">
           All Posts
           <svg xmlns="http://www.w3.org/2000/svg"
             ><path
               d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
             ></path>
           </svg>
-        </LinkButton> -->
+        </LinkButton>
       </div>
     </section>
   </main>
@@ -156,7 +157,7 @@ const featuredPosts = sortedPosts.filter(
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pt-8;
+    @apply pt-32;
   }
   #hero h1 {
     @apply inline-block font-bold my-4 sm:my-8 text-3xl sm:text-5xl bg-clip-text text-lg bg-gradient-to-r from-green-400 to-blue-500;

@@ -4,6 +4,7 @@ import Breadcrumbs from "@components/Breadcrumbs.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import Layout from "./Layout.astro";
+import Hr from "@components/Hr.astro";
 
 export interface Props {
   frontmatter: {
@@ -17,6 +18,7 @@ const { frontmatter } = Astro.props;
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
   <Header activeNav="about" />
+  <Hr />
   <Breadcrumbs />
   <main id="main-content">
     <section id="about" class="mb-28 prose max-w-4xl prose-img:border-0">

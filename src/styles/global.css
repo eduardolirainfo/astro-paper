@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* h1,
+h1,
 h2,
 h3,
 h4,
 h5,
 h6,
 th {
-  @apply font-display;
+  @apply font-body;
   @apply tracking-tight;
-} */
+}
 
 @layer base {
   :root,
@@ -67,7 +67,7 @@ th {
   }
 
   body {
-    @apply font-mono bg-skin-fill text-skin-base min-h-screen flex-col selection:bg-skin-accent selection:text-skin-inverted selection:bg-opacity-70;
+    @apply font-body bg-skin-fill text-skin-base min-h-screen flex-col selection:bg-skin-accent selection:text-skin-inverted selection:bg-opacity-70;
   }
 
   section,
@@ -80,11 +80,11 @@ th {
   }
 
   svg {
-    @apply w-6 h-6 inline-block fill-skin-base group-hover:fill-skin-accent;
+    @apply w-6 h-6 ml-4  inline-block fill-skin-base group-hover:fill-skin-accent;
   }
 
   svg.icon-tabler {
-    @apply w-6 h-6 scale-125 sm:scale-110 opacity-90 inline-block fill-transparent stroke-2 stroke-current group-hover:fill-transparent;
+    @apply w-6 h-6  scale-125 sm:scale-110 opacity-90 inline-block fill-transparent stroke-2 stroke-current group-hover:fill-transparent;
   }
 
   .prose {

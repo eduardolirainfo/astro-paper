@@ -1,3 +1,6 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+
 /** @type {import('tailwindcss').Config} */
 
 function withOpacity(variableName) {
@@ -14,6 +17,7 @@ module.exports = {
     "./public/**/*.html",
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"
   ],
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     // Remove the following screen breakpoint or add other breakpoints
     // if one breakpoint is not enough for you
@@ -61,9 +65,20 @@ module.exports = {
       transparent: "transparent",
     },
     fontFamily: {
-      mono: ["IBM Plex Mono", "monospace"],
+      display: ["Inter", ...defaultTheme.fontFamily.sans],
+      body: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
     },
-    // },
+    extend: {
+      fontFamily: {
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+      },
+      // letterSpacing: {
+      //   tight: "-0.015em",
+      // },
+      // lineHeight: {
+      //   tighter: "1.1111111",
+      // },
+    },
   },
   plugins: [require("@tailwindcss/typography") , require("autoprefixer")],
 };
