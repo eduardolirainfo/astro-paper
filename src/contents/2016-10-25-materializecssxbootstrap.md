@@ -1,13 +1,18 @@
 ---
-title: "MaterializeCSS  X  Bootstrap?"
-datetime: "2016-10-25 03:10:51 Z"
+title: MaterializeCSS  X  Bootstrap?
+datetime: 2016-10-25 03:10:51 Z
 tags:
-  - css
+- css
 ogImage: "/assets/img/cover.jpg"
-description: "Materialize versus bootstrap, ainda existe alguma rivalidade?"
-author: "Eduardo Lira"
----
+description: Materialize versus bootstrap, ainda existe alguma rivalidade?
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: materializecssxbootstrap
+background: "#ff0076"
+featured: false
 
+---
 ## Existe um duelo?
 
 Falar do Framework **MateralizeCSS** será fácil. Por isso, este post deve ser bem objetivo. Vamos conhecer melhor este maravilhoso framework front-end.
