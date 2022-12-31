@@ -46,6 +46,7 @@ fields:
 pages:
 - src/contents/2012-09-06-autenticacao-ftp-direta-no-wordpress.md
 - src/contents/2012-09-08-protegendo-o-arquivo-de-configuracao.md
+- src/contents/2012-09-23-habilitar-keep-alive-em-meu-servidor-de-hospedagem.md
 - src/contents/2012-09-23-principais-tabelas-instalacao-wordpress.md
 - src/contents/2012-10-04-ver-informacoes-do-servidor-no-terminal.md
 - src/contents/2013-07-29-fatal-error-order-order-history-is-empty.md
