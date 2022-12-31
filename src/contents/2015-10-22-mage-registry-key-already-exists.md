@@ -1,15 +1,21 @@
 ---
-title: "Mage registry key already exists"
-datetime: 2015-10-22 14:26:34 Z
+title: Mage registry key already exists
+datetime: 2015-10-22T14:26:34.000+00:00
 tags:
-  - Magento
+- magento
 categories: Mag
 background: "#f68d2e"
 image: "/static/images/"
-description: "Vamos corrigir um erro comum após a migração da loja Magento de servidor ou diretório"
-author: "Eduardo Lira"
----
+description: Vamos corrigir um erro comum após a migração da loja Magento de servidor
+  ou diretório
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: mage-registry-key-already-exists
+ogImage: ''
+featured: false
 
+---
 A mensagem **Mage registry key "\_resource_helper/core" already exists** pode ser exibida como um erro em seu acesso após desenvolver sua loja Magento localmente e enviá-la para o servidor de hospedagem, por exemplo.
 
 O problema pode ser resolvido realizando os seguintes passos:
