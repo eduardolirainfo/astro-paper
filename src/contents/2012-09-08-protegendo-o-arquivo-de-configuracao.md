@@ -2,12 +2,17 @@
 title: "#1 - Protegendo o arquivo de configuração"
 datetime: 2012-09-08
 tags:
-  - Wordpress
-description: "Protegendo arquivo de configuração em sua instalação Wordpress"
+- wordpress
+description: Protegendo arquivo de configuração em sua instalação Wordpress
 background: "#117ac9"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: protegendo-o-arquivo-de-configuracao
+ogImage: ''
+featured: false
 
+---
 É indiscutível que o arquivo para se manter mais seguro no WordPress é o arquivo **wp-config.php**
 
 É neste arquivo que estão todos os dados para conexão com o banco de dados e outras configurações que eventualmente podemos fazer.
