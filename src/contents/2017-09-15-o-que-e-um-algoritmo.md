@@ -1,14 +1,18 @@
 ---
 title: "#2 - O que é um algoritmo?"
 slug: o-que-e-um-algoritmo
-datetime: "2017-09-15"
+datetime: 2017-09-15
 tags:
-  - desenvolvimento
-description: "O que é um algoritmo?"
+- desenvolvimento
+description: O que é um algoritmo?
 background: "#637a91"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+ogImage: ''
+featured: false
 
+---
 Antes do seu computador executar uma tarefa ele recebe um algoritmo de instruções sobre o que deve ser feito.
 
 > **Podemos dizer que algoritmo é um conjuntos de passos que define como uma tarefa será
