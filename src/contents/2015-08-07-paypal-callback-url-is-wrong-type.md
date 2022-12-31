@@ -2,20 +2,17 @@
 title: PayPal - Callback URL is wrong type
 datetime: 2015-08-07T00:00:00.000+00:00
 tags:
-- magento
-categories: Mag
+  - magento
 background: "#f68d2e"
-summary: Vamos corrigir este erro de configuração do Paypal na loja Magento
 author: Eduardo Lira
 rating: 5
 draft: false
 slug: paypal-callback-url-is-wrong-type
-description: 'PayPal gateway has rejected request. Callback URL is wrong type; you
-  must use the HTTPS (#11813: Callback URL is wrong type).'
-ogImage: ''
+description: "Vamos corrigir este erro de configuração do Paypal na loja Magento"
+ogImage: ""
 featured: false
-
 ---
+
 O erro que ocorre:
 **PayPal gateway has rejected request. Callback URL is wrong type; you must use the HTTPS (#11813: Callback URL is wrong type).**
 

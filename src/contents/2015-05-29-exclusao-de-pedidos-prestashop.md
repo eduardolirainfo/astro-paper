@@ -2,18 +2,17 @@
 title: Exclusão de pedidos Prestashop
 datetime: 2015-05-29T00:00:00.000+00:00
 tags:
-- prestashop
-categories: presta
+  - prestashop
 background: "#ff0076"
 description: Como excluir pedidos no Prestashop
 author: Eduardo Lira
 rating: 5
 draft: false
 slug: exclusao-de-pedidos-prestashop
-ogImage: ''
+ogImage: ""
 featured: false
-
 ---
+
 Esta dica pode ser útil para exclusão de pedidos que não foram concluídos, antigos e de teste.
 
 Até a versão 1.4, acesse o arquivo `AdminOrders.php ` (Neste caminho -> `administracao/tabs/AdminOrders.php` )

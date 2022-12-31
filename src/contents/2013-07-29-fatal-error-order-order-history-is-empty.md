@@ -2,18 +2,17 @@
 title: Fatal error order history state is empty
 datetime: 2013-07-29T00:00:00.000+00:00
 tags:
-- prestashop
-categories: presta
+  - prestashop
 background: "#ff0076"
 description: Erro no status de pagamento Prestashop
 author: Eduardo Lira
 rating: 5
 draft: false
 slug: fatal-error-order-order-history-is-empty
-ogImage: ''
+ogImage: ""
 featured: false
-
 ---
+
 A mensagem de erro abaixo pode aparecer ao finalizar compras ou alterar ordens na loja Prestashop.
 
 > Fatal error (OrderHistory -> id_order_state is empty)

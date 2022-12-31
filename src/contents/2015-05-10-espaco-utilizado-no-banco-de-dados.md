@@ -2,18 +2,17 @@
 title: Descobrir espaço em um banco MySQL
 datetime: 2015-05-10T00:00:00.000+00:00
 tags:
-- sql
-image: "/static/images/mysqlDatabase.jpg"
+  - sql
 description: Banco de dados Mysql
 author: Eduardo Lira
 rating: 5
 draft: false
 slug: espaco-utilizado-no-banco-de-dados
-ogImage: ''
-background: ''
+ogImage: ""
+background: ""
 featured: false
-
 ---
+
 Neste post vou mostrar algumas consultas que utilizo para saber o espaço alocado no banco de dados [MySQL][mysql].
 Geralmente utilizo consultas no administrador de banco de dados [PHPMyadmin][phpmyadmin]
 Como se trata de consultas simples, acredito que você não deve ter problemas se utiliza SSH ou um software em sua máquina local.

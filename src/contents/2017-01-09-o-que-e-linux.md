@@ -3,7 +3,6 @@ title: "#1 - O que é Linux?"
 datetime: 2017-01-09T00:00:00.000+00:00
 tags:
   - linux
-categories: []
 background: "#f26c6e"
 description: O que é Linux?
 author: Eduardo Lira
