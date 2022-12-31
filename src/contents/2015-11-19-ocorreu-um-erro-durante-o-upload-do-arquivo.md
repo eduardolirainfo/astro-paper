@@ -1,14 +1,20 @@
 ---
 title: Ocorreu um erro durante o upload do arquivo
-datetime: 2015-11-19 14:04:27 Z
+datetime: 2015-11-19T14:04:27.000+00:00
 tags:
-  - Prestashop
+- prestashop
 image: "/static/images/"
 categories: presta
 background: "#ff0076"
-description: "Ocorreu um erro durante o upload do arquivo"
----
+description: Ocorreu um erro durante o upload do arquivo
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: ocorreu-um-erro-durante-o-upload-do-arquivo
+ogImage: ''
+featured: false
 
+---
 Se você não consegue instalar um **módulo/tema** em sua **Prestashop** e se depara com a mensagem de erro:
 
 **Ocorreu um erro durante o upload do arquivo ‘ ( ‘An error has occurred during the file upload’ ):**
