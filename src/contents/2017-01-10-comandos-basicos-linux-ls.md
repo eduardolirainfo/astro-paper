@@ -1,14 +1,19 @@
 ---
-title: "Comandos Básicos Linux - LS"
-datetime: "2017-01-10 11:01:38 Z"
+title: Comandos Básicos Linux - LS
+datetime: 2017-01-10 11:01:38 Z
 tags:
-  - linux
+- linux
 background: "#f26c6e"
 categories: DevOps
-description: "Comandos básicos no Linux - ls"
-author: "Eduardo Lira"
----
+description: Comandos básicos no Linux - ls
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: comandos-basicos-linux-ls
+ogImage: ''
+featured: false
 
+---
 Lista conteúdo de diretórios.
 
 Sintaxe:
