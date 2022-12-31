@@ -1,15 +1,21 @@
 ---
 title: Corrigir problema com código de rastreio Prestashop
-datetime: 2015-05-20 14:52:00 Z
+datetime: 2015-05-20T14:52:00.000+00:00
 tags:
-  - Prestashop
+- prestashop
 image: "/static/images/"
 categories: presta
 background: "#ff0076"
-description: "Vamos corrigir um bug da Prestashop, que não exibe o campo para preencher o código de rastreio"
-author: "Eduardo Lira"
----
+description: Vamos corrigir um bug da Prestashop, que não exibe o campo para preencher
+  o código de rastreio
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: corrigir-rastreio-prestashop
+ogImage: ''
+featured: false
 
+---
 Quando alteramos o status do produto para **Postado** na [Prestashop] o correto é que apareça um campo para preenchermos com o código de rastreio fornecido pelos correios (Edição da ordem de envio na aba de **pedidos dos clientes**).
 
 Se após alteração o campo para preenchimento do código de rastreio não aparecer, veja se a URL de acompanhamento do rastreio está inserida na edição da transportadora. Acesse a aba <code>Frete > Carrinhos (Transportadoras)</code>.
