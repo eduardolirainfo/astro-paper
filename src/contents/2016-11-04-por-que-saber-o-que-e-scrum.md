@@ -1,13 +1,18 @@
 ---
 title: Por que você precisa saber o que é Scrum?
-datetime: 2016-11-04 02:11:59 Z
+datetime: 2016-11-04T02:11:59.000+00:00
 tags:
-  - produtividade
-description: "Por que você precisa saber o que é Scrum?"
+- produtividade
+description: Por que você precisa saber o que é Scrum?
 background: "#637a91"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: por-que-saber-o-que-e-scrum
+ogImage: ''
+featured: false
 
+---
 Todos que trabalham com desenvolvimento já ouviram falar sobre desenvolvimento ágil de software (em inglês Agile software development). Desenvolvimento ágil, como qualquer metodologia de software, providencia uma estrutura conceitual para reger projetos de engenharia de software. Mas isso não significa que não podemos utilizar essas técnicas em outros ramos de negócio ou projetos da vida privada.
 
 A Scrum é uma aplicação prática dos princípios ágeis. Esta abordagem permite, de acordo com um de seus criadores Jeff Sutherland, fazer o dobro na metade do tempo. O que é muito bom para quem produz, e é claro, mais ainda para quem paga e espera algo bem feito e com entrega rápida.
