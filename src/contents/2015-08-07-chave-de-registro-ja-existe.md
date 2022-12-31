@@ -1,14 +1,20 @@
 ---
-title: "Chave de registro já existe"
-datetime: 2015-08-07 00:00:00 Z
+title: Chave de registro já existe
+datetime: 2015-08-07T00:00:00.000+00:00
 tags:
-  - magento
+- magento
 categories: Mag
 background: "#f68d2e"
-description: "Vamos corrigir este erro que ocorre geralmente após a migração da loja Magento"
-author: "Eduardo Lira"
----
+description: Vamos corrigir este erro que ocorre geralmente após a migração da loja
+  Magento
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: chave-de-registro-ja-existe
+ogImage: ''
+featured: false
 
+---
 A mensagem **Mage registry key “\_resource_helper/core” already exists** pode ser exibida como um erro em seu acesso após desenvolver sua loja Magento localmente e enviá-la para o servidor de hospedagem.
 
 O problema pode ser resolvido realizando os seguintes passos:
