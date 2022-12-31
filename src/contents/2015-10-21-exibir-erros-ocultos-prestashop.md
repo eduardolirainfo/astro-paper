@@ -1,15 +1,20 @@
 ---
-title: "Exibir erros ocultos Prestashop"
-datetime: 2015-10-21 15:47:00 Z
+title: Exibir erros ocultos Prestashop
+datetime: 2015-10-21T15:47:00.000+00:00
 tags:
-  - Prestashop
+- prestashop
 image: "/static/images/"
-description: "Vamos aprender a exibir os erros por trás da tela branca na Prestashop"
+description: Vamos aprender a exibir os erros por trás da tela branca na Prestashop
 categories: presta
 background: "#ff0076"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: exibir-erros-ocultos-prestashop
+ogImage: ''
+featured: false
 
+---
 Geralmente na ocorrência de erros da loja Prestashop nos deparamos com uma tela branca. Visualizar a mensagem de erro por trás é muito importante para agilizar a solução de problemas.
 
 Para habilitar a depuração de erros em versões anteriores a 1.5.3, é necessário encontrar as seguintes linhas no arquivo config.php ( sualoja/config/config.php ).
