@@ -1,6 +1,6 @@
 ---
 title: Comandos Básicos Linux - LS
-datetime: 2017-01-10 11:01:38 Z
+datetime: 2017-01-10T11:01:38.000+00:00
 tags:
 - linux
 background: "#f26c6e"
@@ -11,7 +11,7 @@ rating: 5
 draft: false
 slug: comandos-basicos-linux-ls
 ogImage: ''
-featured: false
+featured: true
 
 ---
 Lista conteúdo de diretórios.
