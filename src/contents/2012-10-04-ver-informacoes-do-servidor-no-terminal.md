@@ -1,14 +1,19 @@
 ---
 title: Ver informações do servidor no terminal
-datetime: "2012-10-04"
+datetime: 2012-10-04
 tags:
-  - PHP
-description: "Veja informações do servidor por meio do terminal"
+- PHP
+description: Veja informações do servidor por meio do terminal
 categories: dev
 background: "#637a91"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: ver-informacoes-do-servidor-no-terminal
+ogImage: ''
+featured: false
 
+---
 Durante um bom tempo utilizei um arquivo .php com a função phpinfo() para visualizar configurações do servidor apache, utilizado pela maioria dos servidores.
 
 No processo de envio FTP ou gerenciador de arquivos perdemos um tempo, até porque temos de achar ou criar o arquivo para envio e ainda acessar via navegador para visualizar se as configurações que desejamos se encontra no servidor.
