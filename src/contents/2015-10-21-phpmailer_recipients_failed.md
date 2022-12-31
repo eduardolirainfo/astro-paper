@@ -1,15 +1,20 @@
 ---
 title: PHPMailer Recipients Failed
-datetime: 2015-10-21 16:12:26 Z
+datetime: 2015-10-21T16:12:26.000+00:00
 tags:
-  - Joomla
+- joomla
 image: "/static/images/"
 description: Corrigindo erro de envio de e-mails em versões antigas do Joomla
 categories: dev
 background: "#637a91"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: phpmailer_recipients_failed
+ogImage: ''
+featured: false
 
+---
 Para correção do erro PHPMAILER_RECIPIENTS_FAILED na tentativa de envio em seu formulário Joomla, no arquivo deste caminho em seu servidor de hospedagem -> components/com_contact/controller.php, na linha 162
 
 alterar:
