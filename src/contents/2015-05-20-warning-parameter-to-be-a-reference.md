@@ -1,15 +1,21 @@
 ---
 title: PARAMETER TO EXPECTED TO BE A REFERENCE
-datetime: 2015-05-20 20:41:23 Z
+datetime: 2015-05-20T20:41:23.000+00:00
 tags:
-  - Joomla
+- joomla
 image: "/static/images/"
-description: "Vamos aprender a corrigir este erro de depreciação de script na passagem de paramêtros Joomla"
+description: Vamos aprender a corrigir este erro de depreciação de script na passagem
+  de paramêtros Joomla
 categories: dev
 background: "#637a91"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: warning-parameter-to-be-a-reference
+ogImage: ''
+featured: false
 
+---
 Mais um post do meu antigo blog aqui para vocês.
 Provavelmente algumas dicas ficaram velhas ou já estão em fóruns relacionados nas primeiras páginas do Google. Mas não custa nada compartilhar e manter algumas soluções sempre acessíveis.
 Após migrar todas as postagens antigas, vou começar a compartilhar coisas mais avançadas e é claro, novas soluções de problemas em apps que muita gente utiliza no desenvolvimento web.
