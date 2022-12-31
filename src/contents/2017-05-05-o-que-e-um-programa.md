@@ -48,6 +48,6 @@ Espero que esta série seja útil para aprendermos a base necessária a fim de c
 
 No próximo artigo da série veremos o que é um algoritmo. Afinal, precisamos dele para para que nossa sequência de instruções funcione.
 
-Até a próxima! :neckbeard:
+Até a próxima! :necktie:
 
 :wave:
