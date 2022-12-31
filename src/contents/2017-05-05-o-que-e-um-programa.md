@@ -1,13 +1,19 @@
 ---
-title: "O que é um programa?"
-datetime: "2017-05-05 00:00:00 Z"
+title: O que é um programa?
+datetime: 2017-05-05 00:00:00 Z
 tags:
-  - Desenvolvimento
-description: "Um programa é uma sequência de instruções que especifica como executar uma operação de computação. Além disso, você sabe para que ele serve?"
+- desenvolvimento
+description: Um programa é uma sequência de instruções que especifica como executar
+  uma operação de computação. Além disso, você sabe para que ele serve?
 background: "#637a91"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: o-que-e-um-programa
+ogImage: ''
+featured: false
 
+---
 ## Sequência de instruções
 
 Um programa é uma sequência de instruções que especifica como executar uma operação de computação.
