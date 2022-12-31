@@ -1,14 +1,20 @@
 ---
 title: Technical Error Unable To Load Form
-datetime: 2015-10-22 14:04:27 Z
+datetime: 2015-10-22T14:04:27.000+00:00
 tags:
-  - prestashop
-description: "Como corrigir este erro que ocorre ao tentar criar um novo usuário na loja Prestashop"
+- prestashop
+description: Como corrigir este erro que ocorre ao tentar criar um novo usuário na
+  loja Prestashop
 categories: presta
 background: "#ff0076"
-author: "Eduardo Lira"
----
+author: Eduardo Lira
+rating: 5
+draft: false
+ogImage: ''
+featured: false
+slug: technical-error-unable-to-load-form
 
+---
 É realmente assustador estar realizando testes, e de repente se deparar com a mensagem de erro **_"Technical Error Unable To Load Form"_** ao tentar criar uma nova conta na loja Prestashop.
 Obviamente, o erro impede o cadastro de novos clientes, o que os impede de comprar produtos na loja.
 Sem conhecimento deste problema a tempo, podemos perder muitas vendas.
