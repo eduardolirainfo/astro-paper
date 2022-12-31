@@ -1,14 +1,19 @@
 ---
-title: "Quebrar senha wordpress"
-datetime: 2015-05-16 09:45:23 Z
+title: Quebrar senha wordpress
+datetime: 2015-05-16T09:45:23.000+00:00
 tags:
-  - wordpress
+- wordpress
 ogImage: "/static/images/"
-description: "Neste post vamos aprender alguns métodos sobre como quebrar a senha de usuários Wordpress"
-background: #117ac9
-author: "Eduardo Lira"
----
+description: Neste post vamos aprender alguns métodos sobre como quebrar a senha de
+  usuários Wordpress
+background: ''
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: quebrar-senha-wordpress
+featured: false
 
+---
 Esta é uma dica muito legal para quem administra instalações [Wordpress.org].
 Fica sempre mais difícil quando precisamos corrigir algum erro e não temos o acesso administrativo da ferramenta.
 Em uma instalação bem feita e segura geralmente nenhuma das senhas contidas no arquivo [wp-config.php] acessam a administração.
