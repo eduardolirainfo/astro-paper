@@ -1,13 +1,20 @@
 ---
 title: Converter mapa de carecteres para utf-8
-description: "Vamos executar uma query que converte o mapa de caracteres da base de dados MySQL para UTF-8"
-datetime: "2015-10-23 11:14:39"
+description: Vamos executar uma query que converte o mapa de caracteres da base de
+  dados MySQL para UTF-8
+datetime: 2015-10-23 11:14:39
 categories: MISC
 background: "#2bfea0"
 tags:
-  - sql
----
+- sql
+author: Eduardo Lira
+rating: 5
+draft: false
+slug: converter-mapa-de-carecteres-para-utf-8
+ogImage: ''
+featured: false
 
+---
 Para converter o mapa de caracteres de um banco de dados MySQL para UTF-8 siga os passos abaixo.
 
 Na aba sql do seu administrador phpmyadmin execute os seguintes comandos sql ( Em ambiente local ou não, utilize um administrador de banco de dados com opção de execução de consultas ( queries ) ao banco. Se você possui conhecimentos avançados, fique à vontarde também).
