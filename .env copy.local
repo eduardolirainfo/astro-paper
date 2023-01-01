@@ -1,0 +1,33 @@
+OAUTH_CLIENT_ID=1372e0bf4a7b496b8ac3
+# OAUTH_CLIENT_ID=Iv1.2e596307149ce0e8
+OAUTH_CLIENT_SECRET=d3a06956e4561ae8e2e4bce3c572ad91f5f083b6
+# OAUTH_CLIENT_SECRET=126b7882c206b882723d4d435c8f5710352622ee
+COMPLETE_URL=https://eduardolira.dev.br/api/callback
+ORIGIN=eduardolira.dev.br
+PUBLIC_GOOGLE_SITE_VERIFICATION=G-ZVJ3V4RZ7D
+
+SPOTIFY_CLIENT_ID=95b8cc5cd1f74d33b201c1c2df123d80
+SPOTIFY_CLIENT_SECRET=3a79c1bd36f84033b058f3686015e602
+SPOTIFY_REFRESH_TOKEN=AQAumi6fbDa4nAhcOUt_ameGX4E6rrEN0Th0nZro3e41Hs15xFOQ_4yW7SG0TXM8q5S76JNyPTrdc4bBchXgMKp377zXGbFUOlLt0oO_ecGnT4zAOcjfLdor1oQSj7oDd-A
+GITHUB_TOKEN=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
+ENABLE_VC_BUILD=1
+URL=http://localhost:3000
+
+
+# echo -n 'aDHh1ZV8kybR7kvxECjeYMrXpjnnOSO:1HvW1I3yTGkyBuaUfh4d2E0xiCAljSiJd' | base64
+
+# OTViOGNjNWNkMWY3NGQzM2IyMDFjMWMyZGYxMjNkODA6M2E3OWMxYmQzNmY4NDAzM2IwNThmMzY4
+# NjAxNWU2MDI=
+
+
+# curl.exe -H "Authorization: Basic OTViOGNjNWNkMWY3NGQzM2IyMDFjMWMyZGYxMjNkODA6M2E3OWMxYmQzNmY4NDAzM2IwNThmMzY4
+# NjAxNWU2MDI=" \
+#   -d grant_type=authorization_code \
+#   -d code=AQB1xypOCs6CckvAoISAXIPnEu-JEPYLaelddxhizshbAekJKVwvvxm31esEkYRYwyOOk-exhagA-S5iw3GwPjNyrzB6o3CTQq5X-YZsn5kgEh_AyAO5dRWXKcXOgUfD4TYOqaR6oTGMlu_dS9qSFJzQMbHjPTD9aOdpurcLLEy393qvZ7s0kJBQxXWqVcIbv6QGqg \
+#   -d redirect_uri=http%3A%2F%2Flocalhost:3000 https://accounts.spotify.com/api/token
+
+
+#   curl.exe -H "Authorization: Basic OTViOGNjNWNkMWY3NGQzM2IyMDFjMWMyZGYxMjNkODA6M2E3OWMxYmQzNmY4NDAzM2IwNThmMzY4NjAxNWU2MDI=" -d grant_type=authorization_code  -d code=AQB1xypOCs6CckvAoISAXIPnEu-JEPYLaelddxhizshbAekJKVwvvxm31esEkYRYwyOOk-exhagA-S5iw3GwPjNyrzB6o3CTQq5X-YZsn5kgEh_AyAO5dRWXKcXOgUfD4TYOqaR6oTGMlu_dS9qSFJzQMbHjPTD9aOdpurcLLEy393qvZ7s0kJBQxXWqVcIbv6QGqg  -d redirect_uri=http%3A%2F%2Flocalhost:3000 https://accounts.spotify.com/api/token
+
+
+#   {"access_token":"BQCkf6cUH76DuVAAVR1BDGjOcnSpnWDbH4u-aw43wt9o5MaQFY7EwunylRfRvhvVHi9j9TKEpKKGnMnKQ3GRjXFd--KNYTqq9NSp9D0Ej4gjHs5HiwsxLG0Ec8wSXqqGk4_5fDKqy6z31G10GkuNxd1FCHq4pVkrNVDDps_NFJTxQ2X0QFxyegXxhfxPgT3FIKeMLzr6N1c","token_type":"Bearer","expires_in":3600,"refresh_token":"AQAumi6fbDa4nAhcOUt_ameGX4E6rrEN0Th0nZro3e41Hs15xFOQ_4yW7SG0TXM8q5S76JNyPTrdc4bBchXgMKp377zXGbFUOlLt0oO_ecGnT4zAOcjfLdor1oQSj7oDd-A","scope":"user-read-recently-played"}%  
