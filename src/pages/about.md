@@ -15,7 +15,7 @@ title: "Sobre"
       back end development.
     </p>
     <p>
-      I regularly document my journey on my <LinkButton href="/blog">blog</LinkButton>
+      I regularly document my journey on my <a href="/blog">blog</a>
       and <a href="https://www.youtube.com/@EduardoLiraInfo/featured">
         YouTube
       </a>
