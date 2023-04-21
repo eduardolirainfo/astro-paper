@@ -9,29 +9,26 @@ const { name, size = "sm" } = Astro.props;
 
 <li
   class={`inline-block ${
-    size === "sm" ? "my-1 underline-offset-4" : "my-3 mx-1 underline-offset-8"
+    size === "sm"
+      ? "my-1 underline-offset-4 dark:text-gray-300 transition-colors bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200 duration-300 hover:bg-gray-300 hover:text-gray-700 px-2 py-1 rounded text-gray-600"
+      : "my-3 mx-1 underline-offset-8 dark:text-gray-300 transition-colors bg-red-200 dark:bg-red-800 dark:hover:bg-gray-700 dark:hover:text-gray-200 duration-300 hover:bg-gray-300 hover:text-red-700 px-2 py-1 rounded text-gray-600"
   }`}
 >
   <a
     href={`/tags/${name}`}
-    class={`${size === "sm" ? "pr-1 text-sm" : "pr-2 text-lg "} group`}
+    class={`${
+      size === "sm" ? "pr-1 text-sm" : "pr-2 text-lg "
+    } group underline underline-offset-4 decoration-wavy decoration-2 hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1`}
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class={`${size === "sm" ? " scale-75 -mr-3" : "scale-100 -mr-3"}`}
-      ><path
-        d="M16.018 3.815 15.232 8h-4.966l.716-3.815-1.964-.37L8.232 8H4v2h3.857l-.751 4H3v2h3.731l-.714 3.805 1.965.369L8.766 16h4.966l-.714 3.805 1.965.369.783-4.174H20v-2h-3.859l.751-4H21V8h-3.733l.716-3.815-1.965-.37zM14.106 14H9.141l.751-4h4.966l-.752 4z"
-      ></path>
-    </svg>
-    &nbsp;<span>{name}</span>
+    <span>{name}</span>
   </a>
 </li>
 
 <style>
-  a {
-    @apply underline decoration-dashed hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1;
-  }
-  a svg {
+  /* a {
+    @apply underline decoration-thickness hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1;
+  } */
+  /* a svg {
     @apply w-6 h-6 text-skin-base scale-95 opacity-80 -mr-5 group-hover:fill-skin-accent;
-  }
+  } */
 </style>

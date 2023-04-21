@@ -13,14 +13,24 @@ function withOpacity(variableName) {
 }
 
 module.exports = {
+  mode: 'jit',
   content: [
     "./public/**/*.html",
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"
+    "./src/components/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./src/pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./src/layouts/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
   ],
-  darkMode: "class", // or 'media' or 'class'
+  darkMode: ['class', ':global(.dark)', ':html(.dark)','data-theme="dark"'],
   theme: {
-    // Remove the following screen breakpoint or add other breakpoints
-    // if one breakpoint is not enough for you
+    fontFamily: {
+      display: ["Poppins", ...defaultTheme.fontFamily.sans],
+      body: ["Poppins", ...defaultTheme.fontFamily.sans],
+    },
+    extend: {
+      fontFamily: {
+        mono: ["Poppins", ...defaultTheme.fontFamily.mono],
+      },
+    },
     screens: {
       sm: "640px",
       md: "768px",
@@ -64,21 +74,7 @@ module.exports = {
       },
       transparent: "transparent",
     },
-    fontFamily: {
-      display: ["Inter", ...defaultTheme.fontFamily.sans],
-      body: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
-    },
-    extend: {
-      fontFamily: {
-        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
-      },
-      // letterSpacing: {
-      //   tight: "-0.015em",
-      // },
-      // lineHeight: {
-      //   tighter: "1.1111111",
-      // },
-    },
+  
   },
-  plugins: [require("@tailwindcss/typography") , require("autoprefixer")],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
 };

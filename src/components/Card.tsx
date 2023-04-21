@@ -1,6 +1,6 @@
 import Datetime from "./Datetime";
-import type { Frontmatter } from "src/types";
-import LinkButton from "./LinkButton.astro";
+import type { Frontmatter } from "@types";
+import TimeReading from "./TimeReading";
 
 export interface Props {
   href?: string;
@@ -15,7 +15,7 @@ const styles = {
   titleHeading:
     "mb-4 text-2xl font-bold tracking-tight  text-gray-800 dark:text-white",
   cardLink:
-    "card animated rounded-md px-4 py-16 shadow-sm transition-transform duration-300 ease-in-out hover:-translate-y-1.5 md:px-10",
+    "card rounded-md px-4 py-16 shadow-sm transition-transform duration-300 ease-in-out md:px-10",
 };
 
 export default function Card(
@@ -37,7 +37,7 @@ export default function Card(
           )}
 
           <span className="text-gray-600 dark:text-white">
-            <Datetime datetime={post.datetime} />
+            <Datetime datetime={post.datetime} minutesRead={post.minutesRead} />
           </span>
         </header>
         <p>{post.description}</p>

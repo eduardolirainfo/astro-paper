@@ -19,7 +19,7 @@ import Hr from "@components/Hr.astro";
         href="/"
         className="my-6 underline decoration-dashed underline-offset-8 text-lg"
       >
-        Go back home
+        Início
       </LinkButton>
     </div>
   </main>
@@ -29,15 +29,15 @@ import Hr from "@components/Hr.astro";
 
 <style>
   #main-content {
-    @apply max-w-4xl mx-auto flex-1 justify-center items-center flex;
+    @apply mx-auto flex max-w-4xl flex-1 items-center justify-center;
   }
   .not-found-wrapper {
-    @apply flex flex-col items-center justify-center mb-14;
+    @apply mb-14 flex flex-col items-center justify-center;
   }
   .not-found-wrapper h1 {
-    @apply font-bold text-9xl text-skin-accent;
+    @apply text-9xl font-bold text-skin-accent;
   }
   .not-found-wrapper p {
-    @apply text-2xl sm:text-3xl mt-4;
+    @apply mt-4 text-2xl sm:text-3xl;
   }
 </style>

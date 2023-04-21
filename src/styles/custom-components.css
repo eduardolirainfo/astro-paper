@@ -1,0 +1,166 @@
+@layer components {
+  .display-none {
+    @apply hidden;
+  }
+
+  .focus-outline {
+    @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
+  }
+
+  .dark .dark:bg-gray-900 {
+    background-color: #030518 !important;
+  }
+
+  .card {
+    transition: all 0.3s ease 0s;
+    transition: transform 0.5s ease, box-shadow 0.2s ease;
+    will-change: transform, filter;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    transform-origin: center;
+    border-radius: 1rem;
+  }
+
+  html[data-theme="dark"] .card:hover {
+    box-shadow: none;
+    border-bottom: 1px inset rgba(255, 255, 255, 0.25);
+    border-top: 1px inset rgba(255, 255, 255, 0.25);
+    /* filter: grayscale(0.5) contrast(2) brightness(2); */
+  }
+
+  /* .card.animated:after {
+  transition: none;
+  -webkit-animation: holoSparkle 12s ease 0s 1;
+  animation: holoSparkle 12s ease 0s 1;
+  border-radius: 1rem;
+} */
+
+  .card::before,
+  .card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    mix-blend-mode: color-dodge;
+    transition: all 0.33s ease;
+  }
+  html[data-theme="dark"] .card::before {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(49, 46, 129, 0.25),
+      transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+  html[data-theme="dark"] .card:hover::before {
+    transform: translateX(100%);
+    box-shadow: none;
+    border-radius: 30px;
+    transition: transform 0.4s;
+  }
+  html[data-theme="dark"] .card:active {
+    border-bottom: 3px inset rgba(255, 255, 255, 0.25);
+    border-top: 3px inset rgba(255, 255, 255, 0.25);
+  }
+
+  /* .card:hover:before {
+	transform: skewX(45deg) translate(130%);
+} */
+  .card:hover:after {
+    opacity: 1;
+    background-position: 50% 50%;
+    background-size: 160%;
+    background-blend-mode: overlay;
+    z-index: 2;
+    transition: all 0.33s ease;
+    mix-blend-mode: color-dodge;
+    opacity: 0.75;
+    border-radius: 30px;
+  }
+
+  /* .text-transparent {
+  color: transparent;
+} */
+
+  .card-image-perfil {
+    border-radius: 10% 30% 50% 70%;
+    height: 280px;
+    width: 280px;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+  }
+
+  .card-image-perfil img {
+    border-radius: 100%;
+    height: 230px;
+    width: 230px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .card-image-perfil:before {
+    content: "";
+    display: block;
+    height: 280px;
+    width: 280px;
+    /* background-image: url(https://avatars.githubusercontent.com/u/4684754?v=4); */
+    filter: hue-rotate(180deg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+  }
+  .card-image-perfil:after {
+    content: "";
+    background-size: 4px 4px;
+    background-position: center center;
+    background-repeat: repeat;
+    background-image: radial-gradient(
+      rgba(72, 61, 139, 0),
+      darkslateblue 80%,
+      transparent 100%
+    );
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    border-radius: 100%;
+  }
+
+  .card-image-perfil:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+    border-radius: 100%;
+  }
+  .card-image-perfil:hover {
+    filter: sepia(0.5);
+    cursor: auto;
+  }
+
+  /* .img-perfil{
+  fill: grey !important;
+ } */
+}
