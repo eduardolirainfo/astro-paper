@@ -9,9 +9,9 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header class="fixed z-20 w-full p-2 backdrop-blur-md">
+<header class="fixed z-20 w-full backdrop-blur-md">
   <div class="mx-auto max-w-4xl">
-    <nav id="nav-menu" class="top-nav-wrap flex items-center gap-3 text-base">
+    <nav id="nav-menu" class="top-nav-wrap flex items-center text-base">
       <a
         href="/"
         class="logo text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text"
@@ -53,7 +53,7 @@ const { activeNav } = Astro.props;
         </div>
       </button>
 
-      <ul id="menu-items" class="display-none sm:flex">
+      <ul id="menu-items" class="display-none pt-8 sm:flex">
         <li>
           <a href="/blog" class={activeNav === "blog" ? "active" : ""}> Blog</a>
         </li>
