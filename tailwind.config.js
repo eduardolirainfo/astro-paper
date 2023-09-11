@@ -13,6 +13,7 @@ function withOpacity(variableName) {
 }
 
 module.exports = {
+  important: true,
   mode: 'jit',
   content: [
     "./public/**/*.html",
@@ -76,5 +77,6 @@ module.exports = {
     },
   
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
+  plugins: [require('@tailwindcss/typography')],
+
 };

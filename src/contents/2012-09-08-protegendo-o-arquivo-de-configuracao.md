@@ -2,17 +2,17 @@
 title: "#1 - Protegendo o arquivo de configuração"
 datetime: 2012-09-08
 tags:
-- wordpress
+  - wordpress
 description: Protegendo arquivo de configuração em sua instalação Wordpress
 background: "#117ac9"
 author: Eduardo Lira
 rating: 5
 draft: false
 slug: protegendo-o-arquivo-de-configuracao
-ogImage: ''
+ogImage: ""
 featured: false
-
 ---
+
 É indiscutível que o arquivo para se manter mais seguro no WordPress é o arquivo **wp-config.php**
 
 É neste arquivo que estão todos os dados para conexão com o banco de dados e outras configurações que eventualmente podemos fazer.
@@ -21,7 +21,7 @@ Para proteção do **wp-config.php** vamos utilizar o nosso arquivo **.htaccess*
 
 Abra o arquivo com o editor de texto padrão do seu computador ou através do gerenciador de arquivos que sua hospedagem oferece. Primeiro vamos proteger o próprio .htaccess adicionando o código abaixo:
 
-```apacheconf
+```cmd
 <Files ~ "^.*.([Hh][Tt][Aa])">
  order allow,deny
  deny from all
@@ -31,7 +31,7 @@ Abra o arquivo com o editor de texto padrão do seu computador ou através do ge
 
 Agora adicione o código abaixo para negar acesso ao wp-config.php. No final, salve toda edição feita para que funcione.
 
-```apacheconf
+```cmd
 <files wp-config.php>
 order allow,deny
 deny from all

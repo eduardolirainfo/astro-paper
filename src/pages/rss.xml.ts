@@ -12,7 +12,7 @@ const postImportResult = import.meta.glob<MarkdownInstance<Frontmatter>>(
 );
 const posts = Object.values(postImportResult);
 
-export const get = () =>
+export const GET = () =>
   rss({
     title: SITE.title,
     description: SITE.desc,

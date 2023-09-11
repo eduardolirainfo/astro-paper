@@ -50,7 +50,7 @@ const socialImageURL = new URL(
         class="header-card text-white dark:text-white mx-auto mb-8 max-w-5xl sm:px-4"
       >
         <div
-          class="text-white dark:text-white bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 px-4 py-16 sm:rounded-md md:px-8 md:py-24 lg:px-16 lg:py-32"
+          class="text-white dark:text-white bg-gradient-to-r from-green-400 to-blue-500 px-4 py-16 sm:rounded-md md:px-8 md:py-24 lg:px-16 lg:py-32"
         >
           <h1
             itemprop="headline"
@@ -95,4 +95,41 @@ const socialImageURL = new URL(
   .tags-container li {
     @apply inline-block;
   }
+/*   
+.glass {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0; 
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 25px 25px 0 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25), inset 0 0 2px 0px white;
+  background: rgba(0, 0, 0, 0.0125);
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
+  -webkit-animation: resize 1.5s 0.5s;
+          animation: resize 1.5s 0.5s;
+}
+.glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.025);
+  z-index: -1;
+}
+.glass::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid rgba(0,0,0,0.3);
+  transform: rotate(135deg);
+} */
+
 </style>

@@ -88,9 +88,7 @@
     @apply mx-auto max-w-4xl px-4;
   }
 
-  a {
-    @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
-  }
+ 
 
   svg {
     @apply ml-4 inline-block h-6  w-6 fill-skin-base group-hover:fill-skin-accent;
@@ -289,4 +287,17 @@
     width: 1px;
     height: 1px;
   }
+  @media (max-width: 640px) {
+    .sm\:flex {
+      display: flex;
+  }
+    .display-none {
+      display: none !important;
+    }
+  }
+
+
+
+
 }
+
