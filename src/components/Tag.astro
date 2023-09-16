@@ -16,19 +16,12 @@ const { name, size = "sm" } = Astro.props;
 >
   <a
     href={`/tags/${name}`}
+    transition:name={name.toLowerCase()}
     class={`${
       size === "sm" ? "pr-1 text-sm" : "pr-2 text-lg "
-    } group underline underline-offset-4 decoration-wavy decoration-2 hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1`}
+    } group underline underline-offset-4 decoration-double decoration-2 decoration-sky-500 hover:decoration-solid hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1`}
   >
     <span>{name}</span>
   </a>
 </li>
-
-<style>
-  /* a {
-    @apply underline decoration-thickness hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1;
-  } */
-  /* a svg {
-    @apply w-6 h-6 text-skin-base scale-95 opacity-80 -mr-5 group-hover:fill-skin-accent;
-  } */
-</style>
+ 

@@ -1,9 +1,8 @@
 @layer components {
-
   .display-none {
     display: none;
   }
- 
+
   .focus-outline {
     @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
   }
@@ -50,6 +49,7 @@
     mix-blend-mode: color-dodge;
     transition: all 0.33s ease;
   }
+
   html[data-theme="dark"] .card::before {
     background: linear-gradient(
       to right,
@@ -60,12 +60,14 @@
     transform: translateX(-100%);
     transition: transform 0.4s;
   }
+
   html[data-theme="dark"] .card:hover::before {
     transform: translateX(100%);
     box-shadow: none;
     border-radius: 30px;
     transition: transform 0.4s;
   }
+
   html[data-theme="dark"] .card:active {
     border-bottom: 3px inset rgba(255, 255, 255, 0.25);
     border-top: 3px inset rgba(255, 255, 255, 0.25);
@@ -90,16 +92,15 @@
   color: transparent;
 } */
 
-  .card-image-perfil {
-    height: 280px;
-    width: 280px;
+  /* .card-image-perfil {
     overflow: hidden;
     margin: auto;
     position: relative;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
-  }
-  .card-image-perfil img {
+  } */
+
+  /* .card-image-perfil img {
     border-radius: 100%;
     height: 70%;
     width: 100%;
@@ -109,12 +110,23 @@
     cursor: pointer;
     transition: all 0.25s ease-in-out;
     max-width: 340px;
-  }
- 
- 
+  } */
+
   .card-image-perfil:hover {
     filter: sepia(0.5);
     cursor: auto;
   }
+  .copy-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3730a3;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
 
+  .copy-code:hover {
+    background-color: #312e81;
+  }
 }

@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-import image from "@astrojs/image";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import remarkReadingTime from "./src/plugins/remark-reading-time";
@@ -16,11 +15,6 @@ export default defineConfig({
         tailwindConfig: "./tailwind.config.js",
       },
     }),
-    //      {
-    //   // Example: Disable injecting a basic `base.css` import on every page.
-    //   // Useful if you need to define and/or import your own custom `base.css`.
-    //   config: { applyBaseStyles: false },
-    // }
     react(),
     sitemap(),
   ],
@@ -39,5 +33,6 @@ export default defineConfig({
       theme: "rose-pine",
       wrap: true,
     },
+    extendDefaultPlugins: true,
   },
 });

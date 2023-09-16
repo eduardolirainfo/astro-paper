@@ -1,21 +1,22 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
+import Card from "@components/Card.astro";
+import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import slugify from "@utils/slugify";
-import type { Frontmatter } from "src/types";
-import Socials from "@components/Socials.astro";
+import { SOCIALS } from "@config";
 
-const posts = await Astro.glob<Frontmatter>("../contents/**/*.md");
+const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(
-  ({ frontmatter }) => frontmatter.featured
-);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
 <Layout>
@@ -56,17 +57,23 @@ const featuredPosts = sortedPosts.filter(
             💕 Dedicação para resolver problemas, criar coisas legais e beber ☕
             !
           </p>
-          <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
-            <Socials />
-          </div>
+          {
+            // only display if at least one social link is enabled
+            socialCount > 0 && (
+              <div class="social-wrapper">
+                <div class="social-links">Social Links:</div>
+                <Socials />
+              </div>
+            )
+          }
         </div>
-        <div class="perfil animated ml-auto">
-          <picture class="card-image-perfil">
+        <div class="perfil animated ml-auto backdrop-blur-md backdrop-sepia md:backdrop-filter-none">
+          <picture>
             <img
               src="https://avatars.githubusercontent.com/u/4684754?v=4"
               alt="Eduardo Lira"
               decoding="async"
+              class="w-64 h-65 rounded-full shadow-lg border-4 dark:shadow-none dark:bg-gray-900 dark:ring-4 dark:ring-gray-900 dark:ring-opacity-50"
             />
             <!-- style="color:transparent;border-radius:10% 30% 50% 70%" -->
           </picture>
@@ -85,10 +92,10 @@ const featuredPosts = sortedPosts.filter(
               Destaque
             </h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {featuredPosts.map(({ frontmatter }) => (
+              {featuredPosts.map(({ data }) => (
                 <Card
-                  href={`/blog/${slugify(frontmatter)}`}
-                  post={frontmatter}
+                  href={`/blog/${slugify(data)}`}
+                  frontmatter={data}
                   secHeading={false}
                 />
               ))}
@@ -107,11 +114,11 @@ const featuredPosts = sortedPosts.filter(
       <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">
         {
           sortedPosts.map(
-            ({ frontmatter }, index) =>
+            ({ data }, index) =>
               index < 4 && (
                 <Card
-                  href={`/blog/${slugify(frontmatter)}`}
-                  post={frontmatter}
+                  href={`/blog/${slugify(data)}`}
+                  frontmatter={data}
                   secHeading={false}
                 />
               )

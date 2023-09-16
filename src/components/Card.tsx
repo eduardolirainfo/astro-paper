@@ -1,13 +1,11 @@
 import Datetime from "./Datetime";
-import type { Frontmatter } from "@types";
-import TimeReading from "./TimeReading";
+import type { BlogFrontmatter } from "@content/_schemas";
 
 export interface Props {
   href?: string;
-  post: Frontmatter;
+  frontmatter: BlogFrontmatter;
   secHeading?: boolean;
 }
-
 const styles = {
   cardContainer: "my-6",
   titleLink:
@@ -15,32 +13,35 @@ const styles = {
   titleHeading:
     "mb-4 text-2xl font-bold tracking-tight  text-gray-800 dark:text-white",
   cardLink:
-    "card rounded-md px-4 py-16 shadow-sm transition-transform duration-300 ease-in-out md:px-10",
+    "card rounded-md px-4 py-12 shadow-sm transition-transform duration-300 ease-in-out md:px-10",
 };
 
-export default function Card(
-  { href, post, secHeading = true }: Props,
-  index: number
-) {
+export default function Card({ href, frontmatter, secHeading = true }: Props) {
+  const { title, pubDatetime, description } = frontmatter;
   return (
-    <a itemProp="url" className={styles.cardLink} href={href}>
+    <a
+      itemProp="url"
+      transition:name={title}
+      className={styles.cardLink}
+      href={href}
+    >
       <article itemScope itemType="http://schema.org/Article">
         <header>
           {secHeading ? (
             <h2 itemProp="headline" className={styles.titleHeading}>
-              {post.title}
+              {title}
             </h2>
           ) : (
             <h3 itemProp="headline" className={styles.titleHeading}>
-              {post.title}
+              {title}
             </h3>
           )}
 
           <span className="text-gray-600 dark:text-white">
-            <Datetime datetime={post.datetime} minutesRead={post.minutesRead} />
+            <Datetime datetime={pubDatetime} />
           </span>
         </header>
-        <p>{post.description}</p>
+        <p>{description}</p>
       </article>
     </a>
   );

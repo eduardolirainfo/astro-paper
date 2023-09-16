@@ -1,4 +1,5 @@
 ---
+import Hr from "@components/Hr.astro";
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 
@@ -34,7 +35,7 @@ breadcrumbList[0] === "blog" &&
         )
       )
     }
-  </ul>
+  </ul> 
 </nav>
 
 <style>

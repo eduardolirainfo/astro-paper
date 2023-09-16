@@ -1,5 +1,5 @@
 ---
-import { SITE } from "src/config";
+import { SITE } from "@config";
 import LinkButton from "./LinkButton.astro";
 
 export interface Props {
@@ -11,10 +11,10 @@ const { activeNav } = Astro.props;
 
 <header class="fixed z-20 w-full backdrop-blur-md">
   <div class="mx-auto max-w-4xl">
-    <nav id="nav-menu" class="top-nav-wrap flex items-center text-base">
+    <nav id="nav-menu" class="px-2 top-nav-wrap flex items-center text-base">
       <a
         href="/"
-        class="logo text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text"
+        class="pt-8 logo text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text"
       >
         <h2
           class="font-mplus text-2xl font-semibold tracking-tighter sm:text-3xl"
@@ -210,7 +210,7 @@ const { activeNav } = Astro.props;
     @apply col-span-1;
   }
   nav a.active {
-    @apply underline decoration-wavy decoration-2 underline-offset-4;
+    @apply underline decoration-double decoration-2 decoration-sky-500 hover:decoration-solid underline-offset-4;
   }
   nav a.active svg {
     @apply fill-skin-accent;
@@ -239,6 +239,7 @@ const { activeNav } = Astro.props;
 </style>
 
 <script>
+  function toggleNav() {
   // Toggle menu
   const menuBtn = document.querySelector(".hamburger-menu");
   const menuItems = document.querySelector("#menu-items")?.classList;
@@ -250,13 +251,13 @@ const { activeNav } = Astro.props;
 
   menuBtn!.addEventListener("click", function (event) {
     const menuExpanded = menuBtn?.getAttribute("aria-expanded");
-    console.log(menuExpanded)
+    console.log(menuExpanded);
 
     if (menuExpanded === "false") {
       menuBtn?.setAttribute("aria-expanded", "true");
       menuBtn?.setAttribute("aria-label", "Close Menu");
       menuItems?.remove("display-none");
-      console.log(menuItems)
+      console.log(menuItems);
 
       // icon animation
       iconContainer?.remove("flex");
@@ -265,12 +266,11 @@ const { activeNav } = Astro.props;
       thirdLine?.add("display-none");
       secondLine?.add("!w-full", "-rotate-45", "absolute", "bottom-1/2");
     } else {
-
       menuBtn?.setAttribute("aria-expanded", "false");
       menuBtn?.setAttribute("aria-label", "Open Menu");
       menuItems?.add("display-none");
 
-      console.log(menuItems)
+      console.log(menuItems);
 
       // icon animation
       iconContainer?.add("flex");
@@ -280,4 +280,9 @@ const { activeNav } = Astro.props;
       secondLine?.remove("!w-full", "-rotate-45", "absolute", "bottom-1/2");
     }
   });
+}
+toggleNav();
+
+   // Runs on view transitions navigation
+   document.addEventListener("astro:after-swap", toggleNav);
 </script>

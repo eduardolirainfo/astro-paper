@@ -20,8 +20,7 @@ module.exports = {
     "./src/components/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     "./src/pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     "./src/layouts/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-  ],
-  darkMode: ['class', ':global(.dark)', ':html(.dark)','data-theme="dark"'],
+  ],  
   theme: {
     fontFamily: {
       display: ["Poppins", ...defaultTheme.fontFamily.sans],

@@ -1,6 +1,6 @@
-import type { SocialObjects } from "./types";
+import type { Site, SocialObjects } from "./types";
 
-export const SITE = {
+export const SITE: Site = {
   website: "https://eduardolira.dev.br",
   author: "Eduardo Lira",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
@@ -9,6 +9,7 @@ export const SITE = {
   lightAndDarkMode: true,
   postPerPage: 4,
 };
+export const LOCALE = ["pt-BR"];
 
 export const LOGO_IMAGE = {
   enable: false,
@@ -38,7 +39,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Twitch",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.twitch.tv/duduliralira",
     linkTitle: `${SITE.title} on Twitch`,
     active: false,
   },
