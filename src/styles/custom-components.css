@@ -11,7 +11,8 @@
     background-color: #030518 !important;
   }
 
-  .card {
+  .card,
+  .tagCard {
     transition: all 0.3s ease 0s;
     transition: transform 0.5s ease, box-shadow 0.2s ease;
     will-change: transform, filter;
@@ -22,7 +23,8 @@
     border-radius: 1rem;
   }
 
-  html[data-theme="dark"] .card:hover {
+  html[data-theme="dark"] .card:hover,
+  html[data-theme="dark"] .tagCard:hover {
     box-shadow: none;
     border-bottom: 1px inset rgba(255, 255, 255, 0.25);
     border-top: 1px inset rgba(255, 255, 255, 0.25);
@@ -51,12 +53,10 @@
   }
 
   html[data-theme="dark"] .card::before {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(49, 46, 129, 0.25),
-      transparent
-    );
+    background: linear-gradient(to right,
+        transparent,
+        rgba(49, 46, 129, 0.25),
+        transparent);
     transform: translateX(-100%);
     transition: transform 0.4s;
   }
@@ -116,6 +116,7 @@
     filter: sepia(0.5);
     cursor: auto;
   }
+
   .copy-code {
     position: absolute;
     top: 0;

@@ -19,7 +19,7 @@ const { name, size = "sm" } = Astro.props;
     transition:name={name.toLowerCase()}
     class={`${
       size === "sm" ? "pr-1 text-sm" : "pr-2 text-lg "
-    } group underline underline-offset-4 decoration-double decoration-2 decoration-sky-500 hover:decoration-solid hover:text-skin-accent relative hover:-top-0.5 focus-visible:p-1`}
+    } group text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text no-underline drop-shadow-md hover:drop-shadow-xl tagCard `}
   >
   &nbsp;<span>{name.toLowerCase()}</span>
   </a>

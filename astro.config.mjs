@@ -3,7 +3,6 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
-import remarkReadingTime from "./src/plugins/remark-reading-time";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
@@ -27,7 +26,6 @@ export default defineConfig({
           test: "Table of contents",
         },
       ],
-      remarkReadingTime,
     ],
     shikiConfig: {
       theme: "rose-pine",
