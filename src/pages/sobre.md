@@ -3,25 +3,25 @@ layout: ../layouts/AboutLayout.astro
 title: "Sobre"
 ---
 
-  <section class="prose mx-auto mb-16 max-w-5xl px-4 prose-a:text-sky-600 dark:prose-invert dark:prose-a:text-sky-300 md:prose-lg lg:mb-32 lg:prose-xl">
-    <p>I&apos;m a software engineer living in Rio de Janeiro.</p>
-    <p>
-      I write full stack web applications with a focus on accessibility and
-      performance.
-    </p>
-    <p>
-      My current interests are in Python, software testing, serverless
-      technology, and learning new languages. I enjoy both front end and
-      back end development.
-    </p>
-    <p>
-      I regularly document my journey on my <a href="/blog">blog</a>
-      and <a href="https://www.youtube.com/@EduardoLiraInfo/featured">
-        YouTube
-      </a>
-      channel.
-    </p>
-    <p>
-      If I can be of any help, feel free to <LinkButton href="/contact">reach out</LinkButton>.
-    </p>
-  </section>
+## Sobre Mim
+
+Olá! Sou um **programador de software** que mora no Rio de Janeiro, Brasil. Tenho paixão por desenvolver aplicações web completas, com um forte compromisso com acessibilidade e desempenho.
+
+### O que faço
+
+- Desenvolvo aplicações web full stack que proporcionam experiências excepcionais aos usuários.
+- Tenho um foco especial na acessibilidade, garantindo que minhas criações sejam inclusivas para todos.
+- Estou constantemente aprimorando minhas habilidades em diversas áreas, incluindo **Python**, testes de software, tecnologia serverless e explorando novas linguagens de programação.
+- Tenho experiência tanto no desenvolvimento front-end quanto no back-end, o que me permite criar soluções completas e integradas.
+
+### Compartilhando minha jornada
+
+Gosto de compartilhar meu conhecimento e experiência com a comunidade. Você pode acompanhar minha jornada através do meu:
+
+- [Blog](https://eduardolira.dev.br/blog): Onde compartilho artigos, tutoriais e insights sobre programação e tecnologia.
+
+### Entre em Contato
+
+Se você tiver alguma pergunta, projeto interessante ou precisar de assistência em qualquer área relacionada à programação, não hesite em entrar em contato comigo. Estou aqui para ajudar!
+
+Mal posso esperar para colaborar em projetos emocionantes e continuar aprendendo e crescendo na área de desenvolvimento de software.
