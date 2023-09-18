@@ -31,9 +31,9 @@ Aqui está um exemplo de consulta SQL que você pode usar para pesquisar procedu
 ```sql
 SELECT
     name AS 'Nome da Procedure',
-    OBJECT_DEFINITION(OBJECT_ID) AS 'Definição da Procedure'
+    OBJECT_DEFINITION(object_id) AS 'Definição da Procedure'
 FROM sys.procedures
-WHERE OBJECT_DEFINITION(OBJECT_ID) LIKE '%sua_palavra_chave%'
+WHERE OBJECT_DEFINITION(object_id) LIKE '%sua_palavra_chave%'
 ```
 
 Substitua **'sua_palavra_chave'** pela palavra-chave ou trecho de código que você deseja encontrar.
