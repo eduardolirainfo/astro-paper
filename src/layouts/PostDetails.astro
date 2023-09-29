@@ -4,24 +4,43 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
-import type { CollectionEntry } from "astro:content";
+import  { type CollectionEntry, getCollection } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import Hr from "@components/Hr.astro"; 
-
-
+ 
 export interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
 
-const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } =
-  post.data;
+const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } = post.data;
 
 const { Content } = await post.render();
 
-const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
-  .href;
+const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
+const ogUrl = new URL(
+  ogImageUrl ?? `/blog/${slugifyStr(title)}.png`,
+  Astro.url.origin
+).href;
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+// Encontre o índice do post atual na lista ordenada.
+const currentPostIndex = posts.findIndex((p) => p.data.title === title);
+
+// Calcule os índices do post anterior e do próximo.
+const previousPostIndex = currentPostIndex - 1;
+const nextPostIndex = currentPostIndex + 1;
+
+// Verifique se há um post anterior e um próximo post disponíveis.
+const hasPreviousPost = previousPostIndex >= 0;
+const hasNextPost = nextPostIndex < posts.length;
+
+// Acesse os dados do post anterior e do próximo.
+const previousPost = hasPreviousPost ? posts[previousPostIndex] : "disabled";
+const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
+ 
 ---
 
 <Layout
@@ -51,7 +70,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
     
     <article itemscope itemtype="http://schema.org/Article">
       <header
-        class="header-card text-white dark:text-white mx-auto mb-8 max-w-5xl sm:px-4 overflow-visible relative  bg-gradient-to-r from-green-400 to-blue-500 shadow-lg ring-1 ring-black/5 rounded-xl  dark:bg-slate-800 dark:highlight-white/5"
+        class="header-card text-white dark:text-white mx-auto mb-8 max-w-5xl sm:px-4 overflow-visible relative  shadow-lg ring-1 ring-black/5 rounded-xl    dark:highlight-white/5"
       >
         <div
           class="px-4 py-16 sm:rounded-md md:px-8 md:py-24 lg:px-16 lg:py-32"
@@ -74,11 +93,11 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
       >
         <Content />
       </section>
-    </article>
+    </article>    
     <ul class="tags-container">
       {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
     </ul>
-  </main>
+  </main> 
   <Footer />
 </Layout>
 
@@ -99,53 +118,27 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
     word-wrap: break-word;
   }
 
-  /*   
-.glass {
-  position: relative;
-  box-sizing: border-box;
-  padding: 0; 
-  border: 2px solid rgba(0, 0, 0, 0.15);
-  border-radius: 25px 25px 0 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25), inset 0 0 2px 0px white;
-  background: rgba(0, 0, 0, 0.0125);
-  overflow: hidden;
-  transition: all 200ms ease-in-out;
-  -webkit-animation: resize 1.5s 0.5s;
-          animation: resize 1.5s 0.5s;
-}
-.glass::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
-  background-color: rgba(255, 255, 255, 0.025);
-  z-index: -1;
-}
-.glass::before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -10px;
-  right: -10px;
-  border: 10px solid transparent;
-  border-bottom: 10px solid rgba(0,0,0,0.3);
-  transform: rotate(135deg);
-} */
+ .pagination-wrapper {
+    @apply mb-8 mt-auto flex justify-center;
+  }
+  .disabled {
+    @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;
+  }
+  .disabled-svg {
+    @apply group-hover:!fill-skin-base;
+  }
+
 </style>
 
-<script>
-  let copyButtonLabel = "Copiar";
-  let codeBlocks = Array.from(document.querySelectorAll("pre"));
+<script is:inline>
+  const copyButtonLabel = "Copiar";
+  const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
-  for (let codeBlock of codeBlocks) {
-    let wrapper = document.createElement("div");
+  for (const codeBlock of codeBlocks) {
+    const wrapper = document.createElement("div");
     wrapper.style.position = "relative";
 
-    let copyButton = document.createElement("button");
+    const copyButton = document.createElement("button");
     copyButton.className = "copy-code";
     copyButton.innerHTML = copyButtonLabel;
 
@@ -161,8 +154,8 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   }
 
   async function copyCode(block, button) {
-    let code = block.querySelector("code");
-    let text = code.innerText;
+    const code = block.querySelector("code");
+    const text = code.innerText;
 
     await navigator.clipboard.writeText(text);
 

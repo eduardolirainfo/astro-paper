@@ -5,7 +5,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
-import Card from "@components/Card.astro";
+import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import slugify from "@utils/slugify";
@@ -73,9 +73,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               src="https://avatars.githubusercontent.com/u/4684754?v=4"
               alt="Eduardo Lira"
               decoding="async"
-              class="w-64 h-65 rounded-full shadow-lg border-4 dark:shadow-none dark:bg-gray-900 dark:ring-4 dark:ring-gray-900 dark:ring-opacity-50"
+              class="w-64 h-65 rounded-full dark:shadow-none dark:bg-gray-900 dark:ring-4 dark:ring-gray-900 dark:ring-opacity-50  transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30
+               relative overflow-hidden bg-cover bg-[50%] bg-no-repeat"
             />
-            <!-- style="color:transparent;border-radius:10% 30% 50% 70%" -->
           </picture>
           <div></div>
           <div></div>

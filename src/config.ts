@@ -3,9 +3,9 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://eduardolira.dev.br",
   author: "Eduardo Lira",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  desc: "Eduardo Lira - Blog de Programação e Tecnologia",
   title: "Eduardo Lira",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "bg-cover.jpg",
   lightAndDarkMode: true,
   postPerPage: 4,
 };

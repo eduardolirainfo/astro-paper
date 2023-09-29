@@ -1,9 +1,10 @@
+import { slugifyStr } from "@utils/slugify";
 import Datetime from "./Datetime";
-import type { BlogFrontmatter } from "@content/_schemas";
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
   href?: string;
-  frontmatter: BlogFrontmatter;
+  frontmatter: CollectionEntry<"blog">["data"];
   secHeading?: boolean;
 }
 const styles = {
@@ -18,21 +19,20 @@ const styles = {
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
   const { title, pubDatetime, description } = frontmatter;
+  const headerProps = {
+    style: { viewTransitionName: slugifyStr(title) },
+    className: "text-lg font-medium decoration-dashed hover:underline",
+  };
   return (
-    <a
-      itemProp="url"
-      transition:name={title}
-      className={styles.cardLink}
-      href={href}
-    >
+    <a itemProp="url" className={styles.cardLink} href={href}>
       <article itemScope itemType="http://schema.org/Article">
         <header>
           {secHeading ? (
-            <h2 itemProp="headline" className={styles.titleHeading}>
+            <h2 {...headerProps} className={styles.titleHeading}>
               {title}
             </h2>
           ) : (
-            <h3 itemProp="headline" className={styles.titleHeading}>
+            <h3 {...headerProps} className={styles.titleHeading}>
               {title}
             </h3>
           )}

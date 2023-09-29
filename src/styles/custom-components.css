@@ -28,16 +28,7 @@
     box-shadow: none;
     border-bottom: 1px inset rgba(255, 255, 255, 0.25);
     border-top: 1px inset rgba(255, 255, 255, 0.25);
-    /* filter: grayscale(0.5) contrast(2) brightness(2); */
   }
-
-  /* .card.animated:after {
-  transition: none;
-  -webkit-animation: holoSparkle 12s ease 0s 1;
-  animation: holoSparkle 12s ease 0s 1;
-  border-radius: 1rem;
-} */
-
   .card::before,
   .card::after {
     content: "";
@@ -73,9 +64,6 @@
     border-top: 3px inset rgba(255, 255, 255, 0.25);
   }
 
-  /* .card:hover:before {
-	transform: skewX(45deg) translate(130%);
-} */
   .card:hover:after {
     opacity: 1;
     background-position: 50% 50%;
@@ -88,35 +76,6 @@
     border-radius: 30px;
   }
 
-  /* .text-transparent {
-  color: transparent;
-} */
-
-  /* .card-image-perfil {
-    overflow: hidden;
-    margin: auto;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.25s ease-in-out;
-  } */
-
-  /* .card-image-perfil img {
-    border-radius: 100%;
-    height: 70%;
-    width: 100%;
-    overflow: hidden;
-    margin: auto;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.25s ease-in-out;
-    max-width: 340px;
-  } */
-
-  .card-image-perfil:hover {
-    filter: sepia(0.5);
-    cursor: auto;
-  }
-
   .copy-code {
     position: absolute;
     top: 0;
@@ -125,9 +84,17 @@
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
     line-height: 1rem;
+    color: aliceblue;
   }
 
   .copy-code:hover {
     background-color: #312e81;
+  }
+
+  .disabled {
+    @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;
+  }
+  .disabled-svg {
+    @apply group-hover:!fill-skin-base;
   }
 }
