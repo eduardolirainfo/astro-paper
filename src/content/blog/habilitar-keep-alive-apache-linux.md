@@ -4,7 +4,6 @@ description: Saiba como melhorar a velocidade do seu site ao ativar o recurso Ke
 tags:
   - Apache
   - Linux
-  - Otimização
 postSlug: habilitar-keep-alive-apache-linux
 pubDatetime: 2012-09-23 11:17:09
 author: Eduardo Lira

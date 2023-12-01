@@ -14,20 +14,21 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } = post.data;
+const { title, author, description, ogImage, canonicalURL, postSlug, pubDatetime, tags } = post.data;
 
 const { Content } = await post.render();
 
-const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
+const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src || "";
 const ogUrl = new URL(
-  ogImageUrl ?? `/blog/${slugifyStr(title)}.png`,
+  ogImageUrl || `/blog/${slugifyStr(title)}.png`,
   Astro.url.origin
 ).href;
+
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
 // Encontre o índice do post atual na lista ordenada.
-const currentPostIndex = posts.findIndex((p) => p.data.title === title);
+const currentPostIndex = posts.findIndex((p) => p.data.postSlug === postSlug );
 
 // Calcule os índices do post anterior e do próximo.
 const previousPostIndex = currentPostIndex - 1;
@@ -38,10 +39,22 @@ const hasPreviousPost = previousPostIndex >= 0;
 const hasNextPost = nextPostIndex < posts.length;
 
 // Acesse os dados do post anterior e do próximo.
-const previousPost = hasPreviousPost ? posts[previousPostIndex] : "disabled";
-const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
+const previousPost = hasPreviousPost ? posts[previousPostIndex] : null;
+const nextPost = hasNextPost ? posts[nextPostIndex] : null;
  
+let date = new Date(pubDatetime);
+
+
+// let formattedDate = date.toISOString().split('T')[0];
+
+// Formate a data para exibir apenas a data, não a hora
+let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-' + date.getUTCDate();
+
 ---
+<!-- Top bar -->
+<div x-data="scrollProgress()" x-init="init()" x-cloak class="fixed inset-x-0 top-0 z-50">
+  <div class="h-2 bg-blue-500" :style="`width: ${percent}%`"></div>
+</div>
 
 <Layout
   title={title}
@@ -68,12 +81,14 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
   </div>
   <main id="main-content">
     
-    <article itemscope itemtype="http://schema.org/Article">
+    <article itemscope itemtype="http://schema.org/Article" class="antialiased">      
+ 
       <header
         class="header-card text-white dark:text-white mx-auto mb-8 max-w-5xl sm:px-4 overflow-visible relative  shadow-lg ring-1 ring-black/5 rounded-xl    dark:highlight-white/5"
       >
+      <div class="absolute top-0 left-0 z-10 grid-fake o w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
         <div
-          class="px-4 py-16 sm:rounded-md md:px-8 md:py-24 lg:px-16 lg:py-32"
+        class="px-8 py-16 sm:rounded-md md:px-8 md:py-16 lg:px-8 lg:py-16"
         >
           <h1
             transition:name={title}
@@ -83,21 +98,77 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
             {title}
           </h1>
           <p >
-            <Datetime datetime={pubDatetime} size="lg" className="my-2"/>
+            <Datetime datetime={formattedDate} size="lg" className="my-2"/>
           </p>
         </div>
+        <div class="absolute bottom-0 right-0 z-10 grid-fake o w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
+        
       </header>
+      {tags.map((tag) => {
+        const slug = slugifyStr(tag);
+        return (
+          <Tag name={slug}/>
+        );
+      })}
+    </ul>
       <section
         itemprop="articleBody"
         class="prose-a:text-sky-600 dark:prose-a:text-sky-300 prose mx-auto my-4 px-4 dark:prose-invert md:prose-lg lg:prose-xl"
       >
         <Content />
       </section>
-    </article>    
-    <ul class="tags-container">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
-    </ul>
+    </article> 
+    
+    <div class="pagination-wrapper">
+      <a
+      href={previousPost === null ? "#" : `/blog/${slugifyStr(previousPost?.data.postSlug || "")}`}
+      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out ${
+        !hasPreviousPost ? "disabled" : ""
+      }`}
+    >
+      <svg
+        class={`w-6 h-6 mr-2 ${!hasPreviousPost ? "disabled-svg" : ""}`}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>Post anterior</title>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        ></path>
+      </svg>
+      <span class="font-bold">Post anterior</span>
+    </a>
+    <a
+      href={nextPost === null ? "#" : `/blog/${slugifyStr(nextPost.data.postSlug ?? "")}`}
+      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out ${
+        !hasNextPost ? "disabled" : ""
+      }`}
+    >
+      <span class="font-bold">Próximo post</span>
+      <svg
+        class={`w-6 h-6 ml-2 ${!hasNextPost ? "disabled-svg" : ""}`}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>Próximo post</title>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        ></path>
+      </svg>
+    </a>
+    </div>
   </main> 
+
   <Footer />
 </Layout>
 
@@ -127,18 +198,32 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
   .disabled-svg {
     @apply group-hover:!fill-skin-base;
   }
+  .grid-fake {
+    background-image: radial-gradient(rgba(0,0,0,0.2) 2px, transparent 2px);
+    background-size: 16px 16px;
+  }
+
+   html[data-theme="dark"] .grid-fake{      
+      background-image: radial-gradient(rgba(255,255,255,0.2) 2px, transparent 2px);
+   }
+  .pagination-wrapper {
+    @apply flex justify-center items-center space-x-4;
+  }
+  .pagination-wrapper a {
+    @apply inline-block px-3 py-1 rounded-md text-skin-base hover:bg-skin-card;
+  } 
 
 </style>
-
+ 
 <script is:inline>
-  const copyButtonLabel = "Copiar";
-  const codeBlocks = Array.from(document.querySelectorAll("pre"));
+  var copyButtonLabel = "Copiar";
+  var codeBlocks = Array.from(document.querySelectorAll("pre"));
 
-  for (const codeBlock of codeBlocks) {
-    const wrapper = document.createElement("div");
+  for (var codeBlock of codeBlocks) {
+    var wrapper = document.createElement("div");
     wrapper.style.position = "relative";
 
-    const copyButton = document.createElement("button");
+    var copyButton = document.createElement("button");
     copyButton.className = "copy-code";
     copyButton.innerHTML = copyButtonLabel;
 
@@ -154,8 +239,8 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
   }
 
   async function copyCode(block, button) {
-    const code = block.querySelector("code");
-    const text = code.innerText;
+    var code = block.querySelector("code");
+    var text = code.innerText;
 
     await navigator.clipboard.writeText(text);
 
@@ -166,4 +251,5 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : "disabled";
       button.innerText = copyButtonLabel;
     }, 700);
   }
+
 </script>

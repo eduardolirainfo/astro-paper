@@ -5,9 +5,7 @@ pubDatetime: 2015-10-23 11:14:39
 background: "#2bfea0"
 tags:
   - MySQL
-  - UTF-8
-  - Conversão
-  - Banco de Dados
+  - DB
 author: Eduardo Lira
 rating: 5
 draft: false

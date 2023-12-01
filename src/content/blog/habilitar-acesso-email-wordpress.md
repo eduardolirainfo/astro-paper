@@ -3,7 +3,6 @@ title: Como Habilitar o Acesso ao Painel de Administração do WordPress com o E
 description: Saiba como permitir o acesso ao painel de administração do WordPress usando o endereço de e-mail como nome de usuário. Este guia mostra como adicionar um código condicional ao arquivo functions.php do seu tema para facilitar o login caso você esqueça seu nome de usuário.
 tags:
   - WordPress
-  - E-mail
   - PHP
 postSlug: habilitar-acesso-email-wordpress
 pubDatetime: 2012-09-23

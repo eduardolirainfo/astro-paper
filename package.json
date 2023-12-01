@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro check --watch & astro dev",
     "start": "astro dev",
-    "build": "astro build && jampack ./dist",
+    "build": "yarn tailwindcss -i ./src/styles/global.css -o ./src/assets/styles.css --minify && astro build",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",

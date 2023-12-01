@@ -2,10 +2,8 @@
 title: O Básico da Programação e a Sequência de Instruções
 description: Explore os fundamentos da programação, incluindo sequência de instruções, operações matemáticas, condicionais e loops, e descubra como esses conceitos são essenciais para a computação.
 tags:
-  - Programação
   - Algoritmos
   - DevOps
-  - Fundamentos
 postSlug: basico-programacao-sequencia-instrucoes
 pubDatetime: 2017-05-05 00:00:00 Z
 background: "#637a91"

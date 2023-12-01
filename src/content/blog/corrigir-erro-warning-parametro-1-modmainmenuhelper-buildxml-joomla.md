@@ -3,7 +3,6 @@ title: Como Corrigir o Erro Warning - PARAMETER 1 TO MODMAINMENUHELPER BUILDXML(
 description: Saiba como corrigir o erro 'Warning - PARAMETER 1 TO MODMAINMENUHELPER::BUILDXML() EXPECTED TO BE A REFERENCE' que ocorre devido à incompatibilidade de scripts com o PHP 5.3 ou superior no Joomla.
 tags:
   - Joomla
-  - Erros
   - PHP
 postSlug: corrigir-erro-warning-parametro-1-modmainmenuhelper-buildxml-joomla
 pubDatetime: 2015-05-20T20:41:23.000+00:00

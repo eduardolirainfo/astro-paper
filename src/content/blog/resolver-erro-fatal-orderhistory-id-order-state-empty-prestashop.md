@@ -3,9 +3,7 @@ title: Como Resolver o Erro Fatal error (OrderHistory - id_order_state is empty)
 description: Saiba como resolver o erro "Fatal error (OrderHistory -> id_order_state is empty)" que pode ocorrer ao finalizar compras ou alterar ordens na loja Prestashop devido a variáveis da tabela de configuração estarem vazias.
 tags:
   - Prestashop
-  - Erros
-  - Banco de Dados
-  - Configurações
+  - DB
 postSlug: resolver-erro-fatal-orderhistory-id-order-state-empty-prestashop
 pubDatetime: 2013-07-29T00:00:00.000+00:00
 background: "#ff0076"

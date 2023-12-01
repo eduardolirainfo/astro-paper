@@ -3,9 +3,6 @@ title: Introdução ao Linux - História, Significado e Impacto
 description: Explore o mundo do Linux, sua história, significado e sua presença ubíqua em diversos dispositivos e indústrias. Descubra por que o Linux é uma ferramenta poderosa para programadores, cientistas e empresas em todo o mundo.
 tags:
   - Linux
-  - História
-  - Sistema Operacional
-  - Open Source
   - Produtividade
 postSlug: introducao-linux-historia-significado
 pubDatetime: 2017-01-09T00:00:00.000+00:00

@@ -2,11 +2,8 @@
 title: Introdução ao Desenvolvimento Ágil e Scrum
 description: Descubra o que é o desenvolvimento ágil de software e como o Scrum se tornou uma abordagem prática para aumentar a produtividade. Explore os princípios do Scrum e por que ele é uma ferramenta valiosa em projetos de engenharia de software e além.
 tags:
-  - Desenvolvimento Ágil
   - Scrum
   - Produtividade
-  - Metodologia de Desenvolvimento
-  - Princípios Ágeis
 postSlug: introducao-desenvolvimento-agil-scrum
 pubDatetime: 2016-11-04T02:11:59.000+00:00
 background: "#637a91"

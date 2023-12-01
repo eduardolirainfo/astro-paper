@@ -3,9 +3,6 @@ title: Solucionando Problemas de Instalação de Módulos e Temas no Prestashop
 description: Aprenda como resolver erros de upload de arquivos no Prestashop ao instalar módulos e temas.
 tags:
   - Prestashop
-  - Módulos
-  - Temas
-  - Erros
   - CMS
 postSlug: solucao-instalacao-modulos-temas-prestashop
 pubDatetime: 2015-11-19T14:04:27.000+00:00

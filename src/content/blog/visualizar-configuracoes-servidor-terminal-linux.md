@@ -3,10 +3,7 @@ title: Como Visualizar Configurações do Servidor no Terminal Linux
 description: Saiba como acessar informações detalhadas do servidor Apache diretamente no terminal Linux usando comandos como php -i e php -v. Este guia simplifica a obtenção de informações do servidor sem a necessidade de criar arquivos phpinfo().
 tags:
   - Linux
-  - Terminal
   - Apache
-  - Servidor
-  - Configurações
   - PHP
 postSlug: visualizar-configuracoes-servidor-terminal-linux
 pubDatetime: 2012-10-04

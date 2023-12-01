@@ -3,8 +3,7 @@ title: Como Corrigir Problemas com Códigos de Rastreio na Prestashop
 description: Saiba como resolver problemas com códigos de rastreio que não aparecem após alterar o status do produto para 'Postado' na Prestashop. Este guia explica como adicionar a URL de acompanhamento do rastreio diretamente no banco de dados, especialmente para a versão 1.4.x da loja Prestashop.
 tags:
   - Prestashop
-  - Erros
-  - Banco de Dados
+  - DB
 postSlug: corrigir-problemas-codigos-rastreio-prestashop
 pubDatetime: 2015-05-20T14:52:00.000+00:00
 background: "#ff0076"

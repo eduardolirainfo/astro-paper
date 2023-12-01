@@ -2,11 +2,7 @@
 title: Como Corrigir o Erro do PayPal - Callback URL is wrong type
 description: Saiba como corrigir o erro do PayPal que diz "Callback URL is wrong type" ao configurá-lo em sua loja Magento. Esta solução envolve desabilitar o checkout rápido ou instalar um certificado SSL em seu servidor.
 tags:
-  - PayPal
   - Magento
-  - Erros
-  - HTTPS
-  - SSL
 postSlug: como-corrigir-erro-paypal-callback-url-wrong-type
 pubDatetime: 2015-08-07T00:00:00.000+00:00
 background: "#f68d2e"

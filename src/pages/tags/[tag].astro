@@ -34,6 +34,11 @@ const { tag } = Astro.props;
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 const tagPosts = getPostsByTag(posts, tag);
 
+
+const tagCount = tagPosts.length;
+const tagLabel = tagCount === 1 ? "artigo" : "artigos";
+const tagDesc = `${tagCount} ${tagLabel} com a tag ${tag}`;
+
 const sortTagsPost = getSortedPosts(tagPosts);
 ---
 
@@ -42,7 +47,7 @@ const sortTagsPost = getSortedPosts(tagPosts);
   <Main
     pageTitle={[`Tag:`, `${tag}`]}
     titleTransition={tag}
-    pageDesc={`Todos os artigos com a tag "${tag}".`}
+    pageDesc= {tagDesc}
   >
   <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
     <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">

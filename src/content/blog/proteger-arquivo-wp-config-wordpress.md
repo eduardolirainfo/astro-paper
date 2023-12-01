@@ -3,8 +3,6 @@ title: Como Proteger o Arquivo wp-config.php no WordPress
 description: Saiba como aumentar a segurança do seu site WordPress protegendo o arquivo wp-config.php usando o arquivo .htaccess. Este guia fornece instruções detalhadas para adicionar configurações ao .htaccess para negar o acesso não autorizado ao arquivo de configuração principal.
 tags:
   - WordPress
-  - Segurança
-  - Configurações
 postSlug: proteger-arquivo-wp-config-wordpress
 pubDatetime: 2012-09-08
 author: Eduardo Lira

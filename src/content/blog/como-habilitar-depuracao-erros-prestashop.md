@@ -3,9 +3,6 @@ title: Como Habilitar a Depuração de Erros no Prestashop
 description: Saiba como habilitar a depuração de erros no Prestashop para diagnosticar problemas e solucioná-los de forma eficiente.
 tags:
   - Prestashop
-  - Erros
-  - Depuração
-  - Configurações
 postSlug: como-habilitar-depuracao-erros-prestashop
 pubDatetime: 2015-10-21T15:47:00.000+00:00
 background: "#ff0076"

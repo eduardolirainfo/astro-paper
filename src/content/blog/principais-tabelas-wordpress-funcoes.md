@@ -3,10 +3,8 @@ title: Principais Tabelas do WordPress - Funções e Utilização
 description: Conheça as 11 tabelas principais do WordPress e entenda suas funções na estrutura do CMS.
 tags:
   - WordPress
-  - Tabelas do WordPress
-  - Banco de Dados
+  - DB
   - CMS
-
 postSlug: principais-tabelas-wordpress-funcoes
 pubDatetime: 2012-09-23
 background: "#117ac9"

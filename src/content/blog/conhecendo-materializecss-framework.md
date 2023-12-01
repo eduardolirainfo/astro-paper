@@ -3,8 +3,6 @@ title: Conhecendo o MaterializeCSS - Um Framework Front-End Inspirado no Materia
 description: Descubra as características do MaterializeCSS, um framework front-end baseado no Material Design do Google, e como ele pode acelerar o desenvolvimento web, focar na experiência do usuário e oferecer facilidade de trabalho. Embora não seja um concorrente direto do Bootstrap, o MaterializeCSS possui suas próprias vantagens e apela para projetos específicos.
 tags:
   - MaterializeCSS
-  - Front-End
-  - Material Design
   - Bootstrap
 postSlug: conhecendo-materializecss-framework
 pubDatetime: 2016-10-25 03:10:51 Z

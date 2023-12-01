@@ -4,7 +4,6 @@ description: Aprenda a configurar informações de FTP no arquivo wp-config.php 
 tags:
   - WordPress
   - FTP
-  - Configurações
 postSlug: configurar-ftp-wp-config-wordpress
 author: Eduardo Lira
 pubDatetime: 2012-09-06

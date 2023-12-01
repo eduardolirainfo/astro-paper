@@ -3,8 +3,6 @@ title: Como Corrigir o Erro PHPMAILER_RECIPIENTS_FAILED em Formulários Joomla
 description: Aprenda a corrigir o erro PHPMAILER_RECIPIENTS_FAILED ao tentar enviar um formulário em seu site Joomla, seja editando o código ou ajustando as configurações de e-mail na administração do Joomla.
 tags:
   - Joomla
-  - Erros
-  - E-Mail
 postSlug: como-corrigir-erro-phpmailer-recipients-failed-joomla
 pubDatetime: 2015-10-21T16:12:26.000+00:00
 background: "#637a91"

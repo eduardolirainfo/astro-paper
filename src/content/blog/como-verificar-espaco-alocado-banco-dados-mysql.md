@@ -2,9 +2,9 @@
 title: Como Verificar o Espaço Alocado em um Banco de Dados MySQL
 description: Saiba como utilizar consultas SQL para verificar o espaço alocado e o espaço livre em um banco de dados MySQL, permitindo um melhor gerenciamento do seu sistema.
 tags:
-  - MySQL,
+  - MySQL
   - SQL
-  - Banco de Dados
+  - DB
   - PHPMyAdmin
 postSlug: como-verificar-espaco-alocado-banco-dados-mysql
 pubDatetime: 2015-05-10T00:00:00.000+00:00

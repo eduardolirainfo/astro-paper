@@ -3,7 +3,7 @@ title: Como Alterar o Nome e o Link da Página Inicial no PrestaShop
 description: Saiba como personalizar o nome e o link da página inicial da sua loja PrestaShop diretamente no banco de dados. Este guia oferece instruções passo a passo para fazer essa alteração usando uma ferramenta de gerenciamento de banco de dados como o phpMyAdmin.
 tags:
   - PrestaShop
-  - Banco de Dados
+  - DB
   - phpMyAdmin
 postSlug: alterar-nome-link-pagina-inicial-prestashop
 pubDatetime: 2015-11-19T14:04:27.000+00:00

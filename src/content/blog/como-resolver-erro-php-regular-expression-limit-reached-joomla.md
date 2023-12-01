@@ -3,7 +3,6 @@ title: Como Resolver o Erro PHP REGULAR EXPRESSION LIMIT REACHED no Joomla
 description: Saiba como corrigir o erro 500 PHP REGULAR EXPRESSION LIMIT REACHED (PCRE.BACKTRACK_LIMIT) no Joomla, adicionando linhas de código ao arquivo de configuração ou ao php.ini.
 tags:
   - Joomla
-  - Erros
   - PHP
 postSlug: como-resolver-erro-php-regular-expression-limit-reached-joomla
 pubDatetime: 2015-05-20T20:11:23.000+00:00
