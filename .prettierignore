@@ -15,3 +15,10 @@
 public/assets
 public/admin
 public/*.svg
+dist
+node_modules
+.gitignore
+.jampack
+.husky
+.astro
+```

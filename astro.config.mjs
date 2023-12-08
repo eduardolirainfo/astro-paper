@@ -6,7 +6,6 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://eduardolira.dev.br/",
@@ -20,7 +19,8 @@ export default defineConfig({
       },
     }),
     react(),
-    sitemap(), mdx()
+    sitemap(),
+    mdx(),
   ],
   markdown: {
     remarkPlugins: [

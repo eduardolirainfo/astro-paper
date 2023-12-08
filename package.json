@@ -70,6 +70,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,mdx,json}": [
       "prettier --plugin-search-dir=. --write"
+    ],
+    "--ignore-path .prettierignore": [
+      "prettier --plugin-search-dir=. --write"
     ]
   }
 }
