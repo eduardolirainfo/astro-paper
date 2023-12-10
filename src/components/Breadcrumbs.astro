@@ -26,7 +26,7 @@ const numberOfItems: number = breadcrumbList.length;
       breadcrumbList.map((breadcrumb, index) =>
         index + 1 === breadcrumbList.length ? (
           <li class={`bg-gradient-to-r from-blue-500  breadcrumb-item item-${index + 1}`}>
-            <a href="#">   
+            <a href={`${currentUrlPath}`}>
                
             {
                numberOfItems === 1 && breadcrumb ==='tags' ? ( 

@@ -7,6 +7,7 @@ import Datetime from "@components/Datetime";
 import  { type CollectionEntry, getCollection } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import Hr from "@components/Hr.astro"; 
+import ScrollToTopButton from "@components/ScrollToTopButton.astro";
  
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -168,7 +169,9 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
     </a>
     </div>
   </main> 
+  <!-- <button id="scrollToTopButton" aria-label="Scroll to Top">↑</button> -->
 
+  <ScrollToTopButton />
   <Footer />
 </Layout>
 
@@ -212,44 +215,46 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
   .pagination-wrapper a {
     @apply inline-block px-3 py-1 rounded-md text-skin-base hover:bg-skin-card;
   } 
-
+  
 </style>
  
 <script is:inline>
-  var copyButtonLabel = "Copiar";
-  var codeBlocks = Array.from(document.querySelectorAll("pre"));
+    function copyCode(){
+      var copyButtonLabel = "Copiar";
+      var codeBlocks = Array.from(document.querySelectorAll("pre"));
+  
+      for (var codeBlock of codeBlocks) {
+        var wrapper = document.createElement("div");
+        wrapper.style.position = "relative";
+    
+        var copyButton = document.createElement("button");
+        copyButton.className = "copy-code";
+        copyButton.innerHTML = copyButtonLabel;
+    
+        codeBlock.removeAttribute("tabindex");
+        codeBlock.appendChild(copyButton);
+        // wrap codebock with relative parent element
+        codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+        wrapper.appendChild(codeBlock);
+    
+        copyButton.addEventListener("click", async () => {
+          await copyCode(codeBlock, copyButton);
+        });
+      }  
+      async function copyCode(block, button) {
+        var code = block.querySelector("code");
+        var text = code.innerText;
+    
+        await navigator.clipboard.writeText(text);
+    
+        // visual feedback that task is completed
+        button.innerText = "Copiado!";
+    
+        setTimeout(() => {
+          button.innerText = copyButtonLabel;
+        }, 700);
+    }}
+    copyCode()
+    document.addEventListener("astro:after-swap", copyCode);
 
-  for (var codeBlock of codeBlocks) {
-    var wrapper = document.createElement("div");
-    wrapper.style.position = "relative";
-
-    var copyButton = document.createElement("button");
-    copyButton.className = "copy-code";
-    copyButton.innerHTML = copyButtonLabel;
-
-    codeBlock.setAttribute("tabindex", "0");
-    codeBlock.appendChild(copyButton);
-    // wrap codebock with relative parent element
-    codeBlock.parentNode.insertBefore(wrapper, codeBlock);
-    wrapper.appendChild(codeBlock);
-
-    copyButton.addEventListener("click", async () => {
-      await copyCode(codeBlock, copyButton);
-    });
-  }
-
-  async function copyCode(block, button) {
-    var code = block.querySelector("code");
-    var text = code.innerText;
-
-    await navigator.clipboard.writeText(text);
-
-    // visual feedback that task is completed
-    button.innerText = "Copiado!";
-
-    setTimeout(() => {
-      button.innerText = copyButtonLabel;
-    }, 700);
-  }
-
-</script>
+  </script>

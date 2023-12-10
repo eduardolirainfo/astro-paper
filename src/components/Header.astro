@@ -2,6 +2,7 @@
 import { SITE } from "@config";
 import LinkButton from "./LinkButton.astro";
 
+
 export interface Props {
   activeNav?: "blog" | "tags" | "sobre" | "pesquisa";
 }
@@ -51,7 +52,7 @@ const { activeNav } = Astro.props;
           <div id="second-line"></div>
           <div id="third-line"></div>
         </div>
-      </button>
+      </button> 
 
       <ul id="menu-items" class="display-none pt-2 sm:flex">
         <li>
@@ -93,9 +94,7 @@ const { activeNav } = Astro.props;
                 id="theme-btn"
                 class="switch__input"
                 title="Toggles light & dark"
-                aria-label="auto"
-                aria-live="polite"
-                role="switch"
+                aria-label="Toggles light & dark"
               >
                 <svg
                   class="switch__icon switch__icon--light"

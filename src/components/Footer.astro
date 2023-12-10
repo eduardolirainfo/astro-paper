@@ -10,16 +10,17 @@ export interface Props {
 
 const { noMarginTop = false } = Astro.props;
 ---
-
+ 
 <footer class={`${noMarginTop ? "" : "mt-auto"}`}>
   <Hr noPadding />
   <div class="footer-wrapper">
     <Socials centered />
-    <div class="copyright-wrapper">
+    <div class="copyright-wrapper">      <!-- your-page.astro -->
+
       <span>Copyright &#169; {currentYear}</span>
       <span class="separator">&nbsp;|&nbsp;</span>
       <span>Todos os direitos reservados.</span>
-    </div>
+    </div>  
   </div>
 </footer>
 
