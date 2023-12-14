@@ -80,9 +80,9 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
       </svg><span>Voltar</span>
     </button>
   </div>
-  <main id="main-content">
+  <main id="main-content" transition:animate="slide">
     
-    <article itemscope itemtype="http://schema.org/Article" class="antialiased">      
+    <article itemscope itemtype="http://schema.org/Article" class="antialiased" transition:animate="none">      
  
       <header
         class="header-card text-white dark:text-white mx-auto mb-8 max-w-5xl sm:px-4 overflow-visible relative  shadow-lg ring-1 ring-black/5 rounded-xl    dark:highlight-white/5"
@@ -121,11 +121,10 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
     </article> 
     
     <div class="pagination-wrapper">
+    {hasPreviousPost && (
       <a
-      href={previousPost === null ? "#" : `/blog/${slugifyStr(previousPost?.data.postSlug || "")}`}
-      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out ${
-        !hasPreviousPost ? "disabled" : ""
-      }`}
+      href={`/blog/${slugifyStr(previousPost?.data.postSlug || "")}`}
+      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out`}
     >
       <svg
         class={`w-6 h-6 mr-2 ${!hasPreviousPost ? "disabled-svg" : ""}`}
@@ -143,12 +142,11 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
         ></path>
       </svg>
       <span class="font-bold">Post anterior</span>
-    </a>
+    </a>)}
+    {hasNextPost && (    
     <a
-      href={nextPost === null ? "#" : `/blog/${slugifyStr(nextPost.data.postSlug ?? "")}`}
-      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out ${
-        !hasNextPost ? "disabled" : ""
-      }`}
+      href={`/blog/${slugifyStr(nextPost.data.postSlug ?? "")}`}
+      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out`}
     >
       <span class="font-bold">Próximo post</span>
       <svg
@@ -166,11 +164,9 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
           d="M9 5l7 7-7 7"
         ></path>
       </svg>
-    </a>
+    </a>)}
     </div>
   </main> 
-  <!-- <button id="scrollToTopButton" aria-label="Scroll to Top">↑</button> -->
-
   <ScrollToTopButton />
   <Footer />
 </Layout>
@@ -232,6 +228,7 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
         copyButton.innerHTML = copyButtonLabel;
     
         codeBlock.removeAttribute("tabindex");
+        codeBlock.removeAttribute("tabIndex");
         codeBlock.appendChild(copyButton);
         // wrap codebock with relative parent element
         codeBlock.parentNode.insertBefore(wrapper, codeBlock);

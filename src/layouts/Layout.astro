@@ -29,7 +29,7 @@ const socialImageURL = new URL(
 ---
 
 <html lang="pt-BR">
-  <head>
+  <head transition:animate="none"> 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -81,7 +81,7 @@ const socialImageURL = new URL(
     </style>
     <script is:inline src="/toggle-theme.js"></script>    
   </head>
-  <body>
+  <body> 
     <slot />  
    </body>
 </html>

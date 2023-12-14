@@ -17,7 +17,7 @@ const tags = getUniqueTags(posts);
 
 <Layout title={`Tags | ${SITE.title}`}>
   <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="Todas as tags utilizadas no blog.">
+  <Main pageTitle="Tags" pageDesc="Todas as tags utilizadas no blog." transition:animate="slide">
     <ul>
       {tags.map(tag => {
         const tagPosts = getPostsByTag(posts, tag);

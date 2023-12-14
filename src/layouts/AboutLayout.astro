@@ -20,7 +20,7 @@ const { frontmatter } = Astro.props;
   <Header activeNav="sobre" />
   <Hr />
   <Breadcrumbs />
-  <main id="main-content">
+  <main id="main-content" transition:animate="slide">
     <section id="sobre" class="prose mb-28 max-w-4xl prose-img:border-0">
       <header>
         <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>

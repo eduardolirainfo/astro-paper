@@ -1,7 +1,7 @@
 ---
 import { SITE } from "@config";
 import LinkButton from "./LinkButton.astro";
-
+import { fade } from 'astro:transitions';
 
 export interface Props {
   activeNav?: "blog" | "tags" | "sobre" | "pesquisa";
@@ -10,7 +10,7 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header class="fixed z-20 w-full backdrop-blur-md">
+<header class="fixed z-20 w-full backdrop-blur-md" transition:animate="none">
   <div class="mx-auto max-w-4xl">
     <nav id="nav-menu" class="px-2 top-nav-wrap flex items-center text-base">
       <a
