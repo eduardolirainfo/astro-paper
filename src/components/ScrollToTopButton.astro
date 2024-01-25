@@ -1,52 +1,66 @@
 ---
+
 ---
-<div id="scrollToTopButton" class="text-lg  group text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text no-underline drop-shadow-md hover:drop-shadow-xl tagCard"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"/></svg></div> 
+
+<div
+  id="scrollToTopButton"
+  class="tagCard group text-lg no-underline drop-shadow-md hover:drop-shadow-xl"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="24"
+    viewBox="0 -960 960 960"
+    width="24"
+    stroke="currentColor"
+    fill="currentColor"
+    ><path
+      d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"
+    ></path></svg
+  >
+</div>
 <script>
-    
-    function scrollToTop() {     
-        const scrollToTopButton = document.getElementById('scrollToTopButton');
-        if (scrollToTopButton) {      
-           scrollToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          });
-  
-          window.addEventListener('scroll', () => {  
-            if (window.scrollY > 100) {
-              scrollToTopButton.classList.add('show');
-            } else {
-              scrollToTopButton.classList.remove('show');
-            }
-          });
-        } 
+  function scrollToTop() {
+    const scrollToTopButton = document.getElementById("scrollToTopButton");
+    if (scrollToTopButton) {
+      scrollToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          scrollToTopButton.classList.add("show");
+        } else {
+          scrollToTopButton.classList.remove("show");
         }
-    scrollToTop();          
-    document.addEventListener("astro:after-swap", scrollToTop);
-   
-  </script>
-  <style>
-    #scrollToTopButton {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%; 
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
-
+      });
     }
+  }
+  scrollToTop();
+  document.addEventListener("astro:after-swap", scrollToTop);
+</script>
+<style>
+  #scrollToTopButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+  }
 
-    #scrollToTopButton.show {  
-      display: none;
-      transition: opacity 0.3s ease-in-out;
-      @media (min-width: 640px) {
-        display: flex;
-     }      
+  #scrollToTopButton.show {
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+    @media (min-width: 640px) {
+      display: flex;
     }
-  </style>
+  }
+</style>

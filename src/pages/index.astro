@@ -21,19 +21,16 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <Layout>
   <Header />
-  <main id="main" transition:animate="slide">
-    <section id="hero" transition:animate="none"> 
+  <main id="main" transition:animate="none">
+    <section id="hero" transition:animate="none">
       <div class="md:flex">
-        <div>
+        <div transition:animate="none">
           <h2
-            class="text-gray-900 dark:text-gray-100 my-8 text-4xl font-bold tracking-tight sm:text-6xl md:text-[text-4rem] lg:text-[5.5rem] lg:leading-none"
+            class="my-8 text-4xl font-bold tracking-tight sm:text-6xl md:text-[text-4rem] lg:text-[5.5rem] lg:leading-none"
           >
             Seja
             <br />
-            <span
-              class="text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text"
-              >bem vindo</span
-            >!
+            <span class="bem-vindo text-primary">Bem-vindo</span>
             <a
               target="_blank"
               href="/rss.xml"
@@ -41,7 +38,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               aria-label="rss feed"
               title="RSS Feed"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                class="rss-icon"
                 ><path
                   d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
                 ></path><path
@@ -73,8 +75,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               src="https://avatars.githubusercontent.com/u/4684754?v=4"
               alt="Eduardo Lira"
               decoding="async"
-              class="w-64 h-65 rounded-full dark:shadow-none dark:bg-gray-900 dark:ring-4 dark:ring-gray-900 dark:ring-opacity-50  transition duration-300 ease-in-out hover:shadow-lg dark:hover:shadow-black/30
-               relative overflow-hidden bg-cover bg-[50%] bg-no-repeat"
+              class="w-64 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100"
             />
           </picture>
           <div></div>
@@ -87,8 +88,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured">
-            <h2 class="text-gray-900 dark:text-gray-100 mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
+          <section id="featured" transition:animate="slide">
+            <h2 class="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
               Destaque
             </h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -105,10 +106,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     }
     <Hr />
-    <section id="recent-posts">
-      <h2
-        class="text-gray-900 dark:text-gray-100 mb-8 text-2xl font-bold md:text-3xl lg:text-4xl"
-      >
+    <section id="recent-posts" transition:animate="slide">
+      <h2 class="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
         Posts Recentes
       </h2>
       <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">
@@ -130,12 +129,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         class="mx-auto my-16 max-w-4xl px-4 lg:my-32"
       >
         ✨ Ver{" "}
-        <LinkButton
-          className="text-sky-600 underline dark:text-sky-300"
-          href="/blog"
-        >
+        <LinkButton className="link link-accent" href="/blog">
           Todos os envios
-          <svg xmlns="http://www.w3.org/2000/svg"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor"
+            fill="currentColor"
+            viewBox="0 0 24 24"
             ><path
               d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
             ></path>
@@ -148,18 +148,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 </Layout>
 
 <style>
- 
   #hero {
     @apply pt-32;
   }
   #hero h1 {
-    @apply my-4 inline-block bg-clip-text text-3xl text-lg font-bold sm:my-8 sm:text-5xl;
+    @apply my-4 inline-block text-3xl text-lg font-bold sm:my-8 sm:text-5xl;
   }
   #hero .rss-link {
     @apply mb-6;
   }
   #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+    @apply mb-2 h-6 w-6 scale-110   sm:mb-3 sm:scale-125;
   }
   #hero p {
     @apply my-2;
@@ -170,7 +169,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   .social-links {
     @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
- 
+
   #featured,
   #recent-posts {
     @apply pb-6 pt-12;

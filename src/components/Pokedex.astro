@@ -1,0 +1,1194 @@
+---
+
+---
+
+<section class="s-all-info-pokemons">
+  <!-- aqui eu   preciso somente de duas colunas metade metade -->
+  <div class="area-all">
+    <div class="grid grid-cols-2 gap-4">
+      <!-- essa é a primeira coluna -->
+
+      <div class="search relative">
+        <label for="search" class="focus relative m-4 block rounded-full">
+          <span
+            class="absolute inset-y-0 left-2 flex items-center pl-2 opacity-75"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              stroke="currentColor"
+            >
+              <path
+                d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"
+              ></path>
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Procurar por nome ou id do Pókemon"
+            id="js-input-search"
+            class="border-skin-fill block w-full border border-opacity-40 py-3 pl-12 pr-3 placeholder:italic placeholder:text-opacity-75 focus:outline-none"
+          />
+          <button
+            type="button"
+            id="js-clear-search"
+            class="absolute inset-y-0 right-2 flex items-center pr-2 opacity-75"
+          >
+            <!-- Adicione aqui o ícone de "X" ou qualquer outra coisa para representar a ação de limpar -->
+
+             X
+          </button>
+        </label>
+      </div>
+
+      <!-- essa é a segunda coluna -->
+
+      <select
+        id="js-area-types"
+        class="mobile-nav block w-full py-3 pl-12
+            pr-3 placeholder:italic placeholder:text-opacity-75
+            focus:outline-none"
+      >
+        <option value="all" class="js-filter-type-pokemon active" selected>
+          Todos os tipos
+        </option>
+      </select>
+    </div>
+    <div class="col-span-2 flex md:col-span-1 lg:col-span-2 xl:col-span-4">
+      <img src="src/assets/static/images/icon-pokeball.svg" alt="" />
+      <span> <strong class="js-count-pokemons">1292</strong> Pokémons</span>
+    </div>
+
+    <!-- Seus cards de Pokémon aqui -->
+    <div class="all flex flex-row flex-wrap" id="js-list-pokemons">
+      <!-- Aqui é onde os botões de Pokémon serão gerados -->
+      <!-- Certifique-se de que cada botão tenha as classes corretas -->
+    </div>
+  </div>
+</section>
+
+<button class="btn-show-more bg-primary" id="js-show-more">
+  <a> Carregar Pokémons</a>
+</button>
+
+<script type="module">
+  let offset = 0;
+  let limit = 9;
+
+  document
+    .getElementById("js-clear-search")
+    .addEventListener("click", function () {
+      document.getElementById("js-input-search").value = "";
+      is_empty();
+    });
+
+  async function createCardPokemon(code, type, nome, imagePok) {
+    const areaPokemons = document.getElementById("js-list-pokemons");
+
+    const loading = document.createElement("div");
+    loading.classList.add("show-pokemons");
+    loading.innerHTML =
+      '<img src="https://i.gifer.com/2iiB.gif" alt="Carregando...">';
+    areaPokemons.appendChild(loading);
+
+    const card = document.createElement("button");
+    card.classList = `poke-card-pokemon ${type} js-open-pokemon`;
+    card.setAttribute("idpokemon", code);
+    card.style.display = "none";
+
+    const imageDiv = document.createElement("div");
+    imageDiv.classList.add("image");
+
+    const image = document.createElement("img");
+    image.src = imagePok;
+    image.alt = nome;
+
+    imageDiv.appendChild(image);
+
+    const infoCardPokemon = document.createElement("div");
+    infoCardPokemon.classList.add("info");
+
+    const divNameCode = document.createElement("div");
+
+    const codePokemon = document.createElement("span");
+    codePokemon.textContent =
+      code < 10 ? `#00${code}` : code < 100 ? `#0${code}` : `#${code}`;
+
+    const namePokemon = document.createElement("strong");
+    namePokemon.textContent = nome.charAt(0).toUpperCase() + nome.slice(1);
+
+    divNameCode.appendChild(codePokemon);
+    divNameCode.appendChild(namePokemon);
+
+    const iconTypePokemon = document.createElement("div");
+    iconTypePokemon.classList.add("icon");
+
+    const iconImagePokemon = document.createElement("img");
+    //fix assets path
+    iconImagePokemon.src = `src/assets/static/images/icon-types/${type}.svg`;
+
+    iconTypePokemon.appendChild(iconImagePokemon);
+
+    infoCardPokemon.appendChild(divNameCode);
+    infoCardPokemon.appendChild(iconTypePokemon);
+
+    card.appendChild(imageDiv);
+    card.appendChild(infoCardPokemon);
+
+    areaPokemons.appendChild(card);
+
+    image.onload = function () {
+      setTimeout(function () {
+        card.style.display = "block";
+        loading.style.display = "none";
+      }, 1000);
+    };
+
+    card.addEventListener("click", openDetailsPokemon);
+  }
+
+  // Função para obter detalhes da evolução de um Pokémon
+  async function getEvolutionChain(pokemonId) {
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`
+      );
+      const data = await response.json();
+
+      // Acesse a propriedade "evolution_chain" para obter o ID da cadeia de evolução
+      const evolutionChainId = data.evolution_chain.url
+        .split("/")
+        .slice(-2, -1)[0];
+
+      console.log("ID da cadeia de evolução:", evolutionChainId);
+
+      // Faça outra solicitação para obter detalhes da cadeia de evolução
+      const chainResponse = await fetch(
+        `https://pokeapi.co/api/v2/evolution-chain/${evolutionChainId}/`
+      );
+      const chainData = await chainResponse.json();
+
+      console.log("Detalhes da cadeia de evolução:", chainData);
+
+      return chainData;
+    } catch (error) {
+      console.error("Erro ao obter detalhes da cadeia de evolução:", error);
+      return null;
+    }
+  }
+
+  // Função para exibir detalhes da cadeia de evolução
+  function displayEvolutionChain(chainData) {
+    if (chainData) {
+      console.log("Detalhes da Cadeia de Evolução:", chainData);
+      displayEvolutions(chainData);
+    } else {
+      console.log("Não foi possível obter detalhes da cadeia de evolução.");
+    }
+  }
+
+  // Função para exibir evoluções no DOM
+  function displayEvolutions(evolutionDetails) {
+    const evolutionContainer = document.getElementById("evolution-container");
+
+    // Limpe o conteúdo anterior, se houver
+    evolutionContainer.innerHTML = "";
+
+    const headerItem = document.createElement("h4");
+    headerItem.classList.add(
+      "text-2xl",
+      "font-bold",
+      "text-black",
+      "mb-4",
+      "mt-4"
+    );
+    headerItem.textContent = "Evoluções";
+    evolutionContainer.appendChild(headerItem);
+
+    // Crie a lista de evoluções
+    const evolutionList = createEvolutionList(evolutionDetails);
+
+    // Adicione a lista de evoluções ao contêiner no DOM
+    evolutionContainer.appendChild(evolutionList);
+  }
+
+  function createEvolutionList(evolutionDetails) {
+    const evolutionList = document.createElement("ul");
+
+    if (evolutionDetails.chain) {
+      // Se a propriedade "chain" existir, é um nó na cadeia de evolução
+      createEvolutionListItem(evolutionDetails.chain, evolutionList);
+    } else {
+      // Caso contrário, trata-se de um nó final (um Pokémon)
+      createEvolutionListItem(evolutionDetails, evolutionList);
+    }
+
+    return evolutionList;
+  }
+
+  // Função para obter detalhes da espécie do Pokémon
+  // async function fetchPokemonSpeciesData(url) {
+  //   try {
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error('Erro ao obter detalhes da espécie do Pokémon:', error);
+  //     return null;
+  //   }
+  // }
+
+  // Função para obter detalhes do Pokémon, incluindo tipos
+  async function fetchPokemonDetails(pokemonId) {
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erro ao obter detalhes do Pokémon:", error);
+      return null;
+    }
+  }
+
+  async function createEvolutionListItem(node, parentElement) {
+    const listItem = document.createElement("li");
+    listItem.className = "evolution-list-item";
+
+    console.log("Nó:", node);
+
+    if (node.species && typeof node.species === "object") {
+      const speciesId = node.species.url.split("/").slice(-2, -1)[0];
+      const speciesName = node.species.name || "Desconhecido";
+
+      console.log(
+        "Obtendo informações de tipo para o Pokémon de ID:",
+        speciesId
+      );
+
+      // Obtendo detalhes do Pokémon, incluindo tipos
+      const pokemonDetails = await fetchPokemonDetails(speciesId);
+
+      if (
+        pokemonDetails &&
+        pokemonDetails.types &&
+        Array.isArray(pokemonDetails.types)
+      ) {
+        const types = pokemonDetails.types.map(typeInfo => typeInfo.type.name);
+        const spriteUrl = pokemonDetails.sprites.front_default;
+
+        const iconContainer = document.createElement("div");
+        iconContainer.className = "icon";
+        // Criando uma tag img para cada tipo
+        types.forEach(type => {
+          const typeImage = document.createElement("img");
+          typeImage.src = `src/assets/static/images/icon-types/${type}.svg`;
+          typeImage.alt = type;
+          iconContainer.appendChild(typeImage);
+        });
+
+        listItem.innerHTML = `
+      <div class="flex items-center justify-between p-4">
+          <div class="w-32 h-32 bg-white rounded-full  flex items-center justify-center">
+            <div class="flex flex-col items-center text-center p-2">
+              <img src="${spriteUrl}" alt="${speciesName}" class="w-full h-full object-cover">
+              <span class="text-lg font-bold text-black">#${speciesId}</span>
+              <h2 class="text-xl font-bold text-black">${primeiraLetraMaiuscula(
+                speciesName
+              )}</h2>
+              <div class="flex items-center space-x-2">
+                ${iconContainer.innerHTML}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      } else {
+        console.log(
+          "Informações de tipo não encontradas para o Pokémon de ID:",
+          speciesId
+        );
+      }
+    }
+
+    parentElement.appendChild(listItem);
+
+    // Se houverem filhos, crie itens de lista para eles
+    if (node.evolves_to && node.evolves_to.length > 0) {
+      // Recursivamente crie itens de lista para os filhos
+      node.evolves_to.forEach(async child => {
+        await createEvolutionListItem(child, parentElement);
+      });
+    }
+  }
+
+  async function listingPokemons(url) {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const dados = await response.json();
+
+        const urlObj = new URL(dados.next);
+        const offset = urlObj.searchParams.get("offset");
+
+        // Certifique-se de que resultados é uma array antes de chamar map
+        const resultados = Array.isArray(dados.results) ? dados.results : [];
+        const pokemons = await Promise.all(
+          resultados.map(async pokemon => {
+            const response = await fetch(pokemon.url);
+            const data = await response.json();
+
+            const { id, types, name, sprites } = data;
+
+            return {
+              code: id,
+              type: types[0]?.type.name || "unknown",
+              nome: name,
+              imagePok:
+                sprites.other.dream_world.front_default != null
+                  ? sprites.other.dream_world.front_default
+                  : sprites.other["home"].front_default != null
+                    ? sprites.other["home"].front_default
+                    : sprites.other["official-artwork"].front_default != null
+                      ? sprites.other["official-artwork"].front_default
+                      : sprites.front_default,
+              count: offset,
+            };
+          })
+        );
+
+        return pokemons;
+      } catch (error) {
+        console.error("Error fetching or processing data:", error);
+      }
+    };
+
+    const pokemons = await fetchData();
+
+    pokemons.forEach(pokemon => {
+      const infoCard = {
+        nome: pokemon.nome,
+        code: pokemon.code,
+        imagePok: pokemon.imagePok,
+        type: pokemon.type,
+      };
+
+      createCardPokemon(
+        infoCard.code,
+        infoCard.type,
+        infoCard.nome,
+        infoCard.imagePok
+      );
+    });
+
+    const countPoks = document.querySelector(".js-count-pokemons");
+    countPoks.textContent = pokemons[0].count;
+
+    const cardPokemon = document.querySelectorAll(".js-open-pokemon");
+    // eventos de clique para abrir o modal
+    cardPokemon.forEach(card => {
+      card.addEventListener("click", openDetailsPokemon);
+    });
+  }
+
+  window.onload = async function () {
+    ///home
+    const url = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
+    listingPokemons(url);
+  };
+
+  // scripts do detalhes do pokemon
+  function primeiraLetraMaiuscula(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const btnCloseDetailsPokemon = document.querySelector(
+    ".js-close-details-pokemon"
+  );
+
+  const bgModalPokemon = document.querySelector(".modal .left-container");
+  const iconTypeModalPokemon = document.querySelector(
+    ".modal .box .left-container .icon img"
+  );
+
+  const abilitiesModalPokemon = document.querySelector(
+    ".modal .box .left-container .abilities ul"
+  );
+  const imgModalPokemon = document.getElementById("js-image-pokemon");
+  const nomeModalPokemon = document.querySelector(
+    ".modal .box .right-container .name h2"
+  );
+  const idModalPokemon = document.querySelector(
+    ".modal .box .right-container .name span"
+  );
+  const typesModalPokemon = document.querySelector(
+    ".modal .box .right-container .type"
+  );
+  const WeakModalPokemon = document.querySelector(
+    ".modal .box .right-container .weak ul"
+  );
+
+  const heightModalPokemon = document.getElementById("js-pok-height");
+  const weightModalPokemon = document.getElementById("js-pok-weight");
+  const abilitieModalPokemon = document.getElementById("js-pok-abilitie");
+  const buttonShowMoreAbilities = document.getElementById(
+    "js-show-more-abilities"
+  );
+  const ballonAbilities = document.getElementById("js-ballon-abilities");
+
+  // const allGauges = document.querySelectorAll('.pokemon-stats-info .gauge');
+
+  const statsHpModalPokemon = document.querySelector(
+    '.pokemon-stats-info .gauge li[data-value="1"]'
+  );
+  const statsAttackModalPokemon = document.querySelector(
+    '.pokemon-stats-info .gauge li[data-value="2"]'
+  );
+  const statsDefenseModalPokemon = document.querySelector(
+    '.pokemon-stats-info .gauge li[data-value="3"]'
+  );
+
+  const statsSpAttackModalPokemon = document.querySelector(
+    '.pokemon-stats-info .gauge li[data-value="4"]'
+  );
+  const statsSpDefenseModalPokemon = document.querySelector(
+    '.pokemon-stats-info .gauge li[data-value="5"]'
+  );
+  const statsSpeedModalPokemon = document.querySelector(
+    '.pokemon-stats-info .gauge li[data-value="6"]'
+  );
+
+  const categoriaModalPokemon = document.getElementById(
+    "categoriaModalPokemon"
+  );
+  // const generosModalPokemon = document.getElementById('generosModalPokemon');
+
+  async function openDetailsPokemon() {
+    // Abrir modal
+    document.documentElement.classList.add("open-modal");
+
+    // Selecionar os elementos que ja estao na thumb do pokemon para trazer pro modal
+    let idPok = this.getAttribute("idPokemon");
+    let imagePok = this.firstElementChild.firstElementChild.getAttribute("src");
+    let iconType =
+      this.lastElementChild.lastElementChild.firstElementChild.getAttribute(
+        "src"
+      );
+
+    imgModalPokemon.setAttribute("src", imagePok);
+    imgModalPokemon.setAttribute(
+      "alt",
+      "Imagem do Pokemon no modal de detalhes"
+    );
+    iconTypeModalPokemon.setAttribute("src", iconType);
+
+    // Chamada a API pra trazer as informacoes
+    try {
+      const url = "https://pokeapi.co/api/v2/pokemon/" + idPok + "/";
+      const response = await fetch(url);
+      const data = await response.json();
+
+      let infoPokemon = {
+        id: idPok,
+        mainType: data.types[0].type.name,
+        name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+        types: data.types,
+        urlType: data.types[0].type.url,
+        height: data.height,
+        weight: data.weight,
+        abilities: data.abilities,
+        stats: data.stats,
+      };
+
+      function listingTypesPokemon() {
+        let typesArray = infoPokemon.types;
+
+        typesModalPokemon.innerHTML = "";
+
+        typesArray.forEach(typeItem => {
+          let list = document.createElement("li");
+          list.textContent = primeiraLetraMaiuscula(typeItem.type.name);
+          list.classList = `tag ${typeItem.type.name}`;
+
+          typesModalPokemon.appendChild(list);
+        });
+      }
+
+      // funcao para listar as fraquezas do pokemon
+      async function listingWeaknesses() {
+        // const WeakModalPokemon = document.getElementById('WeakModalPokemon');
+        WeakModalPokemon.innerHTML = "";
+
+        try {
+          const response = await fetch(infoPokemon.urlType);
+          const data = await response.json();
+          const weaknesses = data.damage_relations.double_damage_from;
+
+          weaknesses.forEach(weakItem => {
+            let list = document.createElement("li");
+            list.textContent =
+              weakItem.name.charAt(0).toUpperCase() + weakItem.name.slice(1);
+            list.classList = `tag ${weakItem.name}`;
+
+            WeakModalPokemon.appendChild(list);
+          });
+        } catch (error) {
+          console.error("Error fetching or processing data:", error);
+        }
+      }
+
+      async function getCategory() {
+        try {
+          const res = await fetch(
+            `https://pokeapi.co/api/v2/pokemon-species/${idPok}/`
+          );
+          const pokemon = await res.json();
+
+          // Obtendo a categoria do Pokémon
+          const category = pokemon.genera.find(
+            g => g.language.name === "en"
+          ).genus;
+
+          //pegar a categoria do pokemon sem a palavra pokemon
+          let categoria = category.replace("Pokémon", "");
+          categoriaModalPokemon.textContent = categoria;
+        } catch (error) {
+          console.error("Erro ao obter categoria do Pokémon:", error);
+        }
+      }
+
+      // async function getGenders() {
+      //     try {
+      //         const urlPokemon = `https://pokeapi.co/api/v2/pokemon/${idPok}/`;
+      //         const responsePokemon = await fetch(urlPokemon);
+      //         const dataPokemon = await responsePokemon.json();
+
+      //         // Obtendo os gêneros do Pokémon
+      //         const genders = dataPokemon.gender_rate === -1 ? "Genderless" :
+      //             dataPokemon.gender_rate === 0 ? "100% Female" : "100% Male";
+      //         console.log("Gêneros:", genders);
+
+      //         // Preenchendo as informações no modal
+      //         generosModalPokemon.textContent = genders;
+      //     } catch (error) {
+      //         console.error('Erro ao obter gêneros do Pokémon:', error);
+      //     }
+      // }
+
+      // Preenchendo as informacoes
+      bgModalPokemon.setAttribute("bgType", infoPokemon.mainType);
+      nomeModalPokemon.textContent = infoPokemon.name;
+      idModalPokemon.textContent =
+        infoPokemon.id < 10
+          ? `#00${infoPokemon.id}`
+          : infoPokemon.id < 100
+            ? `#0${infoPokemon.id}`
+            : `#${infoPokemon.id}`;
+      heightModalPokemon.textContent = `${infoPokemon.height / 10}m`;
+      weightModalPokemon.textContent = `${infoPokemon.weight / 10}kg`;
+
+      abilitieModalPokemon.textContent = primeiraLetraMaiuscula(
+        infoPokemon.abilities[0].ability.name
+      );
+
+      if (data.abilities.length === 1) {
+        buttonShowMoreAbilities.style.display = "none";
+      }
+
+      buttonShowMoreAbilities.classList = `tag ${infoPokemon.mainType}`;
+      ballonAbilities.innerHTML = "";
+      ballonAbilities.classList = `ballon ${infoPokemon.mainType}`;
+      data.abilities.forEach((abilities, index) => {
+        if (index > 0) {
+          let itemType = document.createElement("strong");
+          itemType.textContent = primeiraLetraMaiuscula(abilities.ability.name);
+          ballonAbilities.appendChild(itemType);
+        }
+      });
+
+      // Defina os topos para as barras verticais
+      statsHpModalPokemon.style.top = `${100 - data.stats[0].base_stat}%`;
+      statsAttackModalPokemon.style.top = `${100 - data.stats[1].base_stat}%`;
+      statsDefenseModalPokemon.style.top = `${100 - data.stats[2].base_stat}%`;
+      statsSpAttackModalPokemon.style.top = `${100 - data.stats[3].base_stat}%`;
+      statsSpDefenseModalPokemon.style.top = `${
+        100 - data.stats[4].base_stat
+      }%`;
+      statsSpeedModalPokemon.style.top = `${100 - data.stats[5].base_stat}%`;
+
+      ///definir a tag para a cor do tipo
+      statsHpModalPokemon.classList = `meter ${infoPokemon.mainType}`;
+      statsAttackModalPokemon.classList = `meter ${infoPokemon.mainType}`;
+      statsDefenseModalPokemon.classList = `meter ${infoPokemon.mainType}`;
+      statsSpAttackModalPokemon.classList = `meter ${infoPokemon.mainType}`;
+      statsSpDefenseModalPokemon.classList = `meter ${infoPokemon.mainType}`;
+      statsSpeedModalPokemon.classList = `meter ${infoPokemon.mainType}`;
+
+      // Adiciona a classe a cada conjunto de barras de medidores
+      // allGauges.forEach(gauge => {
+      //   gauge.classList.add(infoPokemon.mainType);
+      // });
+
+      listingTypesPokemon();
+      listingWeaknesses();
+
+      await getCategory();
+      await getEvolutionChain(idPok).then(displayEvolutionChain);
+      // await getGenders();
+      // getDescription(idPok, 'en');
+    } catch (error) {
+      console.error("Error fetching or processing data:", error);
+    }
+  }
+
+  // funcao para fechar o modal
+  function closeDetailsPokemon() {
+    document.documentElement.classList.remove("open-modal");
+  }
+  btnCloseDetailsPokemon.addEventListener("click", closeDetailsPokemon);
+
+  // aqui Ã© o script que mostrar mais das habilidades
+  buttonShowMoreAbilities.addEventListener("click", () => {
+    buttonShowMoreAbilities.parentElement.classList.toggle("active");
+  });
+
+  buttonShowMoreAbilities.addEventListener("mouseleave", () => {
+    buttonShowMoreAbilities.parentElement.classList.remove("active");
+  });
+
+  const countPoks = document.querySelector(".js-count-pokemons");
+  let countPagination = 9;
+  // show pokemon with type ou offset
+  function showMorePokemonAll() {
+    console.log("showMorePokemonAll(*****)");
+
+    listingPokemons(
+      `https://pokeapi.co/api/v2/pokemon?limit=9&offset=+${countPagination}`
+    );
+
+    countPagination = countPagination + 9;
+
+    countPoks.textContent = countPagination - 1;
+  }
+
+  const areaTypes = document.getElementById("js-area-types");
+  const areaTypesSelect = document.querySelector(
+    ".select-custom .dropdown-select"
+  );
+
+  async function fetchTypes() {
+    try {
+      const response = await fetch("https://pokeapi.co/api/v2/type/");
+      const data = await response.json();
+      let allTypes = data.results;
+
+      const selectElement = document.createElement("select");
+      selectElement.id = "js-area-types";
+      selectElement.classList.add("mobile-nav", "active");
+      areaTypes.appendChild(selectElement);
+
+      // Adicionando opções dinâmicas ao <select>
+      allTypes.slice(0, 18).forEach((type, index) => {
+        const optionType = document.createElement("option");
+        optionType.classList = `js-filter-type-pokemon ${type.name}`;
+        optionType.setAttribute("value", type.name);
+
+        const spanType = document.createElement("span");
+        spanType.textContent = primeiraLetraMaiuscula(type.name);
+        optionType.appendChild(spanType);
+
+        const imgType = document.createElement("img");
+        imgType.src = `src/assets/static/images/icon-types/${type.name}.svg`;
+        imgType.alt = type.name;
+        optionType.appendChild(imgType);
+
+        document.getElementById("js-area-types").appendChild(optionType);
+      });
+
+      // Adicionando o <select> ao DOM
+      areaTypes.appendChild(selectElement);
+
+      // Criando o elemento <img> para exibir fora do <select>
+      const imgOutsideSelect = document.createElement("img");
+      imgOutsideSelect.alt = "icone";
+
+      // Adicionando o <img> fora do <select>
+      areaTypes.appendChild(imgOutsideSelect);
+
+      // Adicionando o evento change ao <select>
+      selectElement.addEventListener("change", function () {
+        const selectedValue = this.value; // Obtendo o valor selecionado
+        imgOutsideSelect.src = `src/assets/static/images/icon-types/${selectedValue}.svg`;
+      });
+
+      areaTypes.addEventListener("change", filterByTypes);
+    } catch (error) {
+      console.error("Erro ao buscar os tipos:", error);
+    }
+  }
+
+  fetchTypes();
+
+  const inputSearch = document.getElementById("js-input-search");
+
+  async function filterByTypes() {
+    console.log("clicou", this.value);
+
+    const root = document.documentElement;
+    // aqui estou limpando toda a area dos pokemons
+    const areaPokemons = document.getElementById("js-list-pokemons");
+    areaPokemons.innerHTML = "";
+    countPoks.textContent = 0;
+    offset = 0;
+    countPagination = 10;
+
+    // aqui pego o campo de pesquisa para limpar
+    inputSearch.value = "";
+
+    // aqui estou removendo o actiove a tivando somente no que esta clicavel
+    const allButtonsType = document.querySelectorAll(
+      ".s-all-info-pokemons .area-all select option.js-filter-type-pokemon"
+    );
+
+    allButtonsType.forEach(option => {
+      option.classList.remove("active");
+
+      if (option.value == this.value) {
+        option.classList.add("active");
+      }
+    });
+
+    //aqui dois o scroll até o top da sessão
+    const sectionPokemons = document.querySelector(
+      ".s-all-info-pokemons  .area-all"
+    );
+    const topSection = sectionPokemons.offsetTop;
+
+    window.scrollTo({
+      top: topSection + 288,
+      behavior: "smooth",
+    });
+
+    let codeType = this.value;
+
+    switch (codeType) {
+      case "normal":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-normal)");
+        root.style.setProperty("--select-bg", "var(--select-bg-normal)");
+        root.style.setProperty("--options-bg", "var(--options-bg-normal)");
+        root.style.setProperty("--bg", "var(--bg-normal)");
+        break;
+      case "fighting":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-fighting)");
+        root.style.setProperty("--select-bg", "var(--select-bg-fighting)");
+        root.style.setProperty("--options-bg", "var(--options-bg-fighting)");
+        root.style.setProperty("--bg", "var(--bg-fighting)");
+        break;
+      case "flying":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-flying)");
+        root.style.setProperty("--select-bg", "var(--select-bg-flying)");
+        root.style.setProperty("--options-bg", "var(--options-bg-flying)");
+        root.style.setProperty("--bg", "var(--bg-flying)");
+        break;
+      case "poison":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-poison)");
+        root.style.setProperty("--select-bg", "var(--select-bg-poison)");
+        root.style.setProperty("--options-bg", "var(--options-bg-poison)");
+        root.style.setProperty("--bg", "var(--bg-poison)");
+        break;
+      case "ground":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-ground)");
+        root.style.setProperty("--select-bg", "var(--select-bg-ground)");
+        root.style.setProperty("--options-bg", "var(--options-bg-ground)");
+        root.style.setProperty("--bg", "var(--bg-ground)");
+        break;
+      case "rock":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-rock)");
+        root.style.setProperty("--select-bg", "var(--select-bg-rock)");
+        root.style.setProperty("--options-bg", "var(--options-bg-rock)");
+        root.style.setProperty("--bg", "var(--bg-rock)");
+        break;
+      case "bug":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-bug)");
+        root.style.setProperty("--select-bg", "var(--select-bg-bug)");
+        root.style.setProperty("--options-bg", "var(--options-bg-bug)");
+        root.style.setProperty("--bg", "var(--bg-bug)");
+        break;
+      case "ghost":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-ghost)");
+        root.style.setProperty("--select-bg", "var(--select-bg-ghost)");
+        root.style.setProperty("--options-bg", "var(--options-bg-ghost)");
+        root.style.setProperty("--bg", "var(--bg-ghost)");
+        break;
+      case "steel":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-steel)");
+        root.style.setProperty("--select-bg", "var(--select-bg-steel)");
+        root.style.setProperty("--options-bg", "var(--options-bg-steel)");
+        root.style.setProperty("--bg", "var(--bg-steel)");
+        break;
+      case "fire":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-fire)");
+        root.style.setProperty("--select-bg", "var(--select-bg-fire)");
+        root.style.setProperty("--options-bg", "var(--options-bg-fire)");
+        root.style.setProperty("--bg", "var(--bg-fire)");
+        break;
+      case "water":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-water)");
+        root.style.setProperty("--select-bg", "var(--select-bg-water)");
+        root.style.setProperty("--options-bg", "var(--options-bg-water)");
+        root.style.setProperty("--bg", "var(--bg-water)");
+        break;
+      case "grass":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-grass)");
+        root.style.setProperty("--select-bg", "var(--select-bg-grass)");
+        root.style.setProperty("--options-bg", "var(--options-bg-grass)");
+        root.style.setProperty("--bg", "var(--bg-grass)");
+        break;
+      case "electric":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-electric)");
+        root.style.setProperty("--select-bg", "var(--select-bg-electric)");
+        root.style.setProperty("--options-bg", "var(--options-bg-electric)");
+        root.style.setProperty("--bg", "var(--bg-electric)");
+        break;
+      case "psychic":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-psychic)");
+        root.style.setProperty("--select-bg", "var(--select-bg-psychic)");
+        root.style.setProperty("--options-bg", "var(--options-bg-psychic)");
+        root.style.setProperty("--bg", "var(--bg-psychic)");
+        break;
+      case "ice":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-ice)");
+        root.style.setProperty("--select-bg", "var(--select-bg-ice)");
+        root.style.setProperty("--options-bg", "var(--options-bg-ice)");
+        root.style.setProperty("--bg", "var(--bg-ice)");
+        break;
+      case "dragon":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-dragon)");
+        root.style.setProperty("--select-bg", "var(--select-bg-dragon)");
+        root.style.setProperty("--options-bg", "var(--options-bg-dragon)");
+        root.style.setProperty("--bg", "var(--bg-dragon)");
+        break;
+      case "dark":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-dark)");
+        root.style.setProperty("--select-bg", "var(--select-bg-dark)");
+        root.style.setProperty("--options-bg", "var(--options-bg-dark)");
+        root.style.setProperty("--bg", "var(--bg-dark)");
+        break;
+      case "fairy":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-fairy)");
+        root.style.setProperty("--select-bg", "var(--select-bg-fairy)");
+        root.style.setProperty("--options-bg", "var(--options-bg-fairy)");
+        root.style.setProperty("--bg", "var(--bg-fairy)");
+        break;
+      case "unknown":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-unknown)");
+        root.style.setProperty("--select-bg", "var(--select-bg-unknown)");
+        root.style.setProperty("--options-bg", "var(--options-bg-unknown)");
+        root.style.setProperty("--bg", "var(--bg-unknown)");
+        break;
+      case "shadow":
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-shadow)");
+        root.style.setProperty("--select-bg", "var(--select-bg-shadow)");
+        root.style.setProperty("--options-bg", "var(--options-bg-shadow)");
+        root.style.setProperty("--bg", "var(--bg-shadow)");
+        break;
+      default:
+        root.style.setProperty("--arrow-icon", "var(--arrow-icon-all)");
+        root.style.setProperty("--select-bg", "var(--select-bg-all)");
+        root.style.setProperty("--options-bg", "var(--options-bg-all)");
+        root.style.setProperty("--bg", "var(--bg-all)");
+    }
+
+    if (codeType != "all") {
+      btnShowMore.style.display = "none";
+      countPagination = 0;
+      countPoks.textContent = 0;
+      loadPokemonsByType(codeType);
+    } else {
+      const select = document.getElementById("js-area-types");
+      select.value = "all";
+      btnShowMore.style.display = "block";
+      listingPokemons("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0");
+      countPoks.textContent = 9;
+    }
+  }
+
+  async function fetchData(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Erro ao buscar os dados:", error);
+    }
+  }
+
+  async function loadPokemonsByType(codeType) {
+    if (codeType == "all") {
+      console.log("como você chegou aqui?");
+    }
+
+    const url = `https://pokeapi.co/api/v2/type/${codeType}`;
+    const data = await fetchData(url);
+    console.log("data", data);
+
+    if (data) {
+      const allPokemonsByType = data.pokemon.slice(
+        countPagination,
+        countPagination + 9
+      );
+      btnShowMore.style.display = "block";
+
+      countPagination = countPagination + 9;
+      countPoks.textContent = countPagination;
+
+      console.log("countPagination", countPagination);
+      console.log("allPokemonsByType.length", data.pokemon.length);
+
+      for (const pok of allPokemonsByType) {
+        const { url } = pok.pokemon;
+        const pokemonData = await fetchData(url);
+        const { id, types, name, sprites } = pokemonData;
+
+        console.log(pokemonData);
+
+        const infoCard = {
+          nome: name,
+          code: id,
+          imagePok:
+            sprites.other.dream_world.front_default ||
+            sprites.other["home"].front_default ||
+            sprites.other["official-artwork"].front_default ||
+            sprites.front_default,
+          type: types[0].type.name,
+        };
+
+        createCardPokemon(
+          infoCard.code,
+          infoCard.type,
+          infoCard.nome,
+          infoCard.imagePok
+        );
+      }
+
+      if (data.pokemon.length <= countPagination + 1) {
+        btnShowMore.style.pointerEvents = "none";
+      } else {
+        btnShowMore.style.pointerEvents = "auto";
+      }
+    }
+  }
+
+  const btnShowMore = document.getElementById("js-show-more");
+  btnShowMore.addEventListener("click", () => {
+    const codeType = document.querySelector(
+      ".js-filter-type-pokemon.active"
+    ).value;
+    console.log("este é o codetype", codeType);
+
+    if (codeType != "all") {
+      console.log(" show more pokemons by type", codeType);
+      loadPokemonsByType(codeType);
+    } else {
+      console.log("showMorePokemonAll(*****)");
+      showMorePokemonAll();
+    }
+  });
+
+  inputSearch.addEventListener("keyup", e => {
+    is_empty();
+    e.preventDefault();
+    if (e.ctrlKey && e.key == "v") {
+      return false;
+    } else if (e.ctrlKey && e.key == "a") {
+      return false;
+    }
+
+    setTimeout(function () {
+      if (e.target.value) {
+        clear_pokemons();
+        const searchString = e.target.value.trim();
+        getSearchData(searchString.toLowerCase());
+      }
+    }, 100);
+  });
+
+  const clear_pokemons = () => {
+    const areaPokemons = document.getElementById("js-list-pokemons");
+    areaPokemons.innerHTML = "";
+    countPoks.textContent = 0;
+
+    offset = 0;
+    countPagination = 0;
+    btnShowMore.style.display = "none";
+  };
+
+  const is_empty = () => {
+    if (inputSearch.value) {
+      btnShowMore.style.display = "none";
+    } else {
+      clear_pokemons();
+      // Configurar o valor do select para 'all'
+      // Configurar o valor do select para 'all'
+      const selectElement = document.querySelector(".js-filter-type-pokemon");
+      selectElement.value = "all";
+
+      fetchTypes();
+
+      // Chamar a função filterByTypes com o novo valor
+      filterByTypes.call(selectElement);
+
+      listingPokemons("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0");
+    }
+  };
+
+  async function search_string_data(url) {
+    btnShowMore.style.display = "none";
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const { id, types, name, sprites } = data;
+
+      const infoCard = {
+        nome: name,
+        code: id,
+        imagePok:
+          sprites.other.dream_world.front_default != null
+            ? sprites.other.dream_world.front_default
+            : sprites.other["home"].front_default != null
+              ? sprites.other["home"].front_default
+              : sprites.other["official-artwork"].front_default != null
+                ? sprites.other["official-artwork"].front_default
+                : sprites.front_default,
+        type: types[0].type.name,
+      };
+
+      createCardPokemon(
+        infoCard.code,
+        infoCard.type,
+        infoCard.nome,
+        infoCard.imagePok
+      );
+
+      const cardPokemon = document.querySelectorAll(".js-open-pokemon");
+
+      cardPokemon.forEach(card => {
+        card.addEventListener("click", openDetailsPokemon);
+      });
+    } catch (error) {
+      if (error.response) {
+        countPoks.textContent = 0;
+        clear_pokemons();
+        btnShowMore.style.display = "none";
+        console.error("Erro da requisicao");
+      }
+    }
+  }
+
+  async function getSearchData(string) {
+    if (isNaN(string)) {
+      try {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon?limit=1154`
+        );
+
+        if (!response.ok) throw new Error(response.statusText);
+        const data = await response.json();
+        const { results } = data;
+        let i = 0;
+        results.forEach(async pokemon => {
+          let url = pokemon.url;
+          if (pokemon.name.startsWith(string)) {
+            i = i + 1;
+            await search_string_data(url);
+          }
+        });
+        countPoks.textContent = i;
+      } catch (error) {
+        console.error("Erro da requisicao:", error);
+      }
+    } else {
+      searchPokemon();
+    }
+  }
+
+  async function searchPokemon() {
+    const allButtonsType = document.querySelectorAll(".js-filter-type-pokemon");
+    allButtonsType.forEach(button => {
+      button.classList.remove("active");
+    });
+
+    // let valueInput =  inputSearch.value.replace(/^0+/, '').toLowerCase()
+
+    let valueInput = inputSearch.value.toLowerCase();
+
+    if (isNaN(valueInput) || valueInput.length > 5 || valueInput.length <= 0) {
+      clear_pokemons();
+      return false;
+    }
+
+    try {
+      const url = `https://pokeapi.co/api/v2/pokemon/${valueInput}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      console.log(data);
+      console.log(data.results);
+
+      clear_pokemons();
+
+      btnShowMore.style.display = "none";
+      countPoks.textContent = 1;
+
+      const { id, types, name, sprites } = data;
+
+      const infoCard = {
+        nome: name,
+        code: id,
+        imagePok:
+          sprites.other.dream_world.front_default != null
+            ? sprites.other.dream_world.front_default
+            : sprites.other["home"].front_default != null
+              ? sprites.other["home"].front_default
+              : sprites.other["official-artwork"].front_default != null
+                ? sprites.other["official-artwork"].front_default
+                : sprites.front_default,
+        type: types[0].type.name,
+      };
+
+      createCardPokemon(
+        infoCard.code,
+        infoCard.type,
+        infoCard.nome,
+        infoCard.imagePok
+      );
+
+      const cardPokemon = document.querySelectorAll(".js-open-pokemon");
+
+      // eventos de clique para abrir o modal
+      cardPokemon.forEach(card => {
+        card.addEventListener("click", openDetailsPokemon);
+      });
+    } catch (error) {
+      console.error("Erro da requisicao:", error);
+    }
+  }
+
+  inputSearch.addEventListener("keyup", event => {
+    if (event.key === " ") {
+      event.preventDefault(); // Cancela o evento
+    }
+    inputSearch.value = inputSearch.value.trim();
+    if (inputSearch.value.length <= 0) {
+      inputSearch.value = "".trim();
+      event.preventDefault();
+    } else {
+      inputSearch.value = inputSearch.value.trim();
+    }
+    if (event.code === "Enter") {
+      searchPokemon();
+    }
+  });
+</script>

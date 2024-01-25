@@ -6,55 +6,56 @@ export interface Props {
 }
 
 const { name, size = "sm", count } = Astro.props;
-
- 
 ---
 
-<li
-  class={`inline-block ${
-    size === "sm"
-      ? "my-1 underline-offset-4 dark:text-gray-300 transition-colors bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-200 duration-300 hover:bg-gray-300 hover:text-gray-700 px-2 py-1 rounded text-gray-600"
-      : "my-3 mx-1 underline-offset-8 dark:text-gray-300 transition-colors bg-red-200 dark:bg-red-800 dark:hover:bg-gray-700 dark:hover:text-gray-200 duration-300 hover:bg-gray-300 hover:text-red-700 px-2 py-1 rounded text-gray-600"
-  }`}
->
+<li class={`tagCard`}>
   <a
-  href={`/tags/${name.toLowerCase()}`}
+    href={`/tags/${name.toLowerCase()}`}
     transition:name={name.toLowerCase()}
     class={`${
       size === "sm" ? "pr-1 text-sm" : "pr-2 text-lg "
-    } group text-transparent bg-gradient-to-r from-indigo-700 via-blue-500 to-cyan-400 bg-clip-text no-underline drop-shadow-md hover:drop-shadow-xl tagCard `}
+    } group no-underline drop-shadow-md hover:drop-shadow-xl`}
   >
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="inline-block scale-75 mr-1"><path d="M13.707 3.293A.996.996 0 0 0 13 3H4a1 1 0 0 0-1 1v9c0 .266.105.52.293.707l8 8a.997.997 0 0 0 1.414 0l9-9a.999.999 0 0 0 0-1.414l-8-8zM12 19.586l-7-7V5h7.586l7 7L12 19.586z"></path><circle cx="8.496" cy="8.495" r="1.505"></circle></svg><span>{name.toLowerCase()}</span>
- 
-  {count !== undefined && count > 0 && (
-    <span aria-label={`: ${count} artigos `} class="tagcount">
-      {count}
-    </span>
-  )}
-  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      class="mr-1 inline-block scale-75"
+      stroke="currentColor"
+      fill="currentColor"
+      ><path
+        d="M13.707 3.293A.996.996 0 0 0 13 3H4a1 1 0 0 0-1 1v9c0 .266.105.52.293.707l8 8a.997.997 0 0 0 1.414 0l9-9a.999.999 0 0 0 0-1.414l-8-8zM12 19.586l-7-7V5h7.586l7 7L12 19.586z"
+      ></path><circle cx="8.496" cy="8.495" r="1.505"></circle></svg
+    ><span>{name.toLowerCase()}</span>
+
+    {
+      count !== undefined && count > 0 && (
+        <span aria-label={`: ${count} artigos `} class="tagcount">
+          {count}
+        </span>
+      )
+    }
   </a>
 </li>
- 
 
 <style>
   a {
-    @apply relative underline decoration-dashed hover:-top-0.5 hover:text-skin-accent focus-visible:p-1;
+    @apply relative underline decoration-dashed hover:-top-0.5 focus-visible:p-1;
   }
   a svg {
-    @apply -mr-5 h-6 w-6 scale-95 text-skin-base opacity-80 group-hover:fill-skin-accent;
+    @apply -mr-5 h-6 w-6 scale-95  opacity-80;
   }
   a .tagcount {
-    @apply text-skin-base opacity-50 group-hover:opacity-100;     
-    padding: .25rem;
+    @apply opacity-50 group-hover:opacity-100;
+    padding: 0.25rem;
     text-align: center;
-    font-size: .975rem;
+    font-size: 0.975rem;
     line-height: 1.45rem;
-    background-color: rgba(209,213,219,0.1);
+    background-color: rgba(209, 213, 219, 0.1);
     border-radius: 100%;
     min-width: 1.75rem;
     display: inline-block;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     padding-bottom: 0rem;
-
   }
 </style>

@@ -48,7 +48,6 @@ const sortTagsPost = getSortedPosts(tagPosts);
     pageTitle={[`Tag:`, `${tag}`]}
     titleTransition={tag}
     pageDesc= {tagDesc}
-    transition:animate="slide"
   >
   <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
     <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">

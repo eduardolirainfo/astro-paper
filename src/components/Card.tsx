@@ -8,13 +8,13 @@ export interface Props {
   secHeading?: boolean;
 }
 const styles = {
-  cardContainer: "my-6",
+  cardContainer: "card-body grow w-full",
   titleLink:
-    "text-skin-accent font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block",
-  titleHeading:
-    "mb-4 text-2xl font-bold tracking-tight  text-gray-800 dark:text-white",
+    "text-xl font-bold underline-offset-4  focus-visible:no-underline focus-visible:underline-offset-0  ",
+  titleHeading: "card-title text-xl font-bold",
   cardLink:
-    "card rounded-md px-4 py-12 shadow-sm transition-transform duration-300 ease-in-out md:px-10",
+    "card bg-base-100 transition ease-in-out hover:shadow-xl mx-6 my-2 hover:scale-[102%]",
+  cardDescription: "card-description py-1 text-1xl",
 };
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
@@ -37,11 +37,11 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
             </h3>
           )}
 
-          <span className="text-gray-600 dark:text-white">
+          <span>
             <Datetime datetime={pubDatetime} />
           </span>
         </header>
-        <p>{description}</p>
+        <p className={styles.cardDescription}>{description}</p>
       </article>
     </a>
   );

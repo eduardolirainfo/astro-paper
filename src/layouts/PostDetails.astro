@@ -4,18 +4,27 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
-import  { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
-import Hr from "@components/Hr.astro"; 
+import Hr from "@components/Hr.astro";
 import ScrollToTopButton from "@components/ScrollToTopButton.astro";
- 
+
 export interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
 
-const { title, author, description, ogImage, canonicalURL, postSlug, pubDatetime, tags } = post.data;
+const {
+  title,
+  author,
+  description,
+  ogImage,
+  canonicalURL,
+  postSlug,
+  pubDatetime,
+  tags,
+} = post.data;
 
 const { Content } = await post.render();
 
@@ -25,11 +34,10 @@ const ogUrl = new URL(
   Astro.url.origin
 ).href;
 
-
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
 // Encontre o índice do post atual na lista ordenada.
-const currentPostIndex = posts.findIndex((p) => p.data.postSlug === postSlug );
+const currentPostIndex = posts.findIndex(p => p.data.postSlug === postSlug);
 
 // Calcule os índices do post anterior e do próximo.
 const previousPostIndex = currentPostIndex - 1;
@@ -42,20 +50,19 @@ const hasNextPost = nextPostIndex < posts.length;
 // Acesse os dados do post anterior e do próximo.
 const previousPost = hasPreviousPost ? posts[previousPostIndex] : null;
 const nextPost = hasNextPost ? posts[nextPostIndex] : null;
- 
-let date = new Date(pubDatetime);
 
+let date = new Date(pubDatetime);
 
 // let formattedDate = date.toISOString().split('T')[0];
 
 // Formate a data para exibir apenas a data, não a hora
-let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-' + date.getUTCDate();
-
+let formattedDate =
+  date.getUTCFullYear() +
+  "-" +
+  (date.getUTCMonth() + 1) +
+  "-" +
+  date.getUTCDate();
 ---
-<!-- Top bar -->
-<div x-data="scrollProgress()" x-init="init()" x-cloak class="fixed inset-x-0 top-0 z-50">
-  <div class="h-2 bg-blue-500" :style="`width: ${percent}%`"></div>
-</div>
 
 <Layout
   title={title}
@@ -73,110 +80,130 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
       history.back()
       "
     >
-      <svg xmlns="http://www.w3.org/2000/svg"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        fill="currentColor"
+        viewBox="0 0 24 24"
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
       </svg><span>Voltar</span>
     </button>
   </div>
-  <main id="main-content" transition:animate="slide">
-    
-    <article itemscope itemtype="http://schema.org/Article" class="antialiased" transition:animate="none">      
- 
+  <main id="main-content" transition:animate="none">
+    <article
+      itemscope
+      itemtype="http://schema.org/Article"
+      class="antialiased"
+      transition:animate="none"
+    >
       <header
-        class="header-card text-white dark:text-white mx-auto mb-8 max-w-5xl sm:px-4 overflow-visible relative  shadow-lg ring-1 ring-black/5 rounded-xl    dark:highlight-white/5"
+        class="header-card dark:highlight-white/5 relative mx-auto mb-8 max-w-5xl overflow-visible rounded-xl shadow-lg ring-1 ring-black/5 sm:px-4"
       >
-      <div class="absolute top-0 left-0 z-10 grid-fake o w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
         <div
-        class="px-8 py-16 sm:rounded-md md:px-8 md:py-16 lg:px-8 lg:py-16"
+          class="grid-fake o absolute left-0 top-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
+        >
+        </div>
+        <div
+          class="my-2 px-8 py-8 sm:rounded-md md:px-8 md:py-8 lg:px-8 lg:py-8"
         >
           <h1
             transition:name={title}
             itemprop="headline"
-            class="text-white dark:text-white lg:leading-tighter mb-4 text-2xl font-bold leading-tight sm:text-3xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl"
+            class="sm:text-3xlmd:text-5xl mb-4 text-2xl font-bold lg:text-6xl"
           >
             {title}
           </h1>
-          <p >
-            <Datetime datetime={formattedDate} size="lg" className="my-2"/>
+          <p>
+            <Datetime datetime={formattedDate} size="lg" className="my-2" />
           </p>
         </div>
-        <div class="absolute bottom-0 right-0 z-10 grid-fake o w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
-        
+        <div
+          class="grid-fake o absolute bottom-0 right-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
+        >
+        </div>
       </header>
-      {tags.map((tag) => {
-        const slug = slugifyStr(tag);
-        return (
-          <Tag name={slug}/>
-        );
-      })}
-    </ul>
-      <section
-        itemprop="articleBody"
-        class="prose-a:text-sky-600 dark:prose-a:text-sky-300 prose mx-auto my-4 px-4 dark:prose-invert md:prose-lg lg:prose-xl"
-      >
-        <Content />
-      </section>
-    </article> 
-    
-    <div class="pagination-wrapper">
-    {hasPreviousPost && (
-      <a
-      href={`/blog/${slugifyStr(previousPost?.data.postSlug || "")}`}
-      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out`}
+      {
+        tags.map(tag => {
+          const slug = slugifyStr(tag);
+          return <Tag name={slug} />;
+        })
+      }
+    </article>
+    <section
+      itemprop="articleBody"
+      class="prose mx-auto my-4 px-4 md:prose-lg lg:prose-xl"
     >
-      <svg
-        class={`w-6 h-6 mr-2 ${!hasPreviousPost ? "disabled-svg" : ""}`}
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <title>Post anterior</title>
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15 19l-7-7 7-7"
-        ></path>
-      </svg>
-      <span class="font-bold">Post anterior</span>
-    </a>)}
-    {hasNextPost && (    
-    <a
-      href={`/blog/${slugifyStr(nextPost.data.postSlug ?? "")}`}
-      class={`flex items-center text-skin-base hover:text-skin-accent transition-colors duration-200 ease-in-out`}
-    >
-      <span class="font-bold">Próximo post</span>
-      <svg
-        class={`w-6 h-6 ml-2 ${!hasNextPost ? "disabled-svg" : ""}`}
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <title>Próximo post</title>
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 5l7 7-7 7"
-        ></path>
-      </svg>
-    </a>)}
-    </div>
-  </main> 
-  <ScrollToTopButton />
-  <Footer />
+      <Content />
+    </section>
+  </main>
+
+  <div class="pagination-wrapper">
+    {
+      hasPreviousPost && (
+        <a
+          href={`/blog/${slugifyStr(previousPost?.data.postSlug || "")}`}
+          class={`flex items-center transition-colors duration-200 ease-in-out`}
+        >
+          <svg
+            class={`mr-2 h-6 w-6 ${!hasPreviousPost ? "disabled-svg" : ""}`}
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Post anterior</title>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          <span class="font-bold">Post anterior</span>
+        </a>
+      )
+    }
+    {
+      hasNextPost && (
+        <a
+          href={`/blog/${slugifyStr(nextPost?.data?.postSlug ?? "")}`}
+          class={`flex items-center transition-colors duration-200 ease-in-out  `}
+        >
+          <span class="font-bold">Próximo post</span>
+          <svg
+            class={`ml-2 h-6 w-6 ${!hasNextPost ? "disabled-svg" : ""}`}
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Próximo post</title>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
+      )
+    }
+  </div>
 </Layout>
+<ScrollToTopButton />
+<Footer />
 
 <style>
   main {
     @apply mx-auto w-full max-w-4xl px-4 pb-12;
   }
+
+  a {
+    @apply text-primary;
+  }
+
   .post-title {
-    @apply text-2xl font-semibold text-skin-accent;
+    @apply text-2xl font-semibold;
   }
   .tags-container {
     @apply my-8;
@@ -185,73 +212,98 @@ let formattedDate = date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-'
     @apply inline-block;
   }
   .header-card {
+    @apply bg-primary bg-opacity-70 text-current;
+    background: border-box;
     word-wrap: break-word;
   }
 
- .pagination-wrapper {
+  .pagination-wrapper {
     @apply mb-8 mt-auto flex justify-center;
   }
   .disabled {
-    @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;
+    @apply pointer-events-none select-none opacity-50;
   }
-  .disabled-svg {
-    @apply group-hover:!fill-skin-base;
-  }
+
   .grid-fake {
-    background-image: radial-gradient(rgba(0,0,0,0.2) 2px, transparent 2px);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 2px, transparent 2px);
     background-size: 16px 16px;
   }
 
-   html[data-theme="dark"] .grid-fake{      
-      background-image: radial-gradient(rgba(255,255,255,0.2) 2px, transparent 2px);
-   }
+  .grid-fake {
+    @apply bg-secondary bg-opacity-5;
+  }
   .pagination-wrapper {
-    @apply flex justify-center items-center space-x-4;
+    @apply flex items-center justify-center space-x-4;
   }
   .pagination-wrapper a {
-    @apply inline-block px-3 py-1 rounded-md text-skin-base hover:bg-skin-card;
-  } 
-  
+    @apply inline-block rounded-md px-3 py-1;
+  }
 </style>
- 
-<script is:inline>
-    function copyCode(){
-      var copyButtonLabel = "Copiar";
-      var codeBlocks = Array.from(document.querySelectorAll("pre"));
-  
-      for (var codeBlock of codeBlocks) {
-        var wrapper = document.createElement("div");
-        wrapper.style.position = "relative";
-    
-        var copyButton = document.createElement("button");
-        copyButton.className = "copy-code";
-        copyButton.innerHTML = copyButtonLabel;
-    
-        codeBlock.removeAttribute("tabindex");
-        codeBlock.removeAttribute("tabIndex");
-        codeBlock.appendChild(copyButton);
-        // wrap codebock with relative parent element
-        codeBlock.parentNode.insertBefore(wrapper, codeBlock);
-        wrapper.appendChild(codeBlock);
-    
-        copyButton.addEventListener("click", async () => {
-          await copyCode(codeBlock, copyButton);
-        });
-      }  
-      async function copyCode(block, button) {
-        var code = block.querySelector("code");
-        var text = code.innerText;
-    
-        await navigator.clipboard.writeText(text);
-    
-        // visual feedback that task is completed
-        button.innerText = "Copiado!";
-    
-        setTimeout(() => {
-          button.innerText = copyButtonLabel;
-        }, 700);
-    }}
-    copyCode()
-    document.addEventListener("astro:after-swap", copyCode);
 
-  </script>
+<script>
+  function attachCopyButtons() {
+    let copyButtonLabel = "Copiar";
+    let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (let codeBlock of codeBlocks) {
+      let wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      let copyButton = document.createElement("button");
+      copyButton.className =
+        "copy-code absolute right-3 top-3 px-2 py-1 text-xs leading-4 badge badge-primary";
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      if (codeBlock.parentNode) {
+        codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+      }
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      let code = block.querySelector("code");
+      let text = code.innerText;
+
+      await navigator.clipboard.writeText(text);
+
+      button.innerText = "Copiado";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+
+  function MockupCode() {
+    var astroCodeContainers = document.querySelectorAll(".astro-code");
+
+    astroCodeContainers.forEach(function (container) {
+      if (container.parentNode) {
+        container.parentNode.classList.add(
+          "mockup-code",
+          "bg-neutral",
+          "glass"
+        );
+      }
+    });
+
+    var astroCodeElements = document.querySelectorAll("pre.astro-code");
+
+    astroCodeElements.forEach(function (preElement) {
+      // Remover a classe 'astro-code' do <pre>
+      preElement.classList.add("bg-transparent");
+      preElement.classList.remove("astro-code");
+    });
+  }
+
+  attachCopyButtons();
+  document.addEventListener("astro:after-swap", attachCopyButtons);
+  MockupCode();
+  document.addEventListener("astro:after-swap", MockupCode);
+</script>

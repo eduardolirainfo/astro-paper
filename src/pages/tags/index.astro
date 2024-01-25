@@ -16,13 +16,13 @@ const tags = getUniqueTags(posts);
 ---
 
 <Layout title={`Tags | ${SITE.title}`}>
-  <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="Todas as tags utilizadas no blog." transition:animate="slide">
+  <Header activeNav="tags"/>
+  <Main pageTitle="Tags" pageDesc="Todas as tags utilizadas no blog.">
     <ul>
       {tags.map(tag => {
         const tagPosts = getPostsByTag(posts, tag);
         const tagCount = tagPosts.length;
-        return <Tag name={tag} size="lg" count={tagCount} />;
+        return <Tag name={tag} size="lg" count={tagCount}/>;
       })}
     </ul>
   </Main>

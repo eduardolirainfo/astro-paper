@@ -4,101 +4,46 @@
   }
 
   .focus-outline {
-    @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
+    @apply outline-2 outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed;
   }
 
-  .dark .dark:bg-gray-900 {
-    background-color: #030518 !important;
-  }
 
-  .card,
-  .tagCard {
-    transition: all 0.3s ease 0s;
-    transition:
-      transform 0.5s ease,
-      box-shadow 0.2s ease;
-    will-change: transform, filter;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    transform-origin: center;
-    border-radius: 1rem;
-  }
-
-  html[data-theme="dark"] .card:hover,
-  html[data-theme="dark"] .tagCard:hover {
-    box-shadow: none;
-    border-bottom: 1px inset rgba(255, 255, 255, 0.25);
-    border-top: 1px inset rgba(255, 255, 255, 0.25);
-  }
-  .card::before,
-  .card::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    mix-blend-mode: color-dodge;
-    transition: all 0.33s ease;
-  }
-
-  html[data-theme="dark"] .card::before {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(49, 46, 129, 0.25),
-      transparent
-    );
-    transform: translateX(-100%);
-    transition: transform 0.4s;
-  }
-
-  html[data-theme="dark"] .card:hover::before {
-    transform: translateX(100%);
-    box-shadow: none;
-    border-radius: 30px;
-    transition: transform 0.4s;
-  }
-
-  html[data-theme="dark"] .card:active {
-    border-bottom: 3px inset rgba(255, 255, 255, 0.25);
-    border-top: 3px inset rgba(255, 255, 255, 0.25);
-  }
-
-  .card:hover:after {
-    opacity: 1;
-    background-position: 50% 50%;
-    background-size: 160%;
-    background-blend-mode: overlay;
-    z-index: 2;
-    transition: all 0.33s ease;
-    mix-blend-mode: color-dodge;
-    opacity: 0.75;
-    border-radius: 30px;
-  }
-
-  .copy-code {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #3730a3;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    color: aliceblue;
+  .mockup-code:before {
+    margin-left: -0.5rem !important;
   }
 
   .copy-code:hover {
-    background-color: #312e81;
+    @apply text-accent bg-accent bg-opacity-20 !important;
+  }
+
+  .mockup-code {
+    margin-top: 1rem !important;
+  }
+
+  .mockup-code pre {
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .mockup-code:hover {
+    @apply drop-shadow-xl !important;
+  }
+
+  .mockup-code pre:before {
+    margin-right: 0 !important;
   }
 
   .disabled {
-    @apply pointer-events-none select-none opacity-50 hover:text-skin-base group-hover:fill-skin-base;
+    @apply pointer-events-none select-none opacity-50;
   }
+
   .disabled-svg {
-    @apply group-hover:!fill-skin-base;
+    @apply pointer-events-none select-none opacity-50;
   }
+
+  .prose :where(pre):not(:where([class~=not-prose], [class~=not-prose] *)) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+
 }

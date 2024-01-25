@@ -1,10 +1,9 @@
 ---
-import { SITE } from "@config"; 
+import { SITE } from "@config";
 import { ViewTransitions } from "astro:transitions";
 
-
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
- 
+
 export interface Props {
   title?: string;
   author?: string;
@@ -25,11 +24,10 @@ const socialImageURL = new URL(
   ogImage ?? SITE.ogImage ?? "og.png",
   Astro.url.origin
 ).href;
-
 ---
 
-<html lang="pt-BR">
-  <head transition:animate="none"> 
+<html lang="pt-BR" data-theme="lofi">
+  <head transition:animate="none">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -60,8 +58,8 @@ const socialImageURL = new URL(
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,900;1,200;1,400;1,600;1,700;1,900&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Open+Sans:400,700&display=swap"
     />
 
     <meta name="theme-color" content="" />
@@ -79,9 +77,9 @@ const socialImageURL = new URL(
     <style is:global>
       @import "../assets/styles.css";
     </style>
-    <script is:inline src="/toggle-theme.js"></script>    
+    <!-- <script is:inline src="/toggle-theme.js"></script> -->
   </head>
-  <body> 
-    <slot />  
-   </body>
+  <body>
+    <slot />
+  </body>
 </html>

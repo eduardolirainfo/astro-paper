@@ -5,7 +5,7 @@ import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
- 
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,23 +18,25 @@ export default defineConfig({
       applyBaseStyles: false
     }
   }), react(), sitemap(), mdx()] ,
-  i18n: {
-    defaultLocale: "pt-br",
-    locales: ["pt-br", "es", "en", "fr"]
-  },
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {
       test: "Table of contents"
     }]],
     shikiConfig: {
-      theme: "rose-pine",
-      wrap: true
+      theme: "material-theme-palenight",
+      wrap: true,
+ 
     },
     extendDefaultPlugins: true
   },
   vite: {
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"]
+    },
+    ssr: {
+      external: ['svgo']
     }
   }
 });
+
+ 

@@ -12,5 +12,12 @@ const { noPadding = false, ariaHidden = true } = Astro.props;
     noPadding ? "pt-0 pb-0" : ""
   }`}
 >
-  <hr class="border-skin-line" aria-hidden={ariaHidden} />
+  <div class="divider divider-accent" aria-hidden={ariaHidden}></div>
 </div>
+
+<style>
+  .divider-primary:before,
+  .divider-primary:after {
+    opacity: 0.7;
+  }
+</style>
