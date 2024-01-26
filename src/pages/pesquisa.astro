@@ -6,12 +6,9 @@ import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Search from "@components/Search";
- 
 
-// Retrieve all articles
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-// List of items to search in
 const searchList = posts.map(({ data }) => ({
   title: data.title,
   description: data.description,
@@ -26,6 +23,3 @@ const searchList = posts.map(({ data }) => ({
   </Main>
   <Footer />
 </Layout>
-
- 
- 

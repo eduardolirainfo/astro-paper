@@ -3,11 +3,8 @@
 ---
 
 <section class="s-all-info-pokemons">
-  <!-- aqui eu   preciso somente de duas colunas metade metade -->
   <div class="area-all">
     <div class="grid grid-cols-2 gap-4">
-      <!-- essa é a primeira coluna -->
-
       <div class="search relative">
         <label for="search" class="focus relative m-4 block rounded-full">
           <span
@@ -34,14 +31,10 @@
             id="js-clear-search"
             class="absolute inset-y-0 right-2 flex items-center pr-2 opacity-75"
           >
-            <!-- Adicione aqui o ícone de "X" ou qualquer outra coisa para representar a ação de limpar -->
-
-             X
+            X
           </button>
         </label>
       </div>
-
-      <!-- essa é a segunda coluna -->
 
       <select
         id="js-area-types"
@@ -59,11 +52,7 @@
       <span> <strong class="js-count-pokemons">1292</strong> Pokémons</span>
     </div>
 
-    <!-- Seus cards de Pokémon aqui -->
-    <div class="all flex flex-row flex-wrap" id="js-list-pokemons">
-      <!-- Aqui é onde os botões de Pokémon serão gerados -->
-      <!-- Certifique-se de que cada botão tenha as classes corretas -->
-    </div>
+    <div class="all flex flex-row flex-wrap" id="js-list-pokemons"></div>
   </div>
 </section>
 
@@ -124,7 +113,7 @@
     iconTypePokemon.classList.add("icon");
 
     const iconImagePokemon = document.createElement("img");
-    //fix assets path
+
     iconImagePokemon.src = `src/assets/static/images/icon-types/${type}.svg`;
 
     iconTypePokemon.appendChild(iconImagePokemon);
@@ -147,7 +136,6 @@
     card.addEventListener("click", openDetailsPokemon);
   }
 
-  // Função para obter detalhes da evolução de um Pokémon
   async function getEvolutionChain(pokemonId) {
     try {
       const response = await fetch(
@@ -155,14 +143,12 @@
       );
       const data = await response.json();
 
-      // Acesse a propriedade "evolution_chain" para obter o ID da cadeia de evolução
       const evolutionChainId = data.evolution_chain.url
         .split("/")
         .slice(-2, -1)[0];
 
       console.log("ID da cadeia de evolução:", evolutionChainId);
 
-      // Faça outra solicitação para obter detalhes da cadeia de evolução
       const chainResponse = await fetch(
         `https://pokeapi.co/api/v2/evolution-chain/${evolutionChainId}/`
       );
@@ -177,7 +163,6 @@
     }
   }
 
-  // Função para exibir detalhes da cadeia de evolução
   function displayEvolutionChain(chainData) {
     if (chainData) {
       console.log("Detalhes da Cadeia de Evolução:", chainData);
@@ -187,11 +172,9 @@
     }
   }
 
-  // Função para exibir evoluções no DOM
   function displayEvolutions(evolutionDetails) {
     const evolutionContainer = document.getElementById("evolution-container");
 
-    // Limpe o conteúdo anterior, se houver
     evolutionContainer.innerHTML = "";
 
     const headerItem = document.createElement("h4");
@@ -205,10 +188,8 @@
     headerItem.textContent = "Evoluções";
     evolutionContainer.appendChild(headerItem);
 
-    // Crie a lista de evoluções
     const evolutionList = createEvolutionList(evolutionDetails);
 
-    // Adicione a lista de evoluções ao contêiner no DOM
     evolutionContainer.appendChild(evolutionList);
   }
 
@@ -216,29 +197,14 @@
     const evolutionList = document.createElement("ul");
 
     if (evolutionDetails.chain) {
-      // Se a propriedade "chain" existir, é um nó na cadeia de evolução
       createEvolutionListItem(evolutionDetails.chain, evolutionList);
     } else {
-      // Caso contrário, trata-se de um nó final (um Pokémon)
       createEvolutionListItem(evolutionDetails, evolutionList);
     }
 
     return evolutionList;
   }
 
-  // Função para obter detalhes da espécie do Pokémon
-  // async function fetchPokemonSpeciesData(url) {
-  //   try {
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-  //     return data;
-  //   } catch (error) {
-  //     console.error('Erro ao obter detalhes da espécie do Pokémon:', error);
-  //     return null;
-  //   }
-  // }
-
-  // Função para obter detalhes do Pokémon, incluindo tipos
   async function fetchPokemonDetails(pokemonId) {
     try {
       const response = await fetch(
@@ -267,7 +233,6 @@
         speciesId
       );
 
-      // Obtendo detalhes do Pokémon, incluindo tipos
       const pokemonDetails = await fetchPokemonDetails(speciesId);
 
       if (
@@ -280,7 +245,7 @@
 
         const iconContainer = document.createElement("div");
         iconContainer.className = "icon";
-        // Criando uma tag img para cada tipo
+
         types.forEach(type => {
           const typeImage = document.createElement("img");
           typeImage.src = `src/assets/static/images/icon-types/${type}.svg`;
@@ -314,9 +279,7 @@
 
     parentElement.appendChild(listItem);
 
-    // Se houverem filhos, crie itens de lista para eles
     if (node.evolves_to && node.evolves_to.length > 0) {
-      // Recursivamente crie itens de lista para os filhos
       node.evolves_to.forEach(async child => {
         await createEvolutionListItem(child, parentElement);
       });
@@ -332,7 +295,6 @@
         const urlObj = new URL(dados.next);
         const offset = urlObj.searchParams.get("offset");
 
-        // Certifique-se de que resultados é uma array antes de chamar map
         const resultados = Array.isArray(dados.results) ? dados.results : [];
         const pokemons = await Promise.all(
           resultados.map(async pokemon => {
@@ -386,19 +348,17 @@
     countPoks.textContent = pokemons[0].count;
 
     const cardPokemon = document.querySelectorAll(".js-open-pokemon");
-    // eventos de clique para abrir o modal
+
     cardPokemon.forEach(card => {
       card.addEventListener("click", openDetailsPokemon);
     });
   }
 
   window.onload = async function () {
-    ///home
     const url = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
     listingPokemons(url);
   };
 
-  // scripts do detalhes do pokemon
   function primeiraLetraMaiuscula(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -437,8 +397,6 @@
   );
   const ballonAbilities = document.getElementById("js-ballon-abilities");
 
-  // const allGauges = document.querySelectorAll('.pokemon-stats-info .gauge');
-
   const statsHpModalPokemon = document.querySelector(
     '.pokemon-stats-info .gauge li[data-value="1"]'
   );
@@ -462,13 +420,10 @@
   const categoriaModalPokemon = document.getElementById(
     "categoriaModalPokemon"
   );
-  // const generosModalPokemon = document.getElementById('generosModalPokemon');
 
   async function openDetailsPokemon() {
-    // Abrir modal
     document.documentElement.classList.add("open-modal");
 
-    // Selecionar os elementos que ja estao na thumb do pokemon para trazer pro modal
     let idPok = this.getAttribute("idPokemon");
     let imagePok = this.firstElementChild.firstElementChild.getAttribute("src");
     let iconType =
@@ -483,7 +438,6 @@
     );
     iconTypeModalPokemon.setAttribute("src", iconType);
 
-    // Chamada a API pra trazer as informacoes
     try {
       const url = "https://pokeapi.co/api/v2/pokemon/" + idPok + "/";
       const response = await fetch(url);
@@ -515,9 +469,7 @@
         });
       }
 
-      // funcao para listar as fraquezas do pokemon
       async function listingWeaknesses() {
-        // const WeakModalPokemon = document.getElementById('WeakModalPokemon');
         WeakModalPokemon.innerHTML = "";
 
         try {
@@ -545,12 +497,10 @@
           );
           const pokemon = await res.json();
 
-          // Obtendo a categoria do Pokémon
           const category = pokemon.genera.find(
             g => g.language.name === "en"
           ).genus;
 
-          //pegar a categoria do pokemon sem a palavra pokemon
           let categoria = category.replace("Pokémon", "");
           categoriaModalPokemon.textContent = categoria;
         } catch (error) {
@@ -558,25 +508,6 @@
         }
       }
 
-      // async function getGenders() {
-      //     try {
-      //         const urlPokemon = `https://pokeapi.co/api/v2/pokemon/${idPok}/`;
-      //         const responsePokemon = await fetch(urlPokemon);
-      //         const dataPokemon = await responsePokemon.json();
-
-      //         // Obtendo os gêneros do Pokémon
-      //         const genders = dataPokemon.gender_rate === -1 ? "Genderless" :
-      //             dataPokemon.gender_rate === 0 ? "100% Female" : "100% Male";
-      //         console.log("Gêneros:", genders);
-
-      //         // Preenchendo as informações no modal
-      //         generosModalPokemon.textContent = genders;
-      //     } catch (error) {
-      //         console.error('Erro ao obter gêneros do Pokémon:', error);
-      //     }
-      // }
-
-      // Preenchendo as informacoes
       bgModalPokemon.setAttribute("bgType", infoPokemon.mainType);
       nomeModalPokemon.textContent = infoPokemon.name;
       idModalPokemon.textContent =
@@ -607,7 +538,6 @@
         }
       });
 
-      // Defina os topos para as barras verticais
       statsHpModalPokemon.style.top = `${100 - data.stats[0].base_stat}%`;
       statsAttackModalPokemon.style.top = `${100 - data.stats[1].base_stat}%`;
       statsDefenseModalPokemon.style.top = `${100 - data.stats[2].base_stat}%`;
@@ -617,7 +547,6 @@
       }%`;
       statsSpeedModalPokemon.style.top = `${100 - data.stats[5].base_stat}%`;
 
-      ///definir a tag para a cor do tipo
       statsHpModalPokemon.classList = `meter ${infoPokemon.mainType}`;
       statsAttackModalPokemon.classList = `meter ${infoPokemon.mainType}`;
       statsDefenseModalPokemon.classList = `meter ${infoPokemon.mainType}`;
@@ -625,30 +554,21 @@
       statsSpDefenseModalPokemon.classList = `meter ${infoPokemon.mainType}`;
       statsSpeedModalPokemon.classList = `meter ${infoPokemon.mainType}`;
 
-      // Adiciona a classe a cada conjunto de barras de medidores
-      // allGauges.forEach(gauge => {
-      //   gauge.classList.add(infoPokemon.mainType);
-      // });
-
       listingTypesPokemon();
       listingWeaknesses();
 
       await getCategory();
       await getEvolutionChain(idPok).then(displayEvolutionChain);
-      // await getGenders();
-      // getDescription(idPok, 'en');
     } catch (error) {
       console.error("Error fetching or processing data:", error);
     }
   }
 
-  // funcao para fechar o modal
   function closeDetailsPokemon() {
     document.documentElement.classList.remove("open-modal");
   }
   btnCloseDetailsPokemon.addEventListener("click", closeDetailsPokemon);
 
-  // aqui Ã© o script que mostrar mais das habilidades
   buttonShowMoreAbilities.addEventListener("click", () => {
     buttonShowMoreAbilities.parentElement.classList.toggle("active");
   });
@@ -659,7 +579,7 @@
 
   const countPoks = document.querySelector(".js-count-pokemons");
   let countPagination = 9;
-  // show pokemon with type ou offset
+
   function showMorePokemonAll() {
     console.log("showMorePokemonAll(*****)");
 
@@ -688,7 +608,6 @@
       selectElement.classList.add("mobile-nav", "active");
       areaTypes.appendChild(selectElement);
 
-      // Adicionando opções dinâmicas ao <select>
       allTypes.slice(0, 18).forEach((type, index) => {
         const optionType = document.createElement("option");
         optionType.classList = `js-filter-type-pokemon ${type.name}`;
@@ -706,19 +625,15 @@
         document.getElementById("js-area-types").appendChild(optionType);
       });
 
-      // Adicionando o <select> ao DOM
       areaTypes.appendChild(selectElement);
 
-      // Criando o elemento <img> para exibir fora do <select>
       const imgOutsideSelect = document.createElement("img");
       imgOutsideSelect.alt = "icone";
 
-      // Adicionando o <img> fora do <select>
       areaTypes.appendChild(imgOutsideSelect);
 
-      // Adicionando o evento change ao <select>
       selectElement.addEventListener("change", function () {
-        const selectedValue = this.value; // Obtendo o valor selecionado
+        const selectedValue = this.value;
         imgOutsideSelect.src = `src/assets/static/images/icon-types/${selectedValue}.svg`;
       });
 
@@ -736,17 +651,15 @@
     console.log("clicou", this.value);
 
     const root = document.documentElement;
-    // aqui estou limpando toda a area dos pokemons
+
     const areaPokemons = document.getElementById("js-list-pokemons");
     areaPokemons.innerHTML = "";
     countPoks.textContent = 0;
     offset = 0;
     countPagination = 10;
 
-    // aqui pego o campo de pesquisa para limpar
     inputSearch.value = "";
 
-    // aqui estou removendo o actiove a tivando somente no que esta clicavel
     const allButtonsType = document.querySelectorAll(
       ".s-all-info-pokemons .area-all select option.js-filter-type-pokemon"
     );
@@ -759,7 +672,6 @@
       }
     });
 
-    //aqui dois o scroll até o top da sessão
     const sectionPokemons = document.querySelector(
       ".s-all-info-pokemons  .area-all"
     );
@@ -1029,14 +941,12 @@
       btnShowMore.style.display = "none";
     } else {
       clear_pokemons();
-      // Configurar o valor do select para 'all'
-      // Configurar o valor do select para 'all'
+
       const selectElement = document.querySelector(".js-filter-type-pokemon");
       selectElement.value = "all";
 
       fetchTypes();
 
-      // Chamar a função filterByTypes com o novo valor
       filterByTypes.call(selectElement);
 
       listingPokemons("https://pokeapi.co/api/v2/pokemon?limit=9&offset=0");
@@ -1120,8 +1030,6 @@
       button.classList.remove("active");
     });
 
-    // let valueInput =  inputSearch.value.replace(/^0+/, '').toLowerCase()
-
     let valueInput = inputSearch.value.toLowerCase();
 
     if (isNaN(valueInput) || valueInput.length > 5 || valueInput.length <= 0) {
@@ -1167,7 +1075,6 @@
 
       const cardPokemon = document.querySelectorAll(".js-open-pokemon");
 
-      // eventos de clique para abrir o modal
       cardPokemon.forEach(card => {
         card.addEventListener("click", openDetailsPokemon);
       });
@@ -1178,7 +1085,7 @@
 
   inputSearch.addEventListener("keyup", event => {
     if (event.key === " ") {
-      event.preventDefault(); // Cancela o evento
+      event.preventDefault();
     }
     inputSearch.value = inputSearch.value.trim();
     if (inputSearch.value.length <= 0) {

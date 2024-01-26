@@ -9,7 +9,7 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header class="fixed z-20 w-full backdrop-blur-md" transition:animate="none">
+<header class="fixed z-20 w-full backdrop-blur-md">
   <div class="mx-auto max-w-4xl">
     <nav id="nav-menu" class="top-nav-wrap flex items-center px-2 text-base">
       <a href="/" class="logo pt-2 text-primary">
@@ -206,7 +206,6 @@ const { activeNav } = Astro.props;
 
 <script>
   function toggleNav() {
-    // Toggle menu
     const menuBtn = document.querySelector(".hamburger-menu");
     const menuIcon = document.querySelector(".menu-icon");
     const menuItems = document.querySelector("#menu-items");
@@ -225,6 +224,5 @@ const { activeNav } = Astro.props;
 
   toggleNav();
 
-  // Runs on view transitions navigation
   document.addEventListener("astro:after-swap", toggleNav);
 </script>

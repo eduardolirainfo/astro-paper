@@ -36,26 +36,19 @@ const ogUrl = new URL(
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-// Encontre o índice do post atual na lista ordenada.
 const currentPostIndex = posts.findIndex(p => p.data.postSlug === postSlug);
 
-// Calcule os índices do post anterior e do próximo.
 const previousPostIndex = currentPostIndex - 1;
 const nextPostIndex = currentPostIndex + 1;
 
-// Verifique se há um post anterior e um próximo post disponíveis.
 const hasPreviousPost = previousPostIndex >= 0;
 const hasNextPost = nextPostIndex < posts.length;
 
-// Acesse os dados do post anterior e do próximo.
 const previousPost = hasPreviousPost ? posts[previousPostIndex] : null;
 const nextPost = hasNextPost ? posts[nextPostIndex] : null;
 
 let date = new Date(pubDatetime);
 
-// let formattedDate = date.toISOString().split('T')[0];
-
-// Formate a data para exibir apenas a data, não a hora
 let formattedDate =
   date.getUTCFullYear() +
   "-" +
@@ -296,7 +289,6 @@ let formattedDate =
     var astroCodeElements = document.querySelectorAll("pre.astro-code");
 
     astroCodeElements.forEach(function (preElement) {
-      // Remover a classe 'astro-code' do <pre>
       preElement.classList.add("bg-transparent");
       preElement.classList.remove("astro-code");
     });
