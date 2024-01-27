@@ -4,7 +4,7 @@ description: Saiba como resolver o erro "Fatal error (OrderHistory -> id_order_s
 tags:
   - Prestashop
   - DB
-postSlug: resolver-erro-fatal-orderhistory-id-order-state-empty-prestashop
+slug: resolver-erro-fatal-orderhistory-id-order-state-empty-prestashop
 pubDatetime: 2013-07-29T00:00:00.000+00:00
 background: "#ff0076"
 author: Eduardo Lira

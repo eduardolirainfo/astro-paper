@@ -15,28 +15,20 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const {
-  title,
-  author,
-  description,
-  ogImage,
-  canonicalURL,
-  postSlug,
-  pubDatetime,
-  tags,
-} = post.data;
+const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } =
+  post.data;
 
 const { Content } = await post.render();
 
 const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src || "";
 const ogUrl = new URL(
-  ogImageUrl || `/blog/${slugifyStr(title)}.png`,
+  ogImageUrl ?? `/blog/${slugifyStr(title)}.png`,
   Astro.url.origin
 ).href;
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-const currentPostIndex = posts.findIndex(p => p.data.postSlug === postSlug);
+const currentPostIndex = posts.findIndex(p => p.data.title === title);
 
 const previousPostIndex = currentPostIndex - 1;
 const nextPostIndex = currentPostIndex + 1;
@@ -102,27 +94,20 @@ let formattedDate =
           class="my-2 px-8 py-8 sm:rounded-md md:px-8 md:py-8 lg:px-8 lg:py-8"
         >
           <h1
-            transition:name={title}
+            transition:name={slugifyStr(title)}
             itemprop="headline"
             class="sm:text-3xlmd:text-5xl mb-4 text-2xl font-bold lg:text-6xl"
           >
             {title}
           </h1>
-          <p>
-            <Datetime datetime={formattedDate} size="lg" className="my-2" />
-          </p>
+          <Datetime pubDatetime={pubDatetime} size="lg" className="my-2" />
         </div>
         <div
           class="grid-fake o absolute bottom-0 right-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
         >
         </div>
       </header>
-      {
-        tags.map(tag => {
-          const slug = slugifyStr(tag);
-          return <Tag name={slug} />;
-        })
-      }
+      {tags.map(tag => <Tag tag={slugifyStr(tag)} />)}
     </article>
     <section
       itemprop="articleBody"
@@ -132,12 +117,12 @@ let formattedDate =
     </section>
   </main>
 
-  <div class="pagination-wrapper">
+  <div class="pg-wrapper join">
     {
       hasPreviousPost && (
         <a
-          href={`/blog/${slugifyStr(previousPost?.data.postSlug || "")}`}
-          class={`flex items-center transition-colors duration-200 ease-in-out`}
+          href={`/blog/${slugifyStr(previousPost?.slug || "")}`}
+          class={`btn btn-outline join-item flex items-center`}
         >
           <svg
             class={`mr-2 h-6 w-6 ${!hasPreviousPost ? "disabled-svg" : ""}`}
@@ -153,17 +138,17 @@ let formattedDate =
               d="M15 19l-7-7 7-7"
             />
           </svg>
-          <span class="font-bold">Post anterior</span>
+          Post anterior
         </a>
       )
     }
     {
       hasNextPost && (
         <a
-          href={`/blog/${slugifyStr(nextPost?.data?.postSlug ?? "")}`}
-          class={`flex items-center transition-colors duration-200 ease-in-out  `}
+          href={`/blog/${slugifyStr(nextPost?.slug ?? "")}`}
+          class={`btn btn-outline join-item flex items-center`}
         >
-          <span class="font-bold">Próximo post</span>
+          Próximo post
           <svg
             class={`ml-2 h-6 w-6 ${!hasNextPost ? "disabled-svg" : ""}`}
             stroke="currentColor"
@@ -210,9 +195,11 @@ let formattedDate =
     word-wrap: break-word;
   }
 
-  .pagination-wrapper {
-    @apply mb-8 mt-auto flex justify-center;
+  .pg-wrapper {
+    /** center */
+    @apply flex items-center justify-center space-x-0;
   }
+
   .disabled {
     @apply pointer-events-none select-none opacity-50;
   }

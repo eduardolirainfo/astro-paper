@@ -1,26 +1,24 @@
 ---
-import LinkButton from "./LinkButton.astro";
-
 export interface Props {
-  pageNum: number;
+  currentPage: number;
   totalPages: number;
   prevUrl: string;
   nextUrl: string;
 }
 
-const { pageNum, totalPages, prevUrl, nextUrl } = Astro.props;
+const { currentPage, totalPages, prevUrl, nextUrl } = Astro.props;
 
-const prev = pageNum > 1 ? "" : "disabled";
-const next = pageNum < totalPages ? "" : "disabled";
+const prev = currentPage > 1 ? "" : "disabled";
+const next = currentPage < totalPages ? "" : "disabled";
 ---
 
 {
   totalPages > 1 && (
-    <nav class="pagination-wrapper" aria-label="Pagination">
-      <LinkButton
+    <nav class="pagination-wrapper join" aria-label="Pagination">
+      <a
         disabled={prev === "disabled"}
-        href={`/blog${pageNum - 1 !== 1 ? "/" + (pageNum - 1) : ""}`}
-        className={`mr-4 select-none ${prev}`}
+        href={prevUrl}
+        className={`${prev} btn join-item`}
         ariaLabel="Anterior"
       >
         <svg
@@ -33,22 +31,24 @@ const next = pageNum < totalPages ? "" : "disabled";
           <path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z" />
         </svg>
         Anterior
-      </LinkButton>
+      </a>
       <div
         class="tooltip"
         data-tip={
           next === "disabled"
             ? "🎉 Parabéns! 🥳 Você chegou a última página"
-            : `Você está na página ${pageNum} ➡️ Prossiga! 🚀`
+            : `Você está na página ${currentPage} ➡️ Prossiga! 🚀`
         }
       >
-        {pageNum} de {totalPages}
+        <div class="btn join-item">
+          {currentPage} / {totalPages}
+        </div>
       </div>
 
-      <LinkButton
+      <a
         disabled={next === "disabled"}
-        href={`/blog/${pageNum + 1}`}
-        className={`ml-4 select-none ${next}`}
+        href={nextUrl}
+        className={`${next} btn join-item`}
         ariaLabel="Próximo"
       >
         Próximo
@@ -61,7 +61,7 @@ const next = pageNum < totalPages ? "" : "disabled";
         >
           <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
         </svg>
-      </LinkButton>
+      </a>
     </nav>
   )
 }

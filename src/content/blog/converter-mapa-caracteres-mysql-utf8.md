@@ -9,7 +9,7 @@ tags:
 author: Eduardo Lira
 rating: 5
 draft: false
-postSlug: converter-mapa-caracteres-mysql-utf8
+slug: converter-mapa-caracteres-mysql-utf8
 featured: false
 ---
 

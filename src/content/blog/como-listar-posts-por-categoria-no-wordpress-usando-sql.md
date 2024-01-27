@@ -4,7 +4,7 @@ description: Saiba como usar uma consulta SQL para listar posts por categoria no
 tags:
   - WordPress
   - SQL
-postSlug: como-listar-posts-por-categoria-no-wordpress-usando-sql
+slug: como-listar-posts-por-categoria-no-wordpress-usando-sql
 pubDatetime: 2015-11-19T14:04:27.000+00:00
 background: "#117ac9"
 author: Eduardo Lira

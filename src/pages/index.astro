@@ -8,13 +8,13 @@ import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
-import slugify from "@utils/slugify";
 import { SOCIALS } from "@config";
 
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -52,12 +52,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               </svg>
             </a>
           </h2>
+          <p class="my-4 md:text-lg lg:text-xl">💻 Programador</p>
           <p class="my-4 md:text-lg lg:text-xl">
-            💻 Programador 🌴 do Rio de Janeiro.
-          </p>
-          <p class="my-4 md:text-lg lg:text-xl">
-            💕 Dedicação para resolver problemas, criar coisas legais e beber ☕
-            !
+            Dedicação para resolver problemas, criar coisas legais e beber ☕ !
           </p>
           {
             socialCount > 0 && (
@@ -92,56 +89,58 @@ const socialCount = SOCIALS.filter(social => social.active).length;
               Destaque
             </h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {featuredPosts.map(({ data }) => (
+              {featuredPosts.map(({ data, slug }) => (
                 <Card
-                  href={`/blog/${slugify(data)}`}
+                  href={`/blog/${slug}/`}
                   frontmatter={data}
                   secHeading={false}
                 />
               ))}
             </div>
           </section>
+          {recentPosts.length > 0 && <Hr />}
         </>
       )
     }
-    <Hr />
-    <section id="recent-posts" transition:animate="slide">
-      <h2 class="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
-        Posts Recentes
-      </h2>
-      <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">
-        {
-          sortedPosts.map(
-            ({ data }, index) =>
-              index < 4 && (
-                <Card
-                  href={`/blog/${slugify(data)}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              )
-          )
-        }
-      </ul>
-      <div
-        class="all-posts-btn-wrapper"
-        class="mx-auto my-16 max-w-4xl px-4 lg:my-32"
-      >
-        ✨ Ver{" "}
-        <LinkButton className="link link-accent" href="/blog">
-          Todos os envios
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="currentColor"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts" transition:animate="slide">
+          <h2 class="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
+            Posts Recentes
+          </h2>
+          <ul class="grid grid-cols-1 gap-4 md:grid-cols-1">
+            {recentPosts.map(
+              ({ data, slug }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/blog/${slug}/`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )}
+          </ul>
+          <div
+            class="all-posts-btn-wrapper"
+            class="mx-auto my-16 max-w-4xl px-4 lg:my-32"
+          >
+            ✨ Ver{" "}
+            <a class="btn-item btn" href="/blog">
+              Todos os envios
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
+              </svg>
+            </a>
+          </div>
+        </section>
+      )
+    }
   </main>
   <Footer />
 </Layout>

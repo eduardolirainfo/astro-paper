@@ -4,7 +4,7 @@ description: Explore o mundo do Linux, sua história, significado e sua presenç
 tags:
   - Linux
   - Produtividade
-postSlug: introducao-linux-historia-significado
+slug: introducao-linux-historia-significado
 pubDatetime: 2017-01-09T00:00:00.000+00:00
 background: "#f26c6e"
 author: Eduardo Lira

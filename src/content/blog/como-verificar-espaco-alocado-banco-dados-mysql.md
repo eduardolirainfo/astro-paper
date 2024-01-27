@@ -6,7 +6,7 @@ tags:
   - SQL
   - DB
   - PHPMyAdmin
-postSlug: como-verificar-espaco-alocado-banco-dados-mysql
+slug: como-verificar-espaco-alocado-banco-dados-mysql
 pubDatetime: 2015-05-10T00:00:00.000+00:00
 author: Eduardo Lira
 rating: 5

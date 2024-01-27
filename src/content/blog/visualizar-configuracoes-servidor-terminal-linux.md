@@ -5,7 +5,7 @@ tags:
   - Linux
   - Apache
   - PHP
-postSlug: visualizar-configuracoes-servidor-terminal-linux
+slug: visualizar-configuracoes-servidor-terminal-linux
 pubDatetime: 2012-10-04
 background: "#637a91"
 author: Eduardo Lira

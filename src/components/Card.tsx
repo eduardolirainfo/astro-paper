@@ -7,6 +7,7 @@ export interface Props {
   frontmatter: CollectionEntry<"blog">["data"];
   secHeading?: boolean;
 }
+
 const styles = {
   cardContainer: "card-body grow w-full",
   titleLink:
@@ -19,6 +20,7 @@ const styles = {
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
   const { title, pubDatetime, description } = frontmatter;
+
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
     className: "text-lg font-medium decoration-dashed hover:underline",
@@ -36,9 +38,8 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
               {title}
             </h3>
           )}
-
           <span>
-            <Datetime datetime={pubDatetime} />
+            <Datetime pubDatetime={pubDatetime} />
           </span>
         </header>
         <p className={styles.cardDescription}>{description}</p>

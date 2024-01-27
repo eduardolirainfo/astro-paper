@@ -4,7 +4,7 @@ description: Explore os fundamentos da programação, incluindo sequência de in
 tags:
   - Algoritmos
   - DevOps
-postSlug: basico-programacao-sequencia-instrucoes
+slug: basico-programacao-sequencia-instrucoes
 pubDatetime: 2017-05-05 00:00:00 Z
 background: "#637a91"
 author: Eduardo Lira

@@ -5,7 +5,7 @@ tags:
   - WordPress
   - DB
   - CMS
-postSlug: principais-tabelas-wordpress-funcoes
+slug: principais-tabelas-wordpress-funcoes
 pubDatetime: 2012-09-23
 background: "#117ac9"
 author: Eduardo Lira

@@ -8,8 +8,13 @@ export const SITE: Site = {
   ogImage: "bg-cover.jpg",
   lightAndDarkMode: true,
   postPerPage: 4,
+  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
-export const LOCALE = ["pt-BR"];
+
+export const LOCALE = {
+  lang: "pt",
+  langTag: ["pt-BR"],
+} as const;
 
 export const LOGO_IMAGE = {
   enable: false,

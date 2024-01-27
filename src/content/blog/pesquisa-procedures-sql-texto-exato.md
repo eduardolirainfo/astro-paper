@@ -10,7 +10,7 @@ tags:
 author: Eduardo Lira
 rating: 5
 draft: false
-postSlug: como-pesquisar-procedures-sql
+slug: como-pesquisar-procedures-sql
 featured: false
 ---
 

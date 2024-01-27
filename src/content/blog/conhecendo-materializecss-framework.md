@@ -4,7 +4,7 @@ description: Descubra as características do MaterializeCSS, um framework front-
 tags:
   - MaterializeCSS
   - Bootstrap
-postSlug: conhecendo-materializecss-framework
+slug: conhecendo-materializecss-framework
 pubDatetime: 2016-10-25 03:10:51 Z
 author: Eduardo Lira
 rating: 5

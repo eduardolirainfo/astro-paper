@@ -4,7 +4,7 @@ description: Saiba como corrigir o erro 'Warning - PARAMETER 1 TO MODMAINMENUHEL
 tags:
   - Joomla
   - PHP
-postSlug: corrigir-erro-warning-parametro-1-modmainmenuhelper-buildxml-joomla
+slug: corrigir-erro-warning-parametro-1-modmainmenuhelper-buildxml-joomla
 pubDatetime: 2015-05-20T20:41:23.000+00:00
 background: "#637a91"
 author: Eduardo Lira

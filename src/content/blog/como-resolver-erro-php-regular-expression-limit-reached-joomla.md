@@ -4,7 +4,7 @@ description: Saiba como corrigir o erro 500 PHP REGULAR EXPRESSION LIMIT REACHED
 tags:
   - Joomla
   - PHP
-postSlug: como-resolver-erro-php-regular-expression-limit-reached-joomla
+slug: como-resolver-erro-php-regular-expression-limit-reached-joomla
 pubDatetime: 2015-05-20T20:11:23.000+00:00
 background: "#637a91"
 author: Eduardo Lira

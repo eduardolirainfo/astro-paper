@@ -3,7 +3,7 @@ title: Como Corrigir o informando que a chave de registro já existe no Magento
 description: Saiba como resolver o erro "Mage registry key _resource_helper/core already exists" ao transferir sua loja Magento para um servidor de hospedagem e evitar problemas de registro.
 tags:
   - Magento
-postSlug: como-corrigir-erro-mage-registry-key-magento
+slug: como-corrigir-erro-mage-registry-key-magento
 pubDatetime: 2015-10-22T14:26:34.000+00:00
 background: "#f68d2e"
 author: Eduardo Lira

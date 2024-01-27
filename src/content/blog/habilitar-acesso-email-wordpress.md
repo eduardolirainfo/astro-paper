@@ -4,7 +4,7 @@ description: Saiba como permitir o acesso ao painel de administração do WordPr
 tags:
   - WordPress
   - PHP
-postSlug: habilitar-acesso-email-wordpress
+slug: habilitar-acesso-email-wordpress
 pubDatetime: 2012-09-23
 author: Eduardo Lira
 draft: false

@@ -1,12 +1,19 @@
 import { LOCALE } from "@config";
 
-export interface Props {
-  datetime: string | Date;
+interface DatetimesProps {
+  pubDatetime: string | Date;
+}
+
+interface Props extends DatetimesProps {
   size?: "sm" | "lg";
   className?: string;
 }
 
-export default function Datetime({ datetime, size = "sm", className }: Props) {
+export default function Datetime({
+  pubDatetime,
+  size = "sm",
+  className,
+}: Props) {
   return (
     <div className={`flex items-center space-x-2 opacity-80 ${className}`}>
       <svg
@@ -20,34 +27,35 @@ export default function Datetime({ datetime, size = "sm", className }: Props) {
         <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path>
         <path d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path>
       </svg>
-      <span className="sr-only">Postado em:</span>
+      <span className="sr-only">Publicado:</span>
+
       <span className={`italic ${size === "sm" ? "text-sm" : "text-base"}`}>
-        <FormattedDatetime datetime={datetime} />
+        <FormattedDatetime pubDatetime={pubDatetime} />
       </span>
     </div>
   );
 }
 
-const FormattedDatetime = ({ datetime }: { datetime: string | Date }) => {
-  const myDatetime = new Date(datetime);
+const FormattedDatetime = ({ pubDatetime }: DatetimesProps) => {
+  const myDatetime = new Date(pubDatetime);
 
-  const date = myDatetime.toLocaleDateString(LOCALE, {
+  const date = myDatetime.toLocaleDateString(LOCALE.langTag, {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
   });
 
-  const time = myDatetime.toLocaleTimeString(LOCALE, {
+  const time = myDatetime.toLocaleTimeString(LOCALE.langTag, {
     hour: "2-digit",
     minute: "2-digit",
   });
 
   return (
     <>
-      {date}
+      <time dateTime={myDatetime.toISOString()}>{date}</time>
       <span aria-hidden="true"> | </span>
       <span className="sr-only">&nbsp;at&nbsp;</span>
-      {time}
+      <span className="text-nowrap">{time}</span>
     </>
   );
 };

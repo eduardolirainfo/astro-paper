@@ -3,7 +3,7 @@ title: Como Excluir Pedidos Não Concluídos no Prestashop
 description: Saiba como excluir pedidos não concluídos, antigos ou de teste no Prestashop, seja editando os arquivos AdminOrders.php ou utilizando um módulo gratuito.
 tags: 
 	- Prestashop
-postSlug: excluir-pedidos-nao-concluidos-prestashop
+slug: excluir-pedidos-nao-concluidos-prestashop
 pubDatetime: 2015-05-29T00:00:00.000+00:00
 background: "#ff0076"
 author: Eduardo Lira

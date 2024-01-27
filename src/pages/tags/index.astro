@@ -9,8 +9,9 @@ import getUniqueTags from "@utils/getUniqueTags";
 import getPostsByTag from "@utils/getPostsByTag";
 import { SITE } from "@config";
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
-const tags = getUniqueTags(posts);
+const posts = await getCollection("blog");
+
+let tags = getUniqueTags(posts);
 ---
 
 <Layout title={`Tags | ${SITE.title}`}>
@@ -18,10 +19,10 @@ const tags = getUniqueTags(posts);
   <Main pageTitle="Tags" pageDesc="Todas as tags utilizadas no blog.">
     <ul>
       {
-        tags.map(tag => {
+        tags.map(({ tag }) => {
           const tagPosts = getPostsByTag(posts, tag);
           const tagCount = tagPosts.length;
-          return <Tag name={tag} size="lg" count={tagCount} />;
+          return <Tag {tag} size="lg" count={tagCount} />;
         })
       }
     </ul>

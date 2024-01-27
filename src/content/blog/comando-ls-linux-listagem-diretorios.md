@@ -3,7 +3,7 @@ title: Comando ls no Linux - Listando Conteúdo de Diretórios
 description: Aprenda a utilizar o comando "ls" no Linux para listar o conteúdo de diretórios, incluindo opções como -l, -a, -i e muito mais. Explore permissões de arquivo e conceitos como setuid, setgid e sticky bit.
 tags:
   - Linux
-postSlug: comando-ls-linux-listagem-diretorios
+slug: comando-ls-linux-listagem-diretorios
 pubDatetime: 2017-01-10T11:01:38.000+00:00
 background: "#f26c6e"
 author: Eduardo Lira

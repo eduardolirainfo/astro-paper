@@ -4,7 +4,7 @@ description: Saiba como resolver problemas com códigos de rastreio que não apa
 tags:
   - Prestashop
   - DB
-postSlug: corrigir-problemas-codigos-rastreio-prestashop
+slug: corrigir-problemas-codigos-rastreio-prestashop
 pubDatetime: 2015-05-20T14:52:00.000+00:00
 background: "#ff0076"
 author: Eduardo Lira

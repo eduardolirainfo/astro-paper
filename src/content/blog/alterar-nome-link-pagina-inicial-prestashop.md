@@ -5,7 +5,7 @@ tags:
   - PrestaShop
   - DB
   - phpMyAdmin
-postSlug: alterar-nome-link-pagina-inicial-prestashop
+slug: alterar-nome-link-pagina-inicial-prestashop
 pubDatetime: 2015-11-19T14:04:27.000+00:00
 background: "#ff0076"
 author: Eduardo Lira

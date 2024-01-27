@@ -3,7 +3,7 @@ title: O que é um Algoritmo - Propriedades e Tipos
 description: Saiba o que são algoritmos, suas propriedades e tipos, e como eles desempenham um papel fundamental na resolução de problemas.
 tags:
   - Algoritmos
-postSlug: o-que-e-um-algoritmo-propriedades-tipos
+slug: o-que-e-um-algoritmo-propriedades-tipos
 pubDatetime: 2017-09-15
 background: "#637a91"
 author: Eduardo Lira

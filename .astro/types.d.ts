@@ -348,7 +348,7 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 "pesquisa-procedures-sql-texto-exato.md": {
 	id: "pesquisa-procedures-sql-texto-exato.md";
-  slug: "pesquisa-procedures-sql-texto-exato";
+  slug: "como-pesquisar-procedures-sql";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

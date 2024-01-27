@@ -4,7 +4,7 @@ description: Descubra o que é o desenvolvimento ágil de software e como o Scru
 tags:
   - Scrum
   - Produtividade
-postSlug: introducao-desenvolvimento-agil-scrum
+slug: introducao-desenvolvimento-agil-scrum
 pubDatetime: 2016-11-04T02:11:59.000+00:00
 background: "#637a91"
 author: Eduardo Lira

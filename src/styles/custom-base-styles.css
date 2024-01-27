@@ -22,9 +22,9 @@
 
   body {
     @apply min-h-screen flex-col selection:bg-opacity-70;
-    font-family: 'Open Sans', sans-serif;
-  }
-
+    font-family: 'Open Sans', sans-serif; 
+  } 
+  
   section,
   footer {
     @apply mx-auto max-w-4xl px-4;

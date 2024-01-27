@@ -4,7 +4,7 @@ description: Saiba como redefinir a senha do administrador no WordPress quando o
 tags:
   - WordPress
   - SQL
-postSlug: como-redefinir-senha-administrador-wordpress-bloqueio
+slug: como-redefinir-senha-administrador-wordpress-bloqueio
 pubDatetime: 2015-05-16T09:45:23.000+00:00
 background: ""
 author: Eduardo Lira
