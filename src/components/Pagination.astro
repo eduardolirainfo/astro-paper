@@ -17,7 +17,7 @@ const next = currentPage < totalPages ? "" : "disabled";
     <nav class="pagination-wrapper join" aria-label="Pagination">
       <a
         href={prevUrl}
-        class={`${next} btn join-item ${next === "disabled" ? "disabled" : ""}`}
+        class={`${prev} btn join-item ${prev === "disabled" ? "disabled" : ""}`}
         aria-disabled={prev === "disabled"}
         aria-label="Anterior"
       >

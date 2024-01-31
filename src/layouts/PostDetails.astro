@@ -38,6 +38,7 @@ const hasNextPost = nextPostIndex < posts.length;
 
 const previousPost = hasPreviousPost ? posts[previousPostIndex] : null;
 const nextPost = hasNextPost ? posts[nextPostIndex] : null;
+
 ---
 
 <Layout
@@ -78,11 +79,20 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
         class="header-card dark:highlight-white/5 relative mx-auto mb-8 max-w-5xl overflow-visible rounded-xl bg-opacity-70 bg-cover bg-center bg-no-repeat shadow-lg ring-1 ring-black/5
         sm:px-4"
       >
-        <div
-          class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-          style={`background-image: url('${ogImage}');`}
-        >
-        </div>
+        {
+          ogImage ? (
+            <div
+              class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+              style={`background-image: url('${ogImage}')`}
+            />
+          ) : (
+            <div
+              class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+              style="background-image: url('/assets/sparkles.gif');"
+            />
+          )
+        }
+
         <div class="relative z-10">
           <div
             class="grid-fake o absolute left-0 top-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
@@ -195,7 +205,6 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
   }
 
   .pg-wrapper {
-    /** center */
     @apply flex items-center justify-center space-x-0;
   }
 
@@ -245,11 +254,11 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
       });
     }
 
-    async function copyCode(block: HTMLElement, button: HTMLButtonElement) {
+    async function copyCode(block, button) {
       let code = block.querySelector("code");
-      let text = code?.innerText;
+      let text = code.innerText;
 
-      await navigator.clipboard.writeText(text ?? "");
+      await navigator.clipboard.writeText(text);
 
       button.innerText = "Copiado";
 
@@ -263,7 +272,7 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
     var astroCodeContainers = document.querySelectorAll(".astro-code");
 
     astroCodeContainers.forEach(function (container) {
-      if (container.parentNode instanceof HTMLElement) {
+      if (container.parentNode) {
         container.parentNode.classList.add(
           "mockup-code",
           "bg-neutral",

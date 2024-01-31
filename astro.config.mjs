@@ -7,6 +7,11 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   site: "https://eduardolira.dev.br/",
+  prefetch: true,
+  experimental: {
+    clientPrerender: true,
+    globalRoutePriority: true,
+  },
   integrations: [
     tailwind({
       devOptions: {
@@ -20,6 +25,10 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
+  markdownOptions: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
   markdown: {
     shikiConfig: {
       theme: "material-theme-palenight",
