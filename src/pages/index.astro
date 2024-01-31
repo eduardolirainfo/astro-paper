@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
+// import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
@@ -30,7 +30,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           >
             Seja
             <br />
-            <span class="bem-vindo text-primary">Bem-vindo</span>
+            <span
+              class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+              >Bem-vindo</span
+            >
             <a
               target="_blank"
               href="/rss.xml"

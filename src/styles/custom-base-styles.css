@@ -21,7 +21,7 @@
 
 
   body {
-    @apply min-h-screen flex-col selection:bg-opacity-70;
+    @apply min-h-screen flex-col;
     font-family: 'Open Sans', sans-serif; 
   } 
   

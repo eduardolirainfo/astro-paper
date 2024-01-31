@@ -61,9 +61,6 @@
 </button>
 
 <script type="module">
-  let offset = 0;
-  let limit = 9;
-
   document
     .getElementById("js-clear-search")
     .addEventListener("click", function () {
@@ -372,9 +369,9 @@
     ".modal .box .left-container .icon img"
   );
 
-  const abilitiesModalPokemon = document.querySelector(
-    ".modal .box .left-container .abilities ul"
-  );
+  // const abilitiesModalPokemon = document.querySelector(
+  //   ".modal .box .left-container .abilities ul"
+  // );
   const imgModalPokemon = document.getElementById("js-image-pokemon");
   const nomeModalPokemon = document.querySelector(
     ".modal .box .right-container .name h2"
@@ -593,9 +590,9 @@
   }
 
   const areaTypes = document.getElementById("js-area-types");
-  const areaTypesSelect = document.querySelector(
-    ".select-custom .dropdown-select"
-  );
+  // const areaTypesSelect = document.querySelector(
+  //   ".select-custom .dropdown-select"
+  // );
 
   async function fetchTypes() {
     try {
@@ -608,7 +605,7 @@
       selectElement.classList.add("mobile-nav", "active");
       areaTypes.appendChild(selectElement);
 
-      allTypes.slice(0, 18).forEach((type, index) => {
+      allTypes.slice(0, 18).forEach(type => {
         const optionType = document.createElement("option");
         optionType.classList = `js-filter-type-pokemon ${type.name}`;
         optionType.setAttribute("value", type.name);

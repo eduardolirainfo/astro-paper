@@ -38,15 +38,6 @@ const hasNextPost = nextPostIndex < posts.length;
 
 const previousPost = hasPreviousPost ? posts[previousPostIndex] : null;
 const nextPost = hasNextPost ? posts[nextPostIndex] : null;
-
-let date = new Date(pubDatetime);
-
-let formattedDate =
-  date.getUTCFullYear() +
-  "-" +
-  (date.getUTCMonth() + 1) +
-  "-" +
-  date.getUTCDate();
 ---
 
 <Layout
@@ -84,27 +75,35 @@ let formattedDate =
       transition:animate="none"
     >
       <header
-        class="header-card dark:highlight-white/5 relative mx-auto mb-8 max-w-5xl overflow-visible rounded-xl shadow-lg ring-1 ring-black/5 sm:px-4"
+        class="header-card dark:highlight-white/5 relative mx-auto mb-8 max-w-5xl overflow-visible rounded-xl bg-opacity-70 bg-cover bg-center bg-no-repeat shadow-lg ring-1 ring-black/5
+        sm:px-4"
       >
         <div
-          class="grid-fake o absolute left-0 top-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          style={`background-image: url('${ogImage}');`}
         >
         </div>
-        <div
-          class="my-2 px-8 py-8 sm:rounded-md md:px-8 md:py-8 lg:px-8 lg:py-8"
-        >
-          <h1
-            transition:name={slugifyStr(title)}
-            itemprop="headline"
-            class="sm:text-3xlmd:text-5xl mb-4 text-2xl font-bold lg:text-6xl"
+        <div class="relative z-10">
+          <div
+            class="grid-fake o absolute left-0 top-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
           >
-            {title}
-          </h1>
-          <Datetime pubDatetime={pubDatetime} size="lg" className="my-2" />
-        </div>
-        <div
-          class="grid-fake o absolute bottom-0 right-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
-        >
+          </div>
+          <div
+            class="my-2 px-8 py-8 sm:rounded-md md:px-8 md:py-8 lg:px-8 lg:py-8"
+          >
+            <h1
+              transition:name={slugifyStr(title)}
+              itemprop="headline"
+              class="sm:text-3xlmd:text-5xl mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-2xl font-bold text-transparent lg:text-6xl"
+            >
+              {title}
+            </h1>
+            <Datetime pubDatetime={pubDatetime} size="lg" className="my-2" />
+          </div>
+          <div
+            class="grid-fake o absolute bottom-0 right-0 z-10 h-16 w-16 md:ml-20 md:mt-24 md:h-40 md:w-40"
+          >
+          </div>
         </div>
       </header>
       {tags.map(tag => <Tag tag={slugifyStr(tag)} />)}
@@ -246,11 +245,11 @@ let formattedDate =
       });
     }
 
-    async function copyCode(block, button) {
+    async function copyCode(block: HTMLElement, button: HTMLButtonElement) {
       let code = block.querySelector("code");
-      let text = code.innerText;
+      let text = code?.innerText;
 
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(text ?? "");
 
       button.innerText = "Copiado";
 
@@ -264,7 +263,7 @@ let formattedDate =
     var astroCodeContainers = document.querySelectorAll(".astro-code");
 
     astroCodeContainers.forEach(function (container) {
-      if (container.parentNode) {
+      if (container.parentNode instanceof HTMLElement) {
         container.parentNode.classList.add(
           "mockup-code",
           "bg-neutral",

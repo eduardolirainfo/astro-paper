@@ -12,8 +12,6 @@ draft: false
 featured: false
 ---
 
-## Corrigindo o Erro `PHPMAILER_RECIPIENTS_FAILED` no Joomla
-
 Se você está enfrentando o erro `PHPMAILER_RECIPIENTS_FAILED` ao tentar enviar um formulário no Joomla, siga estas etapas para corrigi-lo. O erro geralmente ocorre em versões mais antigas do Joomla, como a 1.5, devido a problemas no cabeçalho de autenticação e envio de emails.
 
 ### Passo 1: Localizar o Arquivo no Servidor

@@ -16,10 +16,10 @@ const next = currentPage < totalPages ? "" : "disabled";
   totalPages > 1 && (
     <nav class="pagination-wrapper join" aria-label="Pagination">
       <a
-        disabled={prev === "disabled"}
         href={prevUrl}
-        className={`${prev} btn join-item`}
-        ariaLabel="Anterior"
+        class={`${next} btn join-item ${next === "disabled" ? "disabled" : ""}`}
+        aria-disabled={prev === "disabled"}
+        aria-label="Anterior"
       >
         <svg
           stroke="currentColor"
@@ -46,10 +46,10 @@ const next = currentPage < totalPages ? "" : "disabled";
       </div>
 
       <a
-        disabled={next === "disabled"}
         href={nextUrl}
-        className={`${next} btn join-item`}
-        ariaLabel="Próximo"
+        class={`${next} btn join-item ${next === "disabled" ? "disabled" : ""}`}
+        aria-disabled={next === "disabled"}
+        aria-label="Próximo"
       >
         Próximo
         <svg

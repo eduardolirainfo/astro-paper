@@ -12,7 +12,7 @@ author: Eduardo Lira
 draft: false
 rating: 5
 ogImage: https://res.cloudinary.com/dcu0dsel9/image/upload/v1671950858/wp4database_yntpqm.png
-featured: true
+featured: false
 ---
 
 O WordPress é composto por algumas tabelas principais que sempre estarão disponíveis a partir da instalação. Veja no diagrama abaixo:
