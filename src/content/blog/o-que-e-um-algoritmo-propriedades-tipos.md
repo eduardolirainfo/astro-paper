@@ -7,47 +7,72 @@ slug: o-que-e-um-algoritmo-propriedades-tipos
 pubDatetime: 2017-09-15
 background: "#637a91"
 author: Eduardo Lira
+ogImage: "https://res.cloudinary.com/dcu0dsel9/image/upload/v1708140296/programacao.jpg"
 rating: 5
 draft: false
 featured: false
 ---
 
-## Entendendo Algoritmos - Uma Introdução
+## Introdução
 
 Antes de um computador executar qualquer tarefa, ele recebe um algoritmo, que é uma sequência de instruções que especifica como realizar a operação. Um algoritmo pode ser simplesmente definido como um conjunto de passos que descreve como uma tarefa será executada.
 
-No artigo anterior desta série ([#1 - O que é um programa?](/blog/basico-programacao-sequencia-instrucoes)), exploramos a ideia de que um programa é uma sequência de instruções que descreve como realizar uma operação de computação. Agora, vamos entender melhor o conceito de algoritmo, que é a totalidade das ações que compõem um processo.
+No artigo anterior desta série [#1 - O que é um programa?](/blog/basico-programacao-sequencia-instrucoes), exploramos a ideia de que um programa é uma sequência de instruções que descreve como realizar uma operação de computação. Agora, vamos entender melhor o conceito de algoritmo, que é a totalidade das ações que compõem um processo.
 
-Por muitos séculos, algoritmos estavam principalmente associados a números e ações matemáticas simples. A matemática era, em grande parte, uma ciência da computação aplicada. Algoritmos frequentemente eram apresentados como fórmulas matemáticas.
+## Definição de Algoritmo
 
-## Instruções Compreensíveis
+Algumas definições:
 
-Um algoritmo é uma instrução clara e precisa para quem o executa. Nos próximos artigos, exploraremos por que isso é tão importante.
+> "Algoritmo é uma sequência finita de instruções ou operações cuja execução, em tempo finito, resolve um problema computacional, qualquer que seja sua instância" (Salvetti, 1999).
 
-Mesmo que você não seja um programador, provavelmente utiliza algoritmos diariamente ao executar tarefas comuns, como fazer um bolo, acessar o Facebook, ou ir ao trabalho. A maioria das tarefas, instruções ou regras visa resolver problemas. A compreensão de algoritmos pode mudar sua perspectiva sobre como as coisas funcionam.
+> "Algoritmo é a descrição de uma sequência de passos que deve ser seguida para a realização de uma tarefa" (Ascencio, 1999).
 
-## Propriedades dos Algoritmos
+> "Algoritmo é uma sequência de passos que visa atingir um objetivo bem definido" (Forbellone, 1999).
 
-Vamos resumir algumas propriedades essenciais dos algoritmos para facilitar o aprendizado:
+Essas definições destacam a importância de seguir uma sequência de passos bem definida para resolver um problema computacional.
 
-1. **Eficácia** - Um algoritmo deve sempre levar à conclusão da tarefa, mesmo que em alguns casos seja infinito. Por exemplo, alguns sistemas de coleta de dados podem envolver uma repetição contínua de ações.
+## Exemplos de Algoritmos
 
-2. **Precisão** - Cada etapa do algoritmo deve ser clara e executável, com informações suficientes. As instruções devem ser simples e elementares, garantindo que qualquer pessoa possa entender o significado de cada etapa. A escolha da linguagem na qual o algoritmo é escrito é crucial.
+Vamos analisar alguns exemplos de algoritmos comuns:
 
-3. **Generalidade** - Um algoritmo deve ser adequado para resolver diferentes problemas com diferentes dados de entrada. Ele não deve ser limitado a resolver apenas um problema específico, mas sim uma classe de problemas.
+1. **Algoritmo de Somar Três Números**
 
-4. **Determinismo** - Os resultados de um algoritmo aplicado aos mesmos dados de origem sempre serão os mesmos. Portanto, um processo que envolve sorteio, como jogar uma moeda, não é um algoritmo.
+   - Receber os três números.
+   - Somar os três números.
+   - Mostrar o resultado obtido.
 
-## Tipos de Algoritmos
+2. **Algoritmo de Fazer um Sanduíche**
 
-Existem diferentes tipos de algoritmos, incluindo:
+   - Pegar o pão.
+   - Cortar o pão ao meio.
+   - Pegar a maionese e passá-la no pão.
+   - Adicionar alface e tomate no pão.
+   - Fritar o hambúrguer.
+   - Colocar o hambúrguer no pão.
 
-1. **Algoritmos Lineares** - As instruções são executadas sequencialmente, uma após a outra, na ordem em que estão escritas.
+3. **Algoritmo de Trocar uma Lâmpada**
+   - Pegar uma lâmpada nova.
+   - Posicionar a escada embaixo da lâmpada queimada.
+   - Subir na escada com a lâmpada nova na mão.
+   - Retirar a lâmpada queimada e colocar a nova.
+   - Descer da escada.
+   - Testar o interruptor.
+   - Guardar a escada e descartar a lâmpada antiga.
 
-2. **Algoritmos Cíclicos** - Um conjunto de ações é repetido enquanto uma condição predefinida é atendida.
+Esses exemplos ilustram como os algoritmos são usados em situações do dia a dia para realizar tarefas específicas de maneira sequencial e precisa.
 
-3. **Algoritmos de Ramificação** - A execução das instruções depende de condições específicas.
+## Método para a Construção de Algoritmos
 
-A compreensão desses tipos de algoritmos nos ajudará a explorar ainda mais o mundo dos algoritmos nos próximos artigos.
+Para construir um algoritmo eficaz, é importante seguir estas etapas:
 
-O campo dos algoritmos é vasto, e continuaremos a aprender mais sobre eles em futuros artigos. Se tiver alguma dúvida, só falar. 🏃
+1. **Compreender o Problema**: Entender completamente o problema a ser resolvido, identificando os pontos-chave e os dados envolvidos.
+
+2. **Definir os Dados de Entrada e Saída**: Identificar quais dados serão fornecidos e quais serão os resultados esperados após o processamento.
+
+3. **Desenvolver o Processamento**: Determinar quais cálculos serão realizados e as restrições envolvidas, transformando os dados de entrada em dados de saída.
+
+4. **Escolher a Representação do Algoritmo**: Decidir entre uma descrição narrativa, um fluxograma ou pseudocódigo para representar o algoritmo de forma clara e compreensível.
+
+5. **Testar o Algoritmo**: Realizar simulações para garantir que o algoritmo funcione corretamente em diferentes cenários.
+
+Os algoritmos são fundamentais para a resolução de problemas computacionais, e compreender seu funcionamento é essencial para qualquer pessoa que deseje se aventurar no mundo da programação. Em breve, exploraremos ainda mais os diferentes tipos de algoritmos e técnicas de desenvolvimento. 🏃

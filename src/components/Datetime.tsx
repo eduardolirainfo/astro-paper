@@ -51,11 +51,11 @@ const FormattedDatetime = ({ pubDatetime }: DatetimesProps) => {
   });
 
   return (
-    <>
+    <div>
       <time dateTime={myDatetime.toISOString()}>{date}</time>
       <span aria-hidden="true"> | </span>
       <span className="sr-only">&nbsp;at&nbsp;</span>
       <span className="text-nowrap">{time}</span>
-    </>
+    </div>
   );
 };

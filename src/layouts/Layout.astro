@@ -21,6 +21,7 @@ const {
   ogImage = SITE.ogImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   pubDatetime,
+  scrollSmooth = false,
 } = Astro.props;
 
 const socialImageURL = new URL(
@@ -28,9 +29,13 @@ const socialImageURL = new URL(
   Astro.url.origin
 ).href;
 ---
-
-<html lang="pt-BR" data-theme="lofi">
-  <head transition:animate="none">
+ 
+<!doctype html>
+<html
+lang="pt-BR" 
+data-theme="light"
+>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

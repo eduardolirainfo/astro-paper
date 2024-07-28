@@ -4,7 +4,7 @@
 
 <div title="Change Theme" class="dropdown dropdown-end" id="theme-selector">
   <div
-    tabindex="0"
+    id="theme-selector-button"
     class="btn gap-1 rounded font-bold normal-case transition duration-300 hover:rounded-lg hover:bg-accent hover:bg-opacity-30 hover:text-current"
   >
     <svg
@@ -34,7 +34,7 @@
     </svg>
   </div>
   <div
-    tabindex="0"
+    id="conteudo"
     class="dropdown-content top-px mt-16 h-[28.6rem] max-h-[calc(100vh-10rem)] w-56 overflow-y-auto rounded-box border border-white/5 bg-base-200 text-base-content shadow-2xl outline outline-1 outline-black/5"
   >
     <div class="grid grid-cols-1 gap-3 p-3">
@@ -754,7 +754,30 @@
   }
 </style>
 
-<script type="module">
+<script>
+  function toggleConteudo() {
+    let toggle = document.getElementById("theme-selector-button");
+    var conteudo = document.getElementById("conteudo");
+    if (toggle && conteudo) {
+      toggle.addEventListener("click", () => {
+        conteudo.classList.toggle("show");
+      });
+
+      // Adiciona um ouvinte de evento para fechar o dropdown quando clicar fora dele
+      document.addEventListener("click", event => {
+        if (
+          !conteudo.contains(event.target) &&
+          !toggle.contains(event.target)
+        ) {
+          conteudo.classList.remove("show");
+        }
+      });
+    }
+  }
+
+  toggleConteudo();
+  document.addEventListener("astro:after-swap", toggleConteudo);
+
   function ThemeSelector() {
     const themeSelectors = document.querySelectorAll(
       "#theme-selector button span[data-theme]"

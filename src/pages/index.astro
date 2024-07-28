@@ -21,11 +21,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <Layout>
   <Header />
-  <main id="main" transition:animate="none">
-    <section id="hero" transition:animate="none">
+  <main id="main">
+    <section id="hero">
       <div class="md:flex">
-        <div transition:animate="none">
-          <h2
+        <div>
+          <h1
             class="my-8 text-4xl font-bold tracking-tight sm:text-6xl md:text-[text-4rem] lg:text-[5.5rem] lg:leading-none"
           >
             Seja
@@ -54,11 +54,12 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                 ></path><circle cx="6" cy="18" r="2"></circle>
               </svg>
             </a>
-          </h2>
-          <p class="my-4 md:text-lg lg:text-xl">💻 Programador</p>
-          <p class="my-4 md:text-lg lg:text-xl">
-            Dedicação para resolver problemas, criar coisas legais e beber ☕ !
-          </p>
+          </h1>
+          <p class="my-4 md:text-lg lg:text-xl">👋 Olá, sou Eduardo Lira!          
+          <p class="my-4 md:text-lg lg:text-xl">💻 Desenvolvedor de software do Brasil 🇧🇷</p> 
+          <p class="my-4 md:text-lg lg:text-xl">🚀 Apaixonado por tecnologia</p> 
+          <p class="my-4 md:text-lg lg:text-xl">📚 Aprendendo algo novo todos os dias</p>
+ 
           {
             socialCount > 0 && (
               <div class="social-wrapper">
@@ -90,7 +91,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured" transition:animate="slide">
+          <section id="featured" transition:animate="slide" class="pb-6 pt-4">
             <h2 class="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
               Destaque
             </h2>
@@ -111,7 +112,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts" transition:animate="slide">
+        <section id="recent-posts" transition:animate="slide" class="pb-6 pt-4">
           <h2 class="mb-8 text-2xl font-bold md:text-3xl lg:text-4xl">
             Posts Recentes
           </h2>

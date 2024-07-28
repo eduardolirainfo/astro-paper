@@ -13,7 +13,7 @@ const { activeNav } = Astro.props;
   <div class="mx-auto max-w-4xl">
     <nav id="nav-menu" class="top-nav-wrap flex items-center px-2 text-base">
       <a href="/" class="logo pt-2 text-primary">
-        <h2
+        <h1
           class="font-mplus text-2xl font-semibold tracking-tighter sm:text-3xl"
         >
           <svg
@@ -35,7 +35,7 @@ const { activeNav } = Astro.props;
             ></path>
           </svg>
           {SITE.title}
-        </h2>
+        </h1>
       </a>
       <button
         class="hamburger-menu focus-outline"
@@ -204,7 +204,8 @@ const { activeNav } = Astro.props;
   }
 </style>
 
-<script>
+<script> 
+ 
   function toggleNav() {
     const menuBtn = document.querySelector(".hamburger-menu");
     const menuIcon = document.querySelector(".menu-icon");

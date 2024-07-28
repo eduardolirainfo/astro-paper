@@ -38,13 +38,25 @@
     @apply inline-block h-6 w-6 scale-125 fill-transparent stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110;
   }
 
-  html {
+ html {
     overflow-y: scroll;
+    /* scrollbar-width: thin; */
+  }  
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary bg-opacity-50;
   }
-
-
+  
   ::-webkit-scrollbar {
-    @apply w-3;
+    @apply w-2 bg-secondary bg-opacity-50;
+  }
+  
+  ::-webkit-scrollbar-thumb {  
+    @apply bg-accent bg-opacity-70;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+      @apply  bg-primary bg-opacity-70;
   }
 
   h1,
@@ -113,5 +125,42 @@
     flex-wrap: wrap;
     align-items: stretch;
   }
+  .glass{
+    background-image: 
+    linear-gradient(135deg,rgb(255 255 255/var(--glass-opacity,2%)) 0,#0000 100%),linear-gradient(var(--glass-reflex-degree,100deg),rgb(255 255 255/var(--glass-reflex-opacity,3%)) 30%,#0000 30%)!important
+  }
+  .prose h2#introdução {
+    @apply mb-2;
+  }
+  @media (max-width: 640px) {
+    .prose details {
+      display: none;
+    }
+  }
 
+  .prose summary {
+    @apply focus-outline text-accent
+  }
+  .prose details a.active {
+    @apply  bg-secondary bg-opacity-30 rounded-lg text-primary badge badge-primary border-0;
+  }
+
+  .prose details a:hover {
+    @apply bg-secondary bg-opacity-10;
+  }
+
+  .prose summary::marker,.prose summary::-webkit-details-marker {
+     @apply text-secondary  !important;
+  }
+ 
+  .prose h2#introdução {
+    font-size: 0;
+  }
+
+ .dropdown-content.show{
+  visibility: visible !important; 
+  opacity: 1 !important; 
+}
+ 
+ 
 }

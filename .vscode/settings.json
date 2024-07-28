@@ -1,5 +1,7 @@
 {
     "cSpell.enableFiletypes": [
         "!css"
-    ]
+    ], 
+    "recommendations": ["astro-build.astro-vscode"],
+    "unwantedRecommendations": []
 }

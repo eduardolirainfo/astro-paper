@@ -31,7 +31,7 @@ const numberOfItems: number = breadcrumbList.length;
               index + 1
             }`}
           >
-            <a href={`${currentUrlPath}`}>
+            <a href={`${currentUrlPath}`} aria-label={`Link para ${breadcrumb}`}>
               {(numberOfItems === 1 && breadcrumb === "tags") ||
               breadcrumbList.includes("tags") ? (
                 <>
@@ -119,7 +119,7 @@ const numberOfItems: number = breadcrumbList.length;
           </li>
         ) : (
           <li class={`breadcrumb-item bg-primary item-${index + 1}`}>
-            <a href={`/${breadcrumb}`}>
+            <a href={`/${breadcrumb}`} aria-label={`Link para ${breadcrumb}`}>
               <span class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ const numberOfItems: number = breadcrumbList.length;
       )
     }
     <li class={`bg-primary breadcrumb-item item-0`}>
-      <a href="/">
+      <a href="/" aria-label="Link para Home">
         <span class="icon icon-file">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -19,8 +19,6 @@ declare module 'astro:content' {
 }
 
 declare module 'astro:content' {
-	export { z } from 'astro/zod';
-
 	type Flatten<T> = T extends { [K: string]: infer U } ? U : never;
 
 	export type CollectionKey = keyof AnyEntryMap;
@@ -28,53 +26,6 @@ declare module 'astro:content' {
 
 	export type ContentCollectionKey = keyof ContentEntryMap;
 	export type DataCollectionKey = keyof DataEntryMap;
-
-	// This needs to be in sync with ImageMetadata
-	export type ImageFunction = () => import('astro/zod').ZodObject<{
-		src: import('astro/zod').ZodString;
-		width: import('astro/zod').ZodNumber;
-		height: import('astro/zod').ZodNumber;
-		format: import('astro/zod').ZodUnion<
-			[
-				import('astro/zod').ZodLiteral<'png'>,
-				import('astro/zod').ZodLiteral<'jpg'>,
-				import('astro/zod').ZodLiteral<'jpeg'>,
-				import('astro/zod').ZodLiteral<'tiff'>,
-				import('astro/zod').ZodLiteral<'webp'>,
-				import('astro/zod').ZodLiteral<'gif'>,
-				import('astro/zod').ZodLiteral<'svg'>,
-				import('astro/zod').ZodLiteral<'avif'>,
-			]
-		>;
-	}>;
-
-	type BaseSchemaWithoutEffects =
-		| import('astro/zod').AnyZodObject
-		| import('astro/zod').ZodUnion<[BaseSchemaWithoutEffects, ...BaseSchemaWithoutEffects[]]>
-		| import('astro/zod').ZodDiscriminatedUnion<string, import('astro/zod').AnyZodObject[]>
-		| import('astro/zod').ZodIntersection<BaseSchemaWithoutEffects, BaseSchemaWithoutEffects>;
-
-	type BaseSchema =
-		| BaseSchemaWithoutEffects
-		| import('astro/zod').ZodEffects<BaseSchemaWithoutEffects>;
-
-	export type SchemaContext = { image: ImageFunction };
-
-	type DataCollectionConfig<S extends BaseSchema> = {
-		type: 'data';
-		schema?: S | ((context: SchemaContext) => S);
-	};
-
-	type ContentCollectionConfig<S extends BaseSchema> = {
-		type?: 'content';
-		schema?: S | ((context: SchemaContext) => S);
-	};
-
-	type CollectionConfig<S> = ContentCollectionConfig<S> | DataCollectionConfig<S>;
-
-	export function defineCollection<S extends BaseSchema>(
-		input: CollectionConfig<S>
-	): CollectionConfig<S>;
 
 	type AllValuesOf<T> = T extends any ? T[keyof T] : never;
 	type ValidContentEntrySlug<C extends keyof ContentEntryMap> = AllValuesOf<
@@ -213,6 +164,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"comandos-linux-parte-2.md": {
+	id: "comandos-linux-parte-2.md";
+  slug: "comandos-linux-parte-2";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "como-corrigir-erro-mage-registry-key-magento.md": {
 	id: "como-corrigir-erro-mage-registry-key-magento.md";
   slug: "como-corrigir-erro-mage-registry-key-magento";
@@ -276,6 +234,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"conceito-de-variaveis.md": {
+	id: "conceito-de-variaveis.md";
+  slug: "conceito-de-variaveis";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "configurar-ftp-wp-config-wordpress.md": {
 	id: "configurar-ftp-wp-config-wordpress.md";
   slug: "configurar-ftp-wp-config-wordpress";
@@ -307,6 +272,13 @@ declare module 'astro:content' {
 "corrigir-problemas-codigos-rastreio-prestashop.md": {
 	id: "corrigir-problemas-codigos-rastreio-prestashop.md";
   slug: "corrigir-problemas-codigos-rastreio-prestashop";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"desvendando-zen-do-python-melhores-praticas.md": {
+	id: "desvendando-zen-do-python-melhores-praticas.md";
+  slug: "desvendando-zen-do-python-melhores-praticas";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

@@ -3,47 +3,34 @@ title: O Básico da Programação e a Sequência de Instruções
 description: Explore os fundamentos da programação, incluindo sequência de instruções, operações matemáticas, condicionais e loops, e descubra como esses conceitos são essenciais para a computação.
 tags:
   - Algoritmos
-  - DevOps
 slug: basico-programacao-sequencia-instrucoes
 pubDatetime: 2017-05-05 00:00:00 Z
 background: "#637a91"
 author: Eduardo Lira
+ogImage: "https://res.cloudinary.com/dcu0dsel9/image/upload/v1708140296/programacao.jpg"
 rating: 5
 draft: false
 featured: false
 ---
 
-## Sequência de instruções: Entendendo Programação - Uma Introdução
+## Entendendo Programação - Uma Introdução
 
-A programação é essencialmente uma sequência de instruções que define como executar operações de computação. Essas operações podem ser matemáticas, como resolver equações ou calcular raízes de polinômios, ou simbólicas, como encontrar e substituir texto em um documento. Elas também podem ser operações gráficas, como processamento de imagem ou reprodução de vídeo.
+Desde o início de sua existência, o homem procurou criar máquinas que o auxiliassem em seu trabalho, diminuindo o esforço e economizando tempo. Dentre essas máquinas, o computador vem se mostrando uma das mais versáteis, rápidas e seguras. O computador pode auxiliá-lo em qualquer tarefa. É consciente, trabalhador, possui muita energia, mas não tem iniciativa, nenhuma independência, não é criativo nem inteligente, por isso, precisa receber instruções nos mínimos detalhes.
 
-Embora as linguagens de programação possam variar em detalhes, existem algumas instruções básicas que aparecem em quase todas elas. Vamos explorar essas instruções fundamentais:
+A finalidade de um computador é receber, manipular e armazenar dados. Visto somente como um gabinete composto por circuitos eletrônicos, cabos e fontes de alimentação, certamente ele parece não ter nenhuma utilidade. O computador só consegue armazenar dados em discos, imprimir relatórios, gerar gráficos, realizar cálculos, entre outras funções, por meio de programas, portanto, sua finalidade principal é realizar a tarefa de processamento de dados, isto é, receber dados por um dispositivo de entrada (por exemplo, teclado, mouse, scanner etc.), realizar operações com esses dados e gerar uma resposta que será expressa em um dispositivo de saída (por exemplo, impressora, monitor de vídeo, entre outros) (ASCENCIO, 1999). Logo, um computador possui duas partes diferentes que trabalham juntas: o hardware, composto pelas partes físicas, e o software, composto pelos programas.
 
-1. **Entrada**:
+Quando queremos criar ou desenvolver um software para realizar determinado tipo de processamento de dados, devemos escrever um programa ou vários programas interligados. No entanto, para que o computador compreenda e execute esse programa, devemos escrevê-lo usando uma linguagem que tanto o computador quanto o criador de software entendam. Essa linguagem é chamada linguagem de programação.
 
-   - _Receber dados_ do teclado, arquivo, rede ou outros dispositivos.
+As etapas para o desenvolvimento de um programa são:
 
-2. **Saída**:
+- **Análise**: Estuda-se o enunciado do problema para definir os dados de entrada, o processamento e os dados de saída.
 
-   - _Exibir dados_ na tela, salvá-los em um arquivo, enviá-los pela rede, etc.
+- **Algoritmo**: Ferramentas do tipo descrição narrativa, fluxograma ou português estruturado são utilizadas para descrever o problema com suas soluções.
 
-3. **Operações Matemáticas**:
+- **Codificação**: O algoritmo é transformado em códigos da linguagem de programação escolhida para se trabalhar. Portanto, um programa é a codificação de um algoritmo em uma linguagem de programação (ASCENCIO, 1999).
 
-   - _Realizar operações matemáticas básicas_, como adição e multiplicação.
+Essas etapas fornecem uma estrutura para desenvolver programas de forma sistemática e eficiente. Incorporar esses conceitos desde o início de sua jornada na programação pode ajudá-lo a construir uma base sólida para suas habilidades futuras. Mesmo que você não planeje criar programas complexos ou inteligência artificial, entender os princípios fundamentais da programação pode transformar sua abordagem para resolver problemas e melhorar sua eficiência no campo da computação.
 
-4. **Execução Condicional**:
+Em nossa próxima conversa, exploraremos o conceito de algoritmos, pois são fundamentais para que nossa sequência de instruções funcione corretamente.
 
-   - _Verificar condições_ e executar o código apropriado com base nessas condições.
-
-5. **Repetição**:
-   - _Executar ações repetidamente_, geralmente com algumas variações.
-
-Essas instruções básicas formam o alicerce da programação de computadores. Mesmo que você esteja apenas começando seus estudos e não seja um entusiasta da programação, é importante entender esses conceitos. Em muitas áreas de Tecnologia da Informação (TI), mesmo se você não gostar de programação, terá que adquirir conhecimentos básicos sobre ela. Às vezes, colegas que gostam de programação podem não gostar de arquitetura de redes e computadores, mas hoje em dia, ter conhecimento em ambos é quase obrigatório para práticas eficazes de DevOps.
-
-Mesmo que você não tenha a intenção de criar programas complexos ou inteligência artificial, pequenos scripts podem agilizar e facilitar muito o seu trabalho na área da computação. Além disso, o conhecimento sobre algoritmos pode mudar a maneira como você enxerga o mundo.
-
-Esperamos que esta série de artigos seja útil para que você adquira uma base sólida para criar seus próprios programas. No próximo artigo da série, exploraremos o conceito de algoritmos, pois são fundamentais para que nossa sequência de instruções funcione corretamente.
-
-Até a próxima! 👔
-
-👋
+Até a próxima! 👋

@@ -1,0 +1,330 @@
+---
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import { SITE } from "@config";
+import Main from "@layouts/Main.astro";
+import ScrollToTopButton from "@components/ScrollToTopButton.astro";
+---
+
+<script>
+  // Função para gerar e definir o captcha
+  const generateCaptcha = () => {
+    const n1 = Math.floor(Math.random() * 10) + 1;
+    const n2 = Math.floor(Math.random() * 10) + 1;
+
+    const n1Element = document.getElementById("n1");
+    if (n1Element) {
+      n1Element.textContent = n1.toString();
+    } else {
+      console.error("Elemento #n1 não encontrado no DOM.");
+    }
+
+    const n2Element = document.getElementById("n2");
+    if (n2Element) {
+      n2Element.textContent = n2.toString();
+    } else {
+      console.error("Elemento #n2 não encontrado no DOM.");
+    }
+
+    const captchaAnswerInput = document.getElementById(
+      "captcha-answer"
+    ) as HTMLInputElement | null;
+    if (captchaAnswerInput) {
+      captchaAnswerInput.value = (n1 + n2).toString();
+    } else {
+      console.error("Elemento #captcha-answer não encontrado.");
+    }
+  };
+
+  // No momento do carregamento, insira os valores dessas variáveis nos spans
+  window.onload = function () {
+    generateCaptcha();
+  };
+</script>
+<Layout title={`SQLFormatter | ${SITE.title}`}>
+  <Header />
+  <Main
+    pageTitle=" SQL Formatter"
+    pageDesc=" Formate seu SQL para melhor legibilidade e compreensão."
+    transition:animate="slide"
+  >
+    <div role="alert" class="alert">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="h-6 w-6 shrink-0 stroke-info"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        ></path></svg
+      >
+
+      <h2 class="mb-2 text-xl font-bold">Como usar?</h2>
+      <span>
+        <p>1. Selecione o tipo de consulta SQL que deseja formatar.</p>
+        <p>2. Selecione o tipo de case que deseja para a formatação.</p>
+        <p>3. Digite ou cole sua consulta SQL na caixa de texto.</p>
+        <p>4. Clique no botão "Formatar SQL" para formatar a consulta.</p>
+        <p>5. O SQL formatado será exibido na caixa de texto abaixo.</p>
+        <p>
+          6. Clique no botão "Copiar SQL Formatado" para copiar o SQL formatado
+          para a área de transferência.
+        </p>
+      </span>
+    </div>
+    <form id="formulario">
+      <div class="mb-4">
+        <label for="queryType" class="mb-2 text-lg font-bold text-gray-500"
+          >Tipo de consulta:</label
+        >
+        <select
+          id="queryType"
+          class="mb-2 mt-2 rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+        >
+          <option value="sql">Padrão SQL</option>
+          <option value="bigquery">GCP BigQuery</option>
+          <option value="db2">IBM DB2</option>
+          <option value="db2i">IBM DB2i (experimental)</option>
+          <option value="hive">Apache Hive</option>
+          <option value="mariadb">MariaDB</option>
+          <option value="mysql">MySQL</option>
+          <option value="tidb">TiDB</option>
+          <option value="n1ql">Couchbase N1QL</option>
+          <option value="plsql">Oracle PL/SQL</option>
+          <option value="postgresql">PostgreSQL</option>
+          <option value="redshift">Amazon Redshift</option>
+          <option value="singlestoredb">SingleStoreDB</option>
+          <option value="snowflake">Snowflake</option>
+          <option value="spark">Spark</option>
+          <option value="sqlite">SQLite</option>
+          <option value="transactsql">SQL Server Transact-SQL</option>
+          <option value="trino">Trino (Presto)</option>
+        </select>
+
+        <label for="caseType" class="mb-2 text-lg font-bold text-gray-500"
+          >Tipo de Case:</label
+        >
+        <select
+          id="caseType"
+          class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+        >
+          <option value="preserve">Preservar</option>
+          <option value="upper">Maiúsculo</option>
+          <option value="lower">Minúsculo</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <textarea
+          id="query"
+          placeholder="Digite sua consulta SQL aqui"
+          class="min-h-[200px] w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+        ></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="captcha" class="mb-2 text-lg font-bold text-gray-500">
+          Por favor, responda à pergunta: Qual é o resultado de <span id="n1"
+          ></span> + <span id="n2"></span>?</label
+        >
+        <input
+          type="text"
+          id="captcha"
+          name="captcha"
+          class="mt-1 rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+          placeholder="Digite o resultado"
+          required
+        />
+        <input
+          type="hidden"
+          id="captcha-answer"
+          name="captcha-answer"
+          class="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+        />
+      </div>
+      <div>
+        <button
+          id="format"
+          type="button"
+          class="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+          >Formatar SQL</button
+        >
+      </div>
+
+      <div class="mb-4 pt-6" id="formatResult" style="display: none;">
+        <textarea
+          id="formattedQuery"
+          readonly
+          class="min-h-[100px] w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+        ></textarea>
+      </div>
+
+      <div class="mb-4" id="copyButton" style="display: none;">
+        <button
+          id="copy"
+          type="button"
+          class="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+          >Copiar SQL Formatado</button
+        >
+      </div>
+    </form>
+    <div class="my-4 mb-4">
+      <div role="alert" class="alert alert-success hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+        >
+        <span></span>
+      </div>
+      <div role="alert" class="alert alert-error hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path></svg
+        >
+        <span></span>
+      </div>
+      <div role="alert" class="alert alert-warning hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+        >
+        <span></span>
+      </div>
+    </div>
+  </Main>
+  <ScrollToTopButton />
+  <Footer />
+</Layout>
+<script>
+  import { format } from "sql-formatter";
+
+  const generateCaptcha = () => {
+    const n1 = Math.floor(Math.random() * 10) + 1;
+    const n2 = Math.floor(Math.random() * 10) + 1;
+    document.getElementById("n1").textContent = n1;
+    document.getElementById("n2").textContent = n2;
+    document.getElementById("captcha-answer").value = n1 + n2;
+  };
+
+  const formatSQL = () => {
+    // Verifica se a consulta está vazia
+    const query2 = document.getElementById("query").value.trim();
+    console.log(query2);
+    if (query2 === "") {
+      // Campo de consulta vazio, exiba uma mensagem de erro
+      const alert = document.querySelector(".alert-warning");
+      alert.classList.remove("hidden");
+      alert.querySelector("span").textContent =
+        `Por favor, insira uma consulta SQL para formatar!`;
+      setTimeout(() => {
+        alert.classList.add("hidden");
+      }, 3000);
+      return;
+    }
+
+    // Verifica se o captcha está correto
+    const captchaInput = parseInt(document.getElementById("captcha").value, 10);
+    const captchaAnswer = parseInt(
+      document.getElementById("captcha-answer").value,
+      10
+    );
+    if (captchaInput !== captchaAnswer) {
+      // Captcha incorreto, exiba uma mensagem de erro
+      const alert = document.querySelector(".alert-error");
+      alert.classList.remove("hidden");
+      alert.querySelector("span").textContent =
+        `Resposta do captcha incorreta! Tente novamente.`;
+      setTimeout(() => {
+        alert.classList.add("hidden");
+      }, 3000);
+      return;
+    }
+
+    // Formatação do SQL
+    const sqlType = document.getElementById("queryType").value;
+    const query = document.getElementById("query").value;
+    const caseType = document.getElementById("caseType").value;
+    try {
+      const formattedQuery = format(query, {
+        language: sqlType,
+        keywordCase: caseType,
+        identifierCase: caseType,
+      });
+      document.getElementById("formattedQuery").value = formattedQuery;
+      document.getElementById("formatResult").style.display = "block";
+      document.getElementById("copyButton").style.display = "block";
+      generateCaptcha();
+      document.getElementById("captcha").value = "";
+    } catch (error) {
+      const alert = document.querySelector(".alert-error");
+      alert.classList.remove("hidden");
+      alert.querySelector("span").textContent =
+        `Erro ao formatar SQL! Verifique se utilizou o tipo de consulta correto.`;
+      setTimeout(() => {
+        alert.classList.add("hidden");
+      }, 3000);
+    }
+  };
+
+  const copyFormattedSQL = () => {
+    const formattedQuery = document.getElementById("formattedQuery").value;
+    navigator.clipboard
+      .writeText(formattedQuery)
+      .then(() => {
+        const alert = document.querySelector(".alert-success");
+        alert.classList.remove("hidden");
+        alert.querySelector("span").textContent =
+          `SQL formatado copiado com sucesso!`;
+        setTimeout(() => {
+          alert.classList.add("hidden");
+        }, 3000);
+      })
+      .catch(error => {
+        const alert = document.querySelector(".alert-error");
+        alert.classList.remove("hidden");
+        alert.querySelector("span").textContent =
+          `Erro ao copiar SQL formatado: ${error}`;
+        setTimeout(() => {
+          alert.classList.add("hidden");
+        }, 3000);
+      });
+  };
+
+  document.getElementById("format").addEventListener("click", formatSQL);
+
+  document.getElementById("query").addEventListener("input", () => {
+    document.getElementById("formattedQuery").value = "";
+    document.getElementById("formatResult").style.display = "none";
+    document.getElementById("copyButton").style.display = "none";
+  });
+
+  document.getElementById("copy").addEventListener("click", copyFormattedSQL);
+  // Adicionar validação de entrada para o campo captcha para aceitar apenas números
+  document.getElementById("captcha").addEventListener("input", function (e) {
+    this.value = this.value.replace(/[^0-9]/g, "");
+  });
+</script>

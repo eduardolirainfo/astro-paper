@@ -9,9 +9,9 @@ pubDatetime: 2017-01-09T00:00:00.000+00:00
 background: "#f26c6e"
 author: Eduardo Lira
 draft: false
-ogImage: https://res.cloudinary.com/dcu0dsel9/image/upload/v1695482250/o-que-e-linux_qreig7.jpg
+ogImage: "https://res.cloudinary.com/dcu0dsel9/image/upload/v1695482250/o-que-e-linux_qreig7.jpg"
 rating: 5
-featured: true
+featured: false
 ---
 
 ## **Introdução ao Linux: Parte 1 - O que é o Linux?**

@@ -33,7 +33,7 @@ export default function SearchBar({ searchList }: Props) {
   const fuse = useMemo(
     () =>
       new Fuse(searchList, {
-        keys: ["title", "description"],
+        keys: ["title", "description", "data.tags", "slug"],
         includeMatches: true,
         minMatchCharLength: 2,
         threshold: 0.5,
@@ -94,6 +94,7 @@ export default function SearchBar({ searchList }: Props) {
           autoComplete="off"
           ref={inputRef}
         />
+        <span className="sr-only">Pesquisar</span>
       </label>
 
       {inputVal.length > 1 && (

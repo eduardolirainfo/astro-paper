@@ -8,7 +8,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import Hr from "@components/Hr.astro";
 import ScrollToTopButton from "@components/ScrollToTopButton.astro";
-
+import { SITE } from "@config";
 export interface Props {
   post: CollectionEntry<"blog">;
 }
@@ -39,15 +39,19 @@ const hasNextPost = nextPostIndex < posts.length;
 const previousPost = hasPreviousPost ? posts[previousPostIndex] : null;
 const nextPost = hasNextPost ? posts[nextPostIndex] : null;
 
+
+const layoutProps = {
+  title: `${title} | ${SITE.title}`,
+  author,
+  description,
+  pubDatetime,
+  canonicalURL,
+  ogImage: ogUrl,
+  scrollSmooth: true,
+};
 ---
 
-<Layout
-  title={title}
-  author={author}
-  description={description}
-  ogImage={ogUrl}
-  canonicalURL={canonicalURL}
->
+<Layout {...layoutProps}>
   <Header />
   <Hr />
   <div class="mx-auto flex w-full max-w-4xl justify-start px-2 pt-8">
@@ -68,7 +72,7 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
       </svg><span>Voltar</span>
     </button>
   </div>
-  <main id="main-content" transition:animate="none">
+  <main id="main-content">
     <article
       itemscope
       itemtype="http://schema.org/Article"
@@ -226,10 +230,81 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
   .pagination-wrapper a {
     @apply inline-block rounded-md px-3 py-1;
   }
+ 
 </style>
 
 <script>
-  function attachCopyButtons() {
+
+function addHeadingLinks() {
+
+    let articleBody = document.querySelector("[itemprop='articleBody']"); // Seleciona o conteúdo com itemprop="articleBody"
+    if (articleBody) {
+    
+    articleBody.removeAttribute("tabindex");
+
+    let headings = Array.from(document.querySelectorAll("h2, h3, h4, h5, h6"));
+    for (let heading of headings) {
+        heading.classList.add("group");
+        let link = document.createElement("a");
+        link.innerText = "#";
+        link.className = "heading-link hidden group-hover:inline-block ml-2"; 
+        link.href = "#" + heading.id;
+        link.ariaHidden = "true";
+        link.addEventListener("click", function(event) {
+            event.preventDefault(); 
+            const destinoId = this.getAttribute('href')?.substring(1); 
+            const destino = destinoId ? document.getElementById(destinoId) : null; 
+            const offset = 75; 
+            const topo = destino ? destino.getBoundingClientRect().top + window.scrollY : 0;
+            
+            window.scrollTo({
+                top: topo - offset,
+                behavior: 'smooth'
+            });
+        });
+        heading.appendChild(link);
+    }
+  }
+}
+
+addHeadingLinks();
+document.addEventListener("astro:after-swap", addHeadingLinks);
+
+function sumarySmoothScroll() {
+  const links = document.querySelectorAll('details a[href^="#"]');
+
+  links.forEach(link => {
+    link.removeEventListener('click', clickHandler);
+  });
+
+  function clickHandler(event) {
+    event.preventDefault(); 
+    const href = this.getAttribute('href');
+    const destinoId = href ? decodeURIComponent(href.substring(1)) : null;
+
+    if (destinoId) {
+      const destino = document.getElementById(destinoId);
+      if (destino) {
+        const offset = 75;
+        const topo = destino.getBoundingClientRect().top + window.scrollY;
+
+        window.scrollTo({
+          top: topo - offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', clickHandler);
+  });
+}
+
+sumarySmoothScroll();
+document.addEventListener("astro:after-swap", sumarySmoothScroll);
+ 
+function attachCopyButtons() {
     let copyButtonLabel = "Copiar";
     let codeBlocks = Array.from(document.querySelectorAll("pre"));
 
@@ -241,7 +316,7 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
       copyButton.className =
         "copy-code absolute right-3 top-3 px-2 py-1 text-xs leading-4 badge badge-primary";
       copyButton.innerHTML = copyButtonLabel;
-      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.removeAttribute("tabindex");
       codeBlock.appendChild(copyButton);
 
       if (codeBlock.parentNode) {
@@ -254,9 +329,9 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
       });
     }
 
-    async function copyCode(block, button) {
+    async function copyCode(block: HTMLElement, button: HTMLElement) {
       let code = block.querySelector("code");
-      let text = code.innerText;
+      let text = code?.innerText || '';
 
       await navigator.clipboard.writeText(text);
 
@@ -273,7 +348,7 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
 
     astroCodeContainers.forEach(function (container) {
       if (container.parentNode) {
-        container.parentNode.classList.add(
+        (container.parentNode as HTMLElement).classList.add(
           "mockup-code",
           "bg-neutral",
           "glass"
@@ -288,9 +363,9 @@ const nextPost = hasNextPost ? posts[nextPostIndex] : null;
       preElement.classList.remove("astro-code");
     });
   }
-
   attachCopyButtons();
   document.addEventListener("astro:after-swap", attachCopyButtons);
   MockupCode();
   document.addEventListener("astro:after-swap", MockupCode);
+ 
 </script>

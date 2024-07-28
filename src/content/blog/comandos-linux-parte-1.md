@@ -1,6 +1,6 @@
 ---
 title: Comandos do Terminal Linux - Guia rápido e Prático - Parte 1
-description: Aprenda a usar alguns dos comandos mais comuns e úteis do terminal Linux, como ls, pwd, cd, find, grep, cat, less e wc. Veja exemplos práticos de como navegar, pesquisar e manipular arquivos e diretórios no sistema operacional Linux.
+description: Alguns dos comandos mais comuns e úteis do terminal Linux, como ls, pwd, cd, find, grep, cat, less e wc. Como navegar, pesquisar e manipular arquivos e diretórios no sistema operacional Linux.
 tags:
   - Linux
   - Terminal
@@ -8,10 +8,10 @@ slug: comandos-linux-parte-1
 pubDatetime: 2024-01-30T10:53:08.000-03:00
 background: "#6c9ef2"
 author: Eduardo Lira
-rating: 4.5
+rating: 5
 ogImage: https://res.cloudinary.com/dcu0dsel9/image/upload/v1706648757/comandos_linux.jpg
 draft: false
-featured: true
+featured: false
 ---
 
 Neste post, vou apresentar uma lista de comandos úteis para você trabalhar com o terminal Linux. Esses comandos permitem navegar, pesquisar e manipular arquivos e diretórios no sistema operacional Linux. Vamos ver como eles funcionam com alguns exemplos.

@@ -17,79 +17,76 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
   >
     <Pokedex transition:animate="slide" />
   </Main>
-
-  <div class="modal" transition:animate="initial">
-    <div class="overlay"></div>
-    <div class="box">
-      <button class="close js-close-details-pokemon">
-        <img
-          src="src/assets/static/images/close.svg"
-          alt="Close"
-          title="Close"
-        />
-      </button>
-      <div class="left-container">
-        <div class="icon">
-          <img src="src/assets/static/images/icon-types/grass.svg" alt="" />
-        </div>
-        <div class="image">
-          <img src="" alt="" id="js-image-pokemon" />
-          <ul>
-            <li>
-              <span>Category:</span>
-              <strong id="categoriaModalPokemon">Categoria</strong>
-            </li>
-          </ul>
-        </div>
-
-        <div class="abilities">
-          <ul>
-            <li>
-              <span>Height</span>
-              <strong id="js-pok-height">0.7m</strong>
-            </li>
-            <li>
-              <span>Weight</span>
-              <strong id="js-pok-weight">6.9kg</strong>
-            </li>
-          </ul>
-
-          <ul class="info">
-            <li>
-              <span>Abilities</span>
-              <strong id="js-pok-abilitie">Overgrow</strong>
-              <button class="tag" id="js-show-more-abilities"
-                >Ver mais...</button
-              >
-              <div class="ballon" id="js-ballon-abilities">
-                <strong>Overgrow</strong>
+<!-- Open the modal using ID.showModal() method -->
+<dialog id="modalpokemon" class="modal  glass">
+  <div class="modal-box w-full max-w-5xl bg-neutral-100 glass">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+ 
+      <div role="tablist" class="tabs tabs-bordered"> 
+      <input type="radio" name="pokemon_tabs" role="tab" class="tab" aria-label="Info" checked="checked" />
+      <div role="tabpanel" id="tab-content-info" class="tab-content bg-transparent">
+        <div class="flex justify-between">
+          <div class="w-1/2 left-container justify-between">
+            <div class="icon">
+              <img src="" alt="" id="js-icon-type" />
+            </div>
+            <div class="image h-72 w-72">
+              <img src="" alt="" id="js-image-pokemon" />
+            </div>
+          </div>
+          <div class="right-container justify-between">
+            <div class="name mb-4 text-neutral-300">
+              <h2>Bulbasaur</h2>
+              <span>#001</span>
+            </div>
+            <div class="block mb-4">
+              <ul class="type">
+                <li class="tag grass">Grass</li>
+                <li class="tag poison">Poison</li>
+              </ul>
               </div>
-            </li>
-          </ul>
+              <div class="abilities block  mb-4">
+                <ul>
+                  <li>
+                    <span class="text-neutral-300">Altura: </span>
+                    <strong id="js-pok-height">0.7m</strong>
+                  </li>
+                  <li>
+                    <span class="text-neutral-300">Peso: </span>
+                    <strong id="js-pok-weight">6.9kg</strong>
+                  </li>
+                  <li>
+                    <span class="text-neutral-300">Espécie: </span>
+                    <strong id="categoriaModalPokemon">Categoria</strong>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="mb-4 ">
+                <h4 class="text-neutral-300">Habilidades</h4>
+                <ul>
+                  <li class="tag"> <strong id="js-pok-abilitie">Overgrow</strong></li>
+                </ul>
+              </div>
+            <div class="weak mb-4  ">
+              <h4 class="text-neutral-300">Fraquezas</h4>
+              <ul>
+                <li class="tag fire">Fire</li>
+                <li class="tag psychic">Psychic</li>
+                <li class="tag flying">Flying</li>
+                <li class="tag ice">Ice</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="right-container">
-        <div class="name">
-          <h2>Bulbasaur</h2>
-          <span>#001</span>
-          <ul class="type">
-            <li class="tag grass">Grass</li>
-            <li class="tag poison">Poison</li>
-          </ul>
-        </div>
-
-        <div class="weak">
-          <h4>Fraquezas</h4>
-          <ul>
-            <li class="tag fire">Fire</li>
-            <li class="tag psychic">Psychic</li>
-            <li class="tag flying">Flying</li>
-            <li class="tag ice">Ice</li>
-          </ul>
-        </div>
-
-        <div class="pokemon-stats-info mb-2">
-          <h4>Stats</h4>
+      <input type="radio" id="pokemon-tabs"  name="pokemon_tabs" role="tab" class="tab [--tab-bg:transparent]" aria-label="Stats" />
+      <div role="tabpanel" id="tab-content-stats" class="tab-content bg-transparent">        
+          <!-- <h4>Stats</h4> -->
+          <div class="w-full min-h-[320px] flex items-center justify-center">
+            <div class="pokemon-stats-info"> 
           <ul>
             <li class="first">
               <ul class="gauge">
@@ -110,7 +107,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
                 <li></li>
                 <li></li>
               </ul>
-              <span class="mt-2 block">HP</span>
+              <span class="mt-2 block text-neutral-300">Pontos de Vida</span>
             </li>
 
             <li>
@@ -132,7 +129,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
                 <li></li>
                 <li></li>
               </ul>
-              <span class="mt-2 block">Attack</span>
+              <span class="mt-2 block text-neutral-300">Ataque</span>
             </li>
 
             <li>
@@ -154,7 +151,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
                 <li></li>
                 <li></li>
               </ul>
-              <span class="mt-2 block">Defense</span>
+              <span class="mt-2 block text-neutral-300">Defesa</span>
             </li>
 
             <li>
@@ -176,7 +173,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
                 <li></li>
                 <li></li>
               </ul>
-              <span class="mt-2 block">Special Attack</span>
+              <span class="mt-2 block text-neutral-300">Ataque Especial</span>
             </li>
 
             <li>
@@ -198,7 +195,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
                 <li></li>
                 <li></li>
               </ul>
-              <span class="mt-2 block">Special Defense</span>
+              <span class="mt-2 block text-neutral-300">Defesa Especial</span>
             </li>
 
             <li>
@@ -220,17 +217,24 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
                 <li></li>
                 <li></li>
               </ul>
-              <span class="mt-2 block">Speed</span>
+              <span class="mt-2 block text-neutral-300">Velocidade</span>
             </li>
           </ul>
         </div>
-
-        <div id="evolution-container">
-          <h4>Evolutions</h4>
+        </div>
+      </div>
+      <input type="radio" id="pokemon-tabs" name="pokemon_tabs" role="tab" class="tab [--tab-bg:transparent]" aria-label="Evoluções" />
+      <div role="tabpanel" id="tab-content-evolutions" class="tab-content  bg-transparent">
+        <div class="w-full min-h-[320px] flex items-center justify-center">
+           <div id="evolution-container">
+            <h4>Evoluções</h4>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
+</dialog>
+
   <ScrollToTopButton />
   <Footer />
 </Layout>
@@ -347,98 +351,100 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     font-size: 1.3rem;
     letter-spacing: -0.01em;
     margin: 0 5px;
+    border-radius: 1.5rem;
+    border: 1px solid transparent;
   }
 
   .tag:first-child {
     margin-left: 0;
   }
 
-  .tag.grass {
+  .grass {
     background-color: rgba(114, 184, 97, 0.1);
     color: #73b861;
   }
 
-  .tag.poison {
+  .poison {
     background-color: rgba(172, 106, 202, 0.1);
     color: #ac6aca;
   }
 
-  .tag.water {
+  .water {
     background-color: rgba(79, 120, 190, 0.1);
     color: #4f77be;
   }
 
-  .tag.fire {
+  .fire {
     background-color: rgba(233, 99, 3, 0.1);
     color: #e96303;
   }
 
-  .tag.psychic {
+  .psychic {
     background-color: rgba(235, 139, 132, 0.1);
     color: #eb8b85;
   }
 
-  .tag.flying {
+  .flying {
     background-color: rgba(117, 140, 189, 0.1);
     color: #758cbd;
   }
 
-  .tag.ice {
+  .ice {
     background-color: rgba(113, 186, 171, 0.1);
     color: #71baac;
   }
 
-  .tag.ground {
+  .ground {
     background-color: rgba(206, 128, 86, 0.1);
     color: #ce8056;
   }
 
-  .tag.rock {
+  .rock {
     background-color: rgba(132, 190, 179, 0.1);
     color: #84beb3;
   }
 
-  .tag.electric {
+  .electric {
     background-color: rgba(245, 209, 5, 0.1);
     color: #d4bc34;
   }
 
-  .tag.bug {
+  .bug {
     background-color: rgba(156, 186, 72, 0.1);
     color: #9bba48;
   }
 
-  .tag.dark {
+  .dark {
     background-color: rgba(89, 87, 97, 0.1);
     color: #595761;
   }
 
-  .tag.dragon {
+  .dragon {
     background-color: rgba(44, 106, 193, 0.1);
     color: #2c6ac1;
   }
 
-  .tag.fairy {
+  .fairy {
     background-color: rgba(226, 150, 225, 0.1);
     color: #e296e1;
   }
 
-  .tag.fighting {
+  .fighting {
     background-color: rgba(196, 79, 99, 0.24);
     color: #c44d61;
   }
 
-  .tag.ghost {
+  .ghost {
     background-color: rgba(97, 110, 183, 0.1);
     color: #616eb7;
   }
 
-  .tag.steel {
+  .steel {
     background-color: rgba(101, 148, 161, 0.1);
     color: #6594a1;
   }
 
-  .tag.normal {
+  .normal {
     background-color: rgba(144, 144, 144, 0.1);
     color: #909090;
   }
@@ -475,16 +481,28 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     will-change: transform, visibility;
     transform-style: preserve-3d;
     display: inline-block;
-    width: 300px;
-    padding: 1em;
+    width:  100%;
+    height: 100%;
+    /* padding: 1em;  */
     border-radius: 15px;
-    margin: 10px;
+    margin: 0.25rem; 
     background: #ddd;
     text-align: left;
     box-shadow: 0px 5px 20px -10px #111111;
     position: relative;
     transition: 0.4s;
   }
+
+    @media (max-width: 768px), (max-width: 1024px), (max-width: 1280px), (max-width: 1440px) {
+      .poke-card-pokemon .image {
+        height: 6rem;
+      }
+
+      .poke-card-pokemon .image:before {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
 
   .poke-card-pokemon:hover {
     transform: scale(1.05);
@@ -642,7 +660,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
   }
 
   .poke-card-pokemon .image:before {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .poke-card-pokemon .image {
@@ -947,20 +965,17 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     pointer-events: none;
   }
 
-  .open-modal .modal {
+   .open-modal .modal {
     opacity: 1;
     pointer-events: all;
   }
 
-  .open-modal .modal .box {
+  .open-modal .modal .modal-box {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
+   .modal {
     width: 100%;
     height: 100%;
     z-index: 2022;
@@ -979,158 +994,116 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     transition: all 0.3s;
   }
 
-  .modal .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+   .modal .overlay {
     width: 100%;
     height: 100%;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  .modal .box {
+  .modal .modal-box {
     position: relative;
-    z-index: 2;
     width: 100%;
-    max-width: 71rem;
-    height: 50.8rem;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0px 10px 40px rgba(13, 12, 71, 0.05);
-    box-shadow: 0px 10px 40px rgba(13, 12, 71, 0.05);
+    max-width: 71.2rem;
     border-radius: 16px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-transform: translateY(5rem);
-    transform: translateY(5rem);
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-  }
-
-  .modal .box .close {
-    position: absolute;
-    top: 0rem;
-    right: 0;
-    background-color: #ffffff;
-    border-radius: 8px;
-    width: 3.6rem;
-    height: 3.6rem;
-    border: 0;
-  }
-
-  .modal .box .left-container {
-    position: relative;
-    width: 100%;
-    max-width: 19.1rem;
-    background-repeat: no-repeat;
-    background-position: center center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
   }
 
-  .modal .box .left-container[bgType="grass"],
-  .modal .box .left-container[bgType="bug"] {
-    background-image: url("src/assets/static/images/bg-types/grass.svg");
-    background-size: cover;
+  .modal .modal-box .left-container {
+    position: relative;
+    width: 100%; 
   }
 
-  .modal .box .left-container[bgType="fire"] {
-    background-image: url("src/assets/static/images/bg-types/fire.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="grass"],
+  .modal .modal-box .left-container[bgType="bug"] {
+    background: url("src/assets/static/images/bg-types/grass.svg") no-repeat left center;
+    
+
   }
 
-  .modal .box .left-container[bgType="water"] {
-    background-image: url("src/assets/static/images/bg-types/water.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="fire"] {
+    background: url("src/assets/static/images/bg-types/fire.svg")no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="bug"] {
-    background-image: url("src/assets/static/images/bg-types/bug.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="water"] {
+    background: url("src/assets/static/images/bg-types/water.svg")no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="dark"] {
-    background-image: url("src/assets/static/images/bg-types/dark.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="bug"] {
+    background: url("src/assets/static/images/bg-types/bug.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="dragon"] {
-    background-image: url("src/assets/static/images/bg-types/dragon.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="dark"] {
+    background: url("src/assets/static/images/bg-types/dark.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="electric"] {
-    background-image: url("src/assets/static/images/bg-types/electric.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="dragon"] {
+    background: url("src/assets/static/images/bg-types/dragon.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="fairy"] {
-    background-image: url("src/assets/static/images/bg-types/fairy.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="electric"] {
+    background: url("src/assets/static/images/bg-types/electric.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="fighting"] {
-    background-image: url("src/assets/static/images/bg-types/fighting.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="fairy"] {
+    background: url("src/assets/static/images/bg-types/fairy.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="ground"] {
-    background-image: url("src/assets/static/images/bg-types/ground.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="fighting"] {
+    background: url("src/assets/static/images/bg-types/fighting.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="ice"] {
-    background-image: url("src/assets/static/images/bg-types/ice.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="ground"] {
+    background: url("src/assets/static/images/bg-types/ground.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="normal"] {
-    background-image: url("src/assets/static/images/bg-types/normal.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="ice"] {
+    background: url("src/assets/static/images/bg-types/ice.svg") no-repeat left center;
+  } 
+
+  .modal .modal-box .left-container[bgType="normal"] {
+    background: url("src/assets/static/images/bg-types/normal.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="poison"] {
-    background-image: url("src/assets/static/images/bg-types/poison.svg");
-    background-size: cover;
+  .modal .modal-box .left-container[bgType="poison"] {
+    background: url("src/assets/static/images/bg-types/poison.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="psychic"] {
-    background-image: url("src/assets/static/images/bg-types/psychic.svg");
-    background-size: cover;
+ .left-container[bgType="psychic"] {
+    background: url("src/assets/static/images/bg-types/psychic.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="rock"] {
-    background-image: url("src/assets/static/images/bg-types/rock.svg");
-    background-size: cover;
+ .left-container[bgType="rock"] {
+  background: url("src/assets/static/images/bg-types/rock.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="ghost"] {
-    background-image: url("src/assets/static/images/bg-types/ghost.svg");
-    background-size: cover;
+ .left-container[bgType="ghost"] {
+    background: url("src/assets/static/images/bg-types/ghost.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="steel"] {
-    background-image: url("src/assets/static/images/bg-types/steel.svg");
-    background-size: cover;
+ .left-container[bgType="steel"] {
+    background: url("src/assets/static/images/bg-types/steel.svg") no-repeat left center;
   }
 
-  .modal .box .left-container[bgType="flying"] {
-    background-image: url("src/assets/static/images/bg-types/flying.svg");
-    background-size: cover;
+ .left-container[bgType="flying"] {
+    background: url("src/assets/static/images/bg-types/flying.svg") no-repeat left center;
   }
 
-  .modal .box .left-container .icon {
+ .left-container .icon {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    bottom: 2rem;
+    left: 2rem;
     width: 3.4rem;
     height: 3.4rem;
     border-radius: 50%;
@@ -1146,53 +1119,30 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     justify-content: center;
   }
 
-  .modal .box .left-container .image {
+  .left-container .icon img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .left-container .image {
     position: relative;
     right: -2.5rem;
     width: 100%;
-    max-width: 20.2rem;
+    max-width: 51.9rem;
     padding-bottom: 3rem;
   }
 
-  .modal .box .left-container .image img {
+  .left-container .image img {
     width: 100%;
   }
 
-  .modal .box .right-container {
+ .right-container {
     width: 100%;
     max-width: 51.9rem;
-    padding: 1rem 0rem 1rem 3rem;
+    margin-left: 1rem;
   }
 
-  .modal .box .right-container .name {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .modal .box .right-container .name h2 {
-    font-weight: bold;
-    font-size: 2.25rem;
-    line-height: 3.4rem;
-    text-align: center;
-    letter-spacing: -0.01em;
-    color: #2f3133;
-    margin-right: 0.8rem;
-    word-break: break-word;
-  }
-
-  .modal .box .right-container .name span {
-    font-size: 1.6rem;
-    line-height: 2rem;
-    letter-spacing: -0.01em;
-    color: #7a7d80;
-  }
-
-  .modal .box .right-container .type {
+ .right-container .name {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1202,7 +1152,32 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     margin-bottom: 1.5rem;
   }
 
-  .modal .box .right-container .info {
+ .right-container .name h2 {
+    font-weight: 600;
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  .right-container .name span {
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    letter-spacing: -0.01em;
+    margin-left: 1.2rem;
+  }
+
+ .right-container .type {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+ .right-container .info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1212,21 +1187,30 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    max-width: 35.5rem;
-    margin-bottom: 3.2rem;
   }
 
-  .modal .box .right-container .info li {
+.right-container .info li {
     position: relative;
+    width: 100%;
+    max-width: 20.8rem;
+    padding: 1.6rem 1.6rem 1.6rem 2.4rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    -webkit-box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.6rem;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
   }
 
-  .modal .box .right-container .info li.active .ballon {
+.right-container .info li.active .ballon {
     -webkit-transform: translateY(0px);
     transform: translateY(0px);
     opacity: 1;
   }
 
-  .modal .box .right-container .info li span {
+.right-container .info li span {
     display: block;
     font-size: 1.3rem;
     line-height: 1.6rem;
@@ -1235,7 +1219,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     margin-bottom: 0.4rem;
   }
 
-  .modal .box .right-container .info li strong {
+.right-container .info li strong {
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 1.7rem;
@@ -1243,7 +1227,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     color: #2f3133;
   }
 
-  .modal .box .right-container .info li button {
+.right-container .info li button {
     position: absolute;
     left: 0;
     bottom: -3.2rem;
@@ -1253,11 +1237,11 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     transition: opacity 0.3s;
   }
 
-  .modal .box .right-container .info li button:hover {
+.right-container .info li button:hover {
     opacity: 0.6;
   }
 
-  .modal .box .right-container .info li .ballon {
+.right-container .info li .ballon {
     position: absolute;
     background-color: #ffffff;
     top: 75px;
@@ -1273,91 +1257,142 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     transition: all 0.3s;
   }
 
-  .modal .box .right-container .info li .ballon.grass strong {
+.right-container .info li .ballon.grass strong {
     color: #73b861;
+    text-shadow: 1px 1px 25px 10px #73b861;
   }
 
-  .modal .box .right-container .info li .ballon.poison strong {
+ .right-container .info li .ballon.poison strong {
     color: #ac6aca;
+    text-shadow: 1px 1px 25px 10px #ac6aca;
   }
 
-  .modal .box .right-container .info li .ballon.water strong {
+ .right-container .info li .ballon.water strong {
     color: #4f77be;
+    text-shadow: 
+        0 0 3px#4f77be,
+        0 0 5px rgba(0, 0, 0, 0.3);  
   }
 
-  .modal .box .right-container .info li .ballon.fire strong {
-    color: #e96303;
+ .right-container .info li .ballon.fire strong {
+    color: #e96303; 
+    text-shadow: 
+        0 0 3px#e96303,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.psychic strong {
-    color: #eb8b85;
+ .right-container .info li .ballon.psychic strong {
+    color: #eb8b85; 
+    text-shadow: 
+        0 0 3px#eb8b85,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.flying strong {
+ .right-container .info li .ballon.flying strong {
     color: #758cbd;
+    text-shadow: 
+        0 0 3px#758cbd,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.ice strong {
-    color: #71baac;
+ .right-container .info li .ballon.ice strong {
+    color: #71baac; 
+    text-shadow: 
+        0 0 3px#71baac,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.ground strong {
-    color: #ce8056;
+ .right-container .info li .ballon.ground strong {
+    color: #ce8056; 
+    text-shadow: 
+        0 0 3px#ce8056,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.rock strong {
+ .right-container .info li .ballon.rock strong {
     color: #84beb3;
+    text-shadow: 
+        0 0 3px#84beb3,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.electric strong {
+.right-container .info li .ballon.electric strong {
     color: #d4bc34;
+    text-shadow: 
+        0 0 3px#d4bc34,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.bug strong {
-    color: #9bba48;
+ .right-container .info li .ballon.bug strong {
+    color: #9bba48; 
+    text-shadow: 
+        0 0 3px#9bba48,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.dark strong {
+.right-container .info li .ballon.dark strong {
     color: #595761;
+    text-shadow: 
+        0 0 3px#595761,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.dragon strong {
+ .right-container .info li .ballon.dragon strong {
     color: #2c6ac1;
+    text-shadow: 
+        0 0 3px#2c6ac1,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.fairy strong {
+.right-container .info li .ballon.fairy strong {
     color: #e296e1;
+    text-shadow: 
+        0 0 3px#e296e1,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.fighting strong {
+.right-container .info li .ballon.fighting strong {
     color: #c44d61;
+    text-shadow: 
+        0 0 3px#c44d61,
+        0 0 5px rgba(0, 0, 0, 0.3); 
   }
 
-  .modal .box .right-container .info li .ballon.ghost strong {
+.right-container .info li .ballon.ghost strong {
     color: #616eb7;
+    text-shadow: 
+        0 0 3px#616eb7,
+        0 0 5px rgba(0, 0, 0, 0.3);
   }
 
-  .modal .box .right-container .info li .ballon.steel strong {
+.right-container .info li .ballon.steel strong {
     color: #6594a1;
+    text-shadow: 
+        0 0 3px#6594a1,
+        0 0 5px rgba(0, 0, 0, 0.3);
+    
   }
 
-  .modal .box .right-container .info li .ballon.normal strong {
+.right-container .info li .ballon.normal strong {
     color: #909090;
+    text-shadow: 
+        0 0 3px#909090,
+        0 0 5px rgba(0, 0, 0, 0.3);
   }
 
-  .modal .box .right-container .info li .ballon strong {
+.right-container .info li .ballon strong {
     display: block;
   }
 
-  .modal .box .right-container .info li .ballon strong:not(:last-child) {
+.right-container .info li .ballon strong:not(:last-child) {
     margin-bottom: 10px;
   }
 
-  .modal .box .right-container div:not(:last-child) {
+.right-container div:not(:last-child) {
     margin-bottom: 2.5rem;
   }
 
-  .modal .box .right-container h4 {
+.right-container h4 {
     font-weight: 600;
     font-size: 1.3rem;
     line-height: 1.6rem;
@@ -1373,7 +1408,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
       align-items: flex-end;
     }
 
-    .modal .box {
+    .modal .modal-box {
       height: 87%;
       border-radius: 0;
       -webkit-box-orient: vertical;
@@ -1383,24 +1418,24 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
       overflow-y: auto;
     }
 
-    .modal .box .close {
+    .modal .modal-box .close {
       top: 0;
       border-radius: 0 0 0 8px;
       z-index: 2;
     }
 
-    .modal .box .left-container {
+    .modal .modal-box .left-container {
       max-width: 100%;
       height: 125px;
       background-size: cover;
     }
 
-    .modal .box .left-container .icon {
-      top: 15px;
-      right: 60px;
+    .modal .modal-box .left-container .icon {
+      bottom: 15px;
+      left: 60px;
     }
 
-    .modal .box .left-container .image {
+    .modal .modal-box .left-container .image {
       position: absolute;
       right: initial;
       width: 100%;
@@ -1420,53 +1455,53 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
       justify-content: center;
     }
 
-    .modal .box .right-container {
+    .modal .modal-box .right-container {
       padding: 5rem 2.4rem;
     }
 
-    .modal .box .right-container .name {
+    .modal .modal-box .right-container .name {
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
     }
 
-    .modal .box .right-container .name h2 {
+    .modal .modal-box .right-container .name h2 {
       font-size: 2.4rem;
       line-height: 2.9rem;
     }
 
-    .modal .box .right-container .name span {
+    .modal .modal-box .right-container .name span {
       font-size: 1.4rem;
     }
 
-    .modal .box .right-container .type {
+    .modal .modal-box .right-container .type {
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
     }
 
-    .modal .box .right-container .info {
+    .modal .modal-box .right-container .info {
       max-width: 80%;
       margin: 0 auto;
       margin-bottom: 5.5rem;
     }
 
-    .modal .box .right-container .info li button {
+    .modal .modal-box .right-container .info li button {
       left: 50%;
       margin-left: -4.5rem;
     }
 
-    .modal .box .right-container .info li .ballon {
+    .modal .modal-box .right-container .info li .ballon {
       left: 50%;
       margin-left: -55px;
     }
 
-    .modal .box .right-container h4 {
+    .modal .modal-box .right-container h4 {
       text-align: center;
     }
   }
 
-  .modal .box .left-container .abilities {
+  .modal .modal-box .left-container .abilities {
     position: absolute;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1484,58 +1519,68 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     border-radius: 1rem;
   }
 
-  @media screen and (min-width: 600px) {
+
+  @media screen and (min-width: 320px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 21vw);
-      height: clamp(18vw, 85vh, 28.2vw);
+      width: clamp(12.9vw, 61vh, 55vw);
+      height: clamp(18vw, 85vh, 80vw);
     }
   }
+
+  
+  @media screen and (min-width: 600px) {
+    .poke-card-pokemon {
+      width: clamp(12.9vw, 61vh, 35vw);
+      height: clamp(18vw, 85vh, 50vw);
+    }
+  } 
+ 
 
   @media screen and (min-width: 900px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 18vw);
-      height: clamp(18vw, 85vh, 24.2vw);
+      width: clamp(12.9vw, 61vh, 24vw);
+      height: clamp(18vw, 85vh, 35.2vw);
     }
   }
-
+ 
   @media screen and (min-width: 1200px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 15vw);
-      height: clamp(18vw, 85vh, 20.2vw);
+      width: clamp(12.9vw, 61vh, 19vw);
+      height: clamp(18vw, 85vh, 24.2vw);
     }
   }
 
   @media screen and (min-width: 1500px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 12vw);
-      height: clamp(18vw, 85vh, 16.2vw);
+      width: clamp(12.9vw, 61vh, 16vw);
+      height: clamp(18vw, 85vh, 20.2vw);
     }
   }
 
   @media screen and (min-width: 1800px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 9vw);
-      height: clamp(18vw, 85vh, 12.2vw);
+      width: clamp(12.9vw, 61vh, 13vw);
+      height: clamp(18vw, 85vh, 15.2vw);
     }
   }
 
   @media screen and (min-width: 2100px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 6vw);
-      height: clamp(18vw, 85vh, 8.2vw);
+      width: clamp(12.9vw, 61vh, 10vw);
+      height: clamp(18vw, 85vh, 10.2vw);
     }
   }
 
   @media screen and (min-width: 2400px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 3vw);
+      width: clamp(12.9vw, 61vh, 7vw);
       height: clamp(18vw, 85vh, 4.2vw);
     }
   }
 
   @media screen and (min-width: 2700px) {
     .poke-card-pokemon {
-      width: clamp(12.9vw, 61vh, 1vw);
+      width: clamp(12.9vw, 61vh, 4vw);
       height: clamp(18vw, 85vh, 2.2vw);
     }
   }
@@ -1580,58 +1625,50 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
       width: clamp(12.9vw, 61vh, 0.00001vw);
       height: clamp(18vw, 85vh, 0.00002vw);
     }
-  }
+  } 
   .col-span-2.md\:col-span-1.lg\:col-span-2.xl\:col-span-4.flex img {
     margin-right: 0.5rem;
   }
 
-  /* 
-.modal .box .right-container .pokemon-stats-info {
+ 
+ .pokemon-stats-info {
     display: flex;
-    width: 100%; 
-} */
+  } 
 
-  .modal .box .right-container .pokemon-stats-info > ul {
+ .pokemon-stats-info > ul {
     clear: both;
     display: flex;
     position: relative;
-    width: 75%;
+    width: 100%;
+    margin-bottom: 1.5em;
   }
 
-  .modal .box .right-container .pokemon-stats-info > ul > li {
+ .pokemon-stats-info > ul > li {
     margin-right: -100%;
     width: 12.95%;
     display: inline-block;
     margin: 0 1.5625% 0 0;
   }
 
-  .modal .box .right-container .pokemon-stats-info > ul > li.first {
+  .right-container .pokemon-stats-info > ul > li.first {
     display: flex-start;
   }
-  .modal .box .right-container .pokemon-stats-info .gauge {
-    background: #fff;
+  ul.gauge {
+    background: transparent;
     position: relative;
     overflow: hidden;
   }
-  .modal .box .right-container .pokemon-stats-info .gauge li {
-    background-color: #ccc; /* Cor de fundo padrão */
-    width: 20px; /* Largura das barras verticais */
-    margin: 0 2px;
-    position: absolute;
-    bottom: 0;
-  }
-
-  .modal .box .right-container .pokemon-stats-info .gauge li {
-    background: transparent;
-    border-bottom: 0.25em solid #ccc;
-    height: 0.5em;
-    width: 100%;
+   .gauge li {
+    background-color: transparent; /* Cor de fundo padrão */
+    width: 100%;  
+    height: 0.5em; 
+    border-bottom: 0.25em solid rgba(0, 0, 0, 0.25);
     position: relative;
     z-index: 2;
-    transition: top 0.5s; /* Adiciona uma transição suave */
+    transition: top 0.5s; 
   }
-
-  .modal .box .right-container .pokemon-stats-info .gauge li.meter {
+ 
+   li.meter {
     border: none;
     height: 120%;
     position: absolute;
@@ -1640,7 +1677,7 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     transition: top 0.5s; /* Adiciona uma transição suave */
   }
 
-  .modal .box .right-container .pokemon-stats-info > ul > li span {
+.pokemon-stats-info > ul > li span {
     font-weight: bold;
     color: #212121;
     font-size: 62.5%;
@@ -1766,6 +1803,8 @@ import ScrollToTopButton from "@components/ScrollToTopButton.astro";
     -webkit-mask-image: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' stroke='%23000'%3E%3Cstyle%3E@keyframes spinner_zKoa{to{transform:rotate(360deg)}}@keyframes spinner_YpZS{0%25{stroke-dasharray:0 150;stroke-dashoffset:0}47.5%25{stroke-dasharray:42 150;stroke-dashoffset:-16}95%25,to{stroke-dasharray:42 150;stroke-dashoffset:-59}}%3C/style%3E%3Cg style='transform-origin:center;animation:spinner_zKoa 2s linear infinite'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3' style='stroke-linecap:round;animation:spinner_YpZS 1.5s ease-out infinite'/%3E%3C/g%3E%3C/svg%3E);
     mask-image: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' stroke='%23000'%3E%3Cstyle%3E@keyframes spinner_zKoa{to{transform:rotate(360deg)}}@keyframes spinner_YpZS{0%25{stroke-dasharray:0 150;stroke-dashoffset:0}47.5%25{stroke-dasharray:42 150;stroke-dashoffset:-16}95%25,to{stroke-dasharray:42 150;stroke-dashoffset:-59}}%3C/style%3E%3Cg style='transform-origin:center;animation:spinner_zKoa 2s linear infinite'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3' style='stroke-linecap:round;animation:spinner_YpZS 1.5s ease-out infinite'/%3E%3C/g%3E%3C/svg%3E);
 }
+
+
 
   /* .evolution-list-item:first-child::before {
   content: '';

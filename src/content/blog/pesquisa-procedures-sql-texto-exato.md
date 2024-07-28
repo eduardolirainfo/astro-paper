@@ -44,8 +44,6 @@ Os resultados mostrarão o nome da procedure e a definição completa da procedu
 
 Você pode refinar sua pesquisa usando operadores lógicos, como <code>AND</code> e <code>OR</code>, e ajustando o operador <code>LIKE</code> para pesquisas mais precisas, como <code>LIKE 'sua_palavra%'</code>.
 
-## Conclusão
+Pesquisar procedures SQL com texto exato é uma habilidade valiosa que pode melhorar significativamente a eficiência ao trabalhar com bancos de dados SQL. Lembre-se, é possível personalizar essas etapas de acordo com sua situação específica.
 
-Pesquisar procedures SQL com texto exato é uma habilidade valiosa que pode melhorar significativamente sua eficiência ao trabalhar com bancos de dados SQL. Esperamos que este tutorial tenha sido útil e encorajamos você a experimentar essas técnicas por si mesmo. Lembre-se, você pode personalizar essas etapas de acordo com sua situação específica.
-
-Esperamos que este tutorial facilite suas tarefas de pesquisa no SQL! Até a próxima! 🤘
+Até a próxima! 🤘

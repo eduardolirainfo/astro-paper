@@ -1,12 +1,15 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
+import remarkToc from "remark-toc";
+import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
+import { SITE } from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://eduardolira.dev.br/",
+  site: SITE.website,
   prefetch: true,
   experimental: {
     clientPrerender: true,
@@ -25,11 +28,30 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
-  markdownOptions: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
+
   markdown: {
+    remarkPlugins: [
+      [
+        remarkToc,
+        {
+          heading: "Introdução",
+          utils: {
+            smoothScroll: true,
+          },
+        },
+      ],
+      [
+        remarkCollapse,
+        {
+          test: "Introdução", 
+          summary: "Índice",
+          className: "smooth-scroll",  
+          utils: {
+            smoothScroll: true,
+          }, 
+        },
+      ],
+    ],
     shikiConfig: {
       theme: "material-theme-palenight",
       wrap: true,
@@ -44,4 +66,4 @@ export default defineConfig({
       external: ["svgo"],
     },
   },
-});
+})
